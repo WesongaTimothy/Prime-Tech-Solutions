@@ -38,14 +38,47 @@
     .main-nav a:hover { color: var(--berkeley-gold); }
 
     /* --- HERO SECTION --- */
-    .hero {
-      background: linear-gradient(rgba(0,50,98,0.75), rgba(0,50,98,0.75)), url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=1471');
-      height: 400px; background-size: cover; background-position: center;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 0 10%;
-    }
-    .hero h1 { font-family: serif; font-size: 48px; margin: 0; }
-    .hero p { font-size: 20px; max-width: 700px; margin: 15px 0 25px; opacity: 0.9; }
+   .hero {
+  /* Replace the URL below with your chosen option from above */
+  background: linear-gradient(rgba(0,50,98,0.6), rgba(0,50,98,0.6)), 
+              url('https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=2070&auto=format&fit=crop');
+  height: 500px; 
+  background-size: cover; 
+  background-position: center;
+  background-attachment: fixed; /* Parallax effect for premium feel */
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  color: white; 
+  text-align: center; 
+  padding: 0 10%;
+}
 
+.hero-content {
+  background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.hero h1 { 
+  font-family: 'Playfair Display', serif; /* Elegant serif font */
+  font-size: 56px; 
+  margin: 0; 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero p { 
+  font-size: 22px; 
+  max-width: 800px; 
+  margin: 20px 0 30px; 
+  font-weight: 300;
+  letter-spacing: 1px;
+}
     /* --- PRODUCT SHOWCASE --- */
     .section { padding: 60px 10%; max-width: 1400px; margin: auto; text-align: center; }
     .tier-label { font-family: serif; font-size: 26px; color: var(--berkeley-blue); border-left: 5px solid var(--berkeley-gold); padding-left: 15px; text-align: left; margin: 40px 0 20px; }
@@ -101,10 +134,13 @@
     </div>
   </header>
 
-  <section class="hero">
+   <section class="hero">
+  <div class="hero-content">
     <h1>Powering Kenya's Digital Future</h1>
-    <p>Official HP & Dell partner providing world-class computing technology across East Africa.</p>
-  </section>
+    <p>Discover the finest selection of premium HP, Dell, and Lenovo laptops tailored for Kenyan professionals in providing world-class computing technology across East Africa. </p>
+    <a href="#shop" class="buy-btn" style="width: 200px; margin: 0 auto; border-radius: 50px;">Explore Inventory</a>
+  </div>
+</section> 
 
 <div class="section">
     <div class="tier-label">Essential Series (KSh 20,000 - 35,000)</div>
