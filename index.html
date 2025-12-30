@@ -3,156 +3,209 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prime Tech Solutions | Kenya's IT Authority</title>
+  <title>Prime Tech Solutions | Kenya's Leading IT Authority</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
-      --berkeley-blue: #003262;
-      --berkeley-gold: #FDB515;
-      --bg-gray: #f2f2f2;
-      --white: #ffffff;
+      --berkeley-blue: #003262; /* Official deep blue */
+      --berkeley-gold: #FDB515; /* Official California gold */
+      --light-gray: #f9f9f9;
+      --text-dark: #333;
     }
 
-    body { font-family: 'Open Sans', sans-serif; margin: 0; color: #333; }
+    body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-dark); background: #fff; line-height: 1.6; }
 
-    /* --- HERO SECTION RE-DESIGNED --- */
-    .hero {
+    /* Utility Top Bar (The Berkeley Look) */
+    .utility-nav {
       background: var(--berkeley-blue);
-      color: white;
+      padding: 8px 10%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      font-size: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .utility-nav a { color: #fff; text-decoration: none; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; }
+    .utility-nav a:hover { text-decoration: underline; }
+
+    /* Main Header */
+    header { background: var(--berkeley-blue); padding: 20px 10%; position: sticky; top: 0; z-index: 1000; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { color: #fff; font-size: 24px; font-weight: 800; text-decoration: none; letter-spacing: -1px; }
+    .logo span { color: var(--berkeley-gold); }
+
+    /* Main Navigation */
+    nav { margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 15px; }
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a { color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; }
+    .nav-links a:hover { color: var(--berkeley-gold); }
+
+    /* Hero Section with Berkeley Style Video/Image Overlay */
+    .hero {
+      position: relative;
+      height: 500px;
+      background: linear-gradient(rgba(0,50,98,0.7), rgba(0,50,98,0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1470');
+      background-size: cover;
+      background-position: center;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 80px 10%;
-      min-height: 400px;
-      gap: 50px;
+      padding: 0 10%;
+      color: #fff;
     }
+    .hero-content { max-width: 600px; }
+    .hero h1 { font-size: 42px; line-height: 1.1; margin-bottom: 20px; font-family: serif; }
+    .hero p { font-size: 18px; margin-bottom: 30px; }
+    .hero .btn { background: var(--berkeley-gold); color: var(--berkeley-blue); padding: 12px 25px; text-decoration: none; font-weight: bold; font-size: 14px; text-transform: uppercase; }
 
-    .hero-content { flex: 1; }
-    .hero-content h1 { font-family: serif; font-size: 48px; line-height: 1.1; margin: 0 0 20px 0; }
-    .hero-content p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; }
-
-    /* The Computer Showcase in Hero */
-    .hero-visual { flex: 1; position: relative; display: flex; justify-content: center; }
-    .laptop-frame {
-      width: 100%;
-      max-width: 500px;
-      border-radius: 10px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-      border: 4px solid var(--berkeley-gold);
-    }
-
-    .btn-gold { 
-      background: var(--berkeley-gold); 
-      color: var(--berkeley-blue); 
-      padding: 15px 30px; 
-      text-decoration: none; 
-      font-weight: 800; 
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* --- IMPACT STATS --- */
+    /* News/Impact Section */
     .impact-stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      background: #002142;
+      background: var(--berkeley-blue);
       color: #fff;
-      padding: 40px 10%;
       text-align: center;
+      padding: 40px 10%;
     }
-    .stat h2 { font-size: 32px; color: var(--berkeley-gold); margin: 0; font-family: serif; }
-    .stat p { font-size: 12px; text-transform: uppercase; margin-top: 5px; }
+    .stat h2 { font-size: 36px; color: var(--berkeley-gold); margin: 0; }
+    .stat p { font-size: 14px; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* --- COMPUTER CATALOG SECTION (NEW) --- */
-    .catalog { padding: 80px 10%; background: var(--white); }
-    .section-title { font-family: serif; font-size: 32px; color: var(--berkeley-blue); border-bottom: 3px solid var(--berkeley-gold); display: inline-block; margin-bottom: 50px; }
+    /* Main Content Sections */
+    .section { padding: 60px 10%; }
+    .section-title { font-family: serif; font-size: 32px; border-bottom: 2px solid var(--berkeley-gold); display: inline-block; margin-bottom: 40px; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .news-card { background: var(--light-gray); border-bottom: 4px solid var(--berkeley-blue); transition: 0.3s; }
+    .news-card:hover { transform: translateY(-5px); }
+    .news-card img { width: 100%; height: 200px; object-fit: cover; }
+    .news-content { padding: 20px; }
+    .news-content h3 { font-size: 18px; margin-top: 0; color: var(--berkeley-blue); }
     
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .product-card { border: 1px solid #ddd; transition: 0.3s; }
-    .product-card:hover { border-color: var(--berkeley-blue); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-    .product-img { background: #f9f9f9; height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .product-img img { width: 90%; transition: 0.5s; }
-    .product-card:hover img { transform: scale(1.05); }
-    .product-info { padding: 25px; }
-    .product-info h3 { margin: 0; color: var(--berkeley-blue); font-size: 1.2rem; }
-    .price-tag { color: #d9534f; font-weight: bold; font-size: 1.1rem; display: block; margin: 10px 0; }
+    /* Global Footer (Berkeley Style) */
+    footer { background: #191919; color: #ccc; padding: 60px 10% 20px; font-size: 14px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; margin-bottom: 20px; }
+    .footer-grid h4 { color: #fff; text-transform: uppercase; margin-bottom: 20px; font-size: 12px; }
+    .footer-grid ul { list-style: none; padding: 0; }
+    .footer-grid li { margin-bottom: 10px; }
+    .footer-grid a { color: #ccc; text-decoration: none; }
+    .footer-grid a:hover { color: var(--berkeley-gold); }
 
-    /* --- UPDATES SECTION --- */
-    .updates { padding: 80px 10%; background: var(--bg-gray); }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .news-card { background: white; padding: 30px; border-top: 5px solid var(--berkeley-blue); }
-    .news-card h3 { color: var(--berkeley-blue); margin-top: 0; }
   </style>
 </head>
 <body>
 
+<div class="utility-nav">
+  <a href="contact.html">Corporate Sales</a>
+  <a href="repair.html">Technical Support</a>
+  <a href="about.html">Government & NGO</a>
+  <a href="contact.html">Map & Store</a>
+  <a href="contact.html" style="background:var(--berkeley-gold); color:var(--berkeley-blue); padding: 0 10px;">Get a Quote</a>
+</div>
+
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo">PRIME TECH <span>SOLUTIONS</span></a>
+    <div style="color: #fff; font-size: 20px;"><i class="fas fa-search"></i></div>
+  </div>
+  <nav>
+    <div class="nav-links">
+      <a href="about.html">About Us</a>
+      <a href="shop.html">Laptops & Hardware</a>
+      <a href="repair.html">IT Services</a>
+      <a href="solutions.html">Research & Solutions</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+</header>
+
 <section class="hero">
   <div class="hero-content">
     <h1>Powering Kenya's Digital Future</h1>
-    <p>Official HP & Dell partner providing world-class computing technology and technical expertise to institutions across East Africa.</p>
-    <a href="shop.html" class="btn-gold">Explore Hardware</a>
-  </div>
-  <div class="hero-visual">
-    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&q=80&w=600" alt="Premium Laptop" class="laptop-frame">
+    <p>We provide world-class computing technology and technical expertise to improve lives and businesses across East Africa.</p>
+    <a href="shop.html" class="btn">Explore Hardware</a>
   </div>
 </section>
 
 <div class="impact-stats">
-  <div class="stat"><h2>#1</h2><p>Laptop Provider</p></div>
-  <div class="stat"><h2>15k+</h2><p>Units Delivered</p></div>
-  <div class="stat"><h2>24/7</h2><p>Expert Support</p></div>
-  <div class="stat"><h2>100%</h2><p>Certified Genuine</p></div>
+  <div class="stat">
+    <h2>#1</h2>
+    <p>Laptop Provider</p>
+  </div>
+  <div class="stat">
+    <h2>15k+</h2>
+    <p>Units Delivered</p>
+  </div>
+  <div class="stat">
+    <h2>24/7</h2>
+    <p>Expert Support</p>
+  </div>
+  <div class="stat">
+    <h2>100%</h2>
+    <p>Certified Genuine</p>
+  </div>
 </div>
 
-<section class="catalog">
-  <h2 class="section-title">Featured Computing Systems</h2>
-  <div class="product-grid">
-    <div class="product-card">
-      <div class="product-img">
-        <img src="https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?auto=format&fit=crop&q=80&w=400" alt="HP Elitebook">
-      </div>
-      <div class="product-info">
-        <h3>HP EliteBook Series</h3>
-        <p>Enterprise-grade security and performance.</p>
-        <span class="price-tag">From KSh 35,000</span>
-        <a href="contact.html" style="color:var(--berkeley-blue); font-weight:bold;">View Specifications →</a>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-img">
-        <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&q=80&w=400" alt="Dell Latitude">
-      </div>
-      <div class="product-info">
-        <h3>Dell Latitude Series</h3>
-        <p>Built for durability and modern remote work.</p>
-        <span class="price-tag">From KSh 32,000</span>
-        <a href="contact.html" style="color:var(--berkeley-blue); font-weight:bold;">View Specifications →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="updates">
+<section class="section">
   <h2 class="section-title">Latest Updates</h2>
   <div class="grid-3">
     <div class="news-card">
-      <h3>2025 Tech Trends</h3>
-      <p>Prime Tech researchers analyze the impact of AI on laptop performance in 2025.</p>
-      <a href="#" style="color:var(--berkeley-blue); font-weight:bold; text-decoration:none;">Read More →</a>
+      <div class="news-content">
+        <h3>2025 Tech Trends</h3>
+        <p>Prime Tech researchers analyze the impact of AI on laptop performance in 2025.</p>
+        <a href="#" style="color:var(--berkeley-blue); font-weight:bold; text-decoration:none;">Read More →</a>
+      </div>
     </div>
     <div class="news-card">
-      <h3>Sustainability in Tech</h3>
-      <p>How our refurbished Dell & HP units are reducing electronic waste in Nairobi.</p>
-      <a href="#" style="color:var(--berkeley-blue); font-weight:bold; text-decoration:none;">Read More →</a>
+      <div class="news-content">
+        <h3>Sustainability in Tech</h3>
+        <p>How our refurbished Dell & HP units are reducing electronic waste in Nairobi.</p>
+        <a href="#" style="color:var(--berkeley-blue); font-weight:bold; text-decoration:none;">Read More →</a>
+      </div>
     </div>
     <div class="news-card">
-      <h3>Institutional Supply</h3>
-      <p>Prime Tech joins hands with local universities to provide affordable student laptops.</p>
-      <a href="#" style="color:var(--berkeley-blue); font-weight:bold; text-decoration:none;">Read More →</a>
+      <div class="news-content">
+        <h3>Institutional Supply</h3>
+        <p>Prime Tech joins hands with local universities to provide affordable student laptops.</p>
+        <a href="#" style="color:var(--berkeley-blue); font-weight:bold; text-decoration:none;">Read More →</a>
+      </div>
     </div>
   </div>
 </section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>Visit</h4>
+      <ul>
+        <li><a href="#">Store Locator</a></li>
+        <li><a href="#">Service Center</a></li>
+        <li><a href="#">Campus Outreach</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Jobs</a></li>
+        <li><a href="#">Give</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Warranty Policy</a></li>
+        <li><a href="#">Return Center</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color: var(--berkeley-gold);">Prime Tech Solutions</h4>
+      <p>Nairobi, Kenya<br>Tel: +254 700 000 000<br>Email: solutions@primetech.co.ke</p>
+    </div>
+  </div>
+  <p style="text-align: center; font-size: 12px; color: #666;">© 2026 Prime Tech Solutions. All Rights Reserved. Built for Excellence.</p>
+</footer>
 
 </body>
 </html>
