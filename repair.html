@@ -12,195 +12,195 @@
       --silver-bg: #e5e7e9; 
       --white: #ffffff;
       --text-main: #333;
-      --success-green: #28a745;
-      --warning-orange: #fd7e14;
     }
 
-    body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); }
+    /* --- GLOBAL BACKGROUND SETTINGS --- */
+    body { 
+      font-family: 'Open Sans', Arial, sans-serif; 
+      margin: 0; 
+      color: var(--text-main); 
+      line-height: 1.6; 
+      background-image: linear-gradient(rgba(229, 231, 233, 0.90), rgba(229, 231, 233, 0.90)), 
+                        url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=2070');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
 
-    /* --- NAVIGATION --- */
-    .utility-nav { background: var(--berkeley-blue); padding: 10px 10%; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+    /* --- TOP UTILITY BAR --- */
+    .utility-nav {
+      background: var(--berkeley-blue);
+      padding: 10px 10%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 20px;
+      font-size: 12px;
+    }
     .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
-    header { background: var(--white); text-align: center; padding-top: 20px; border-bottom: 4px solid var(--berkeley-gold); }
-    .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 15px; }
+
+    /* --- MAIN HEADER --- */
+    header { background: var(--white); text-align: center; padding-top: 30px; }
+    .brand { font-size: 36px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 20px; }
     .brand span { color: var(--berkeley-gold); }
-    .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; padding: 15px 0; margin: 0; }
-    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; }
+    
+    .nav-container { border-bottom: 4px solid var(--berkeley-gold); background: var(--white); display: flex; justify-content: center; }
+    .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 15px 0; }
+    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
     .main-nav a.active { color: var(--berkeley-gold); border-bottom: 2px solid var(--berkeley-gold); padding-bottom: 5px; }
 
-    /* --- REPAIR LAYOUT --- */
-    .section { padding: 40px 10%; max-width: 1400px; margin: auto; }
-    .tier-label { font-size: 28px; color: var(--berkeley-blue); border-left: 5px solid var(--berkeley-gold); padding-left: 15px; margin: 20px 0; font-weight: bold; text-transform: uppercase; }
+    /* --- REPAIR SECTION --- */
+    .section { padding: 60px 10%; max-width: 1200px; margin: auto; }
+    .tier-label { font-size: 28px; color: var(--berkeley-blue); border-left: 5px solid var(--berkeley-gold); padding-left: 15px; margin-bottom: 10px; font-weight: bold; text-transform: uppercase; }
+    
+    .intro-text { font-size: 1.1rem; color: #444; margin-bottom: 40px; max-width: 800px; }
 
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
-      margin-top: 30px;
     }
 
     .service-card {
-      background: #fff;
-      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 35px;
       border-radius: 12px;
-      text-align: left;
       border-top: 5px solid var(--berkeley-blue);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: 0.3s;
-      display: flex;
-      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: 0.3s ease-in-out;
     }
 
     .service-card:hover {
+      transform: translateY(-8px);
       border-top-color: var(--berkeley-gold);
-      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
     }
 
-    .service-icon {
-      font-size: 40px;
-      color: var(--berkeley-blue);
-      margin-bottom: 20px;
-    }
-
-    .service-card h4 {
-      margin: 0 0 15px 0;
-      color: var(--berkeley-blue);
-      font-size: 1.3rem;
-      text-transform: uppercase;
-    }
-
-    .service-card ul {
-      padding-left: 20px;
-      font-size: 0.95rem;
-      color: #555;
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
-
-    .service-card ul li { margin-bottom: 10px; }
+    .service-icon { font-size: 40px; color: var(--berkeley-blue); margin-bottom: 20px; }
+    .service-card h4 { color: var(--berkeley-blue); margin: 0 0 15px 0; font-size: 1.3rem; text-transform: uppercase; }
+    .service-card ul { padding-left: 20px; color: #555; font-size: 0.95rem; }
+    .service-card li { margin-bottom: 10px; }
 
     /* --- CALL TO ACTION --- */
     .repair-cta {
-      background: #fff;
+      background: var(--white);
       border: 2px dashed var(--berkeley-gold);
-      padding: 40px;
+      padding: 50px;
       text-align: center;
       border-radius: 15px;
-      margin-top: 50px;
+      margin-top: 60px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
 
+    .repair-cta h2 { color: var(--berkeley-blue); margin-top: 0; }
     .buy-btn { 
       background: var(--berkeley-blue); 
       color: white; 
-      padding: 15px 35px; 
+      padding: 15px 40px; 
       display: inline-block; 
-      text-align: center; 
       text-decoration: none; 
       font-weight: bold; 
       border-radius: 50px; 
+      margin-top: 20px;
       transition: 0.3s;
     }
     .buy-btn:hover { background: var(--berkeley-gold); color: var(--berkeley-blue); }
 
     /* --- FOOTER --- */
-    footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 50px; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; }
-    footer h4 { color: #fff; text-transform: uppercase; font-size: 14px; border-bottom: 2px solid var(--berkeley-gold); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; }
+    footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 80px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; }
+    footer h4 { color: #fff; text-transform: uppercase; font-size: 12px; border-bottom: 2px solid var(--berkeley-gold); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; }
     footer ul { list-style: none; padding: 0; margin: 0; }
     footer li { margin-bottom: 10px; font-size: 13px; }
     footer a { color: #ccc; text-decoration: none; transition: 0.3s; }
     footer a:hover { color: var(--berkeley-gold); }
 
     @media (max-width: 768px) {
-      .main-nav { gap: 15px; font-size: 12px; flex-wrap: wrap; }
-      .utility-nav { flex-direction: column; gap: 10px; text-align: center; }
+      .main-nav { gap: 15px; flex-wrap: wrap; }
+      .brand { font-size: 28px; }
+      .section { padding: 40px 5%; }
     }
   </style>
 </head>
 <body>
 
   <div class="utility-nav">
-    <div style="display: flex; gap: 15px;">
-      <a href="#">Corporate Sales</a>
-      <a href="#">Government & NGO</a>
-      <a href="#">Map & Store</a>
-    </div>
-    <a href="https://wa.me/254708902232" target="_blank" style="color: var(--berkeley-gold)">
-      <i class="fab fa-whatsapp"></i> Get a Repair Quote
+    <a href="#">Corporate Sales</a>
+    <a href="#">Technical Support</a>
+    <a href="https://maps.app.goo.gl/4eTt5YdxNzWcNmqG6" target="_blank" style="color: var(--berkeley-gold)">
+      <i class="fas fa-map-marker-alt"></i> Find us at Platinum Plaza
     </a>
   </div>
 
   <header>
     <a href="index.html" class="brand">PRIME TECH <span>SOLUTIONS</span></a>
-    <ul class="main-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop Laptops</a></li>
-      <li><a href="repair.html" class="active">Repair Services</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+    <div class="nav-container">
+      <ul class="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop Laptops</a></li>
+        <li><a href="repair.html" class="active">Repair Services</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
   </header>
 
   <main class="section">
-    <div class="tier-label">Laptop Repair & Maintenance</div>
-    <p style="max-width: 800px; font-size: 1.1rem; color: #555;">
-      Don't let a broken laptop slow you down. Our certified technicians at <strong>Platinum Plaza</strong> provide expert chip-level repairs, display replacements, and software installations.
+    <div class="tier-label">Professional Repair Services</div>
+    <p class="intro-text">
+      From chip-level motherboard restoration to genuine Windows installations, we provide Nairobi's most reliable laptop repair solutions. Visit our service center at Platinum Plaza for a free diagnostic.
     </p>
 
     <div class="service-grid">
       <div class="service-card">
         <div class="service-icon"><i class="fas fa-microchip"></i></div>
-        <h4>Motherboard & Chip-Level</h4>
+        <h4>Motherboard Repair</h4>
         <ul>
-          <li>Dead laptop power-on troubleshooting</li>
-          <li>Short circuit detection & repair</li>
-          <li>Liquid damage / Water spill cleaning</li>
-          <li>BIOS flashing & Password removal</li>
-          <li>Charging system & IC replacement</li>
+          <li>Component-level troubleshooting</li>
+          <li>Power IC & Charging port replacement</li>
+          <li>Liquid damage (water spill) recovery</li>
+          <li>Short circuit diagnostic & repair</li>
         </ul>
       </div>
 
       <div class="service-card">
         <div class="service-icon"><i class="fas fa-laptop"></i></div>
-        <h4>Screen & Display Fixes</h4>
+        <h4>Display & Screen</h4>
         <ul>
-          <li>Cracked/Broken LED & LCD replacement</li>
-          <li>Flickering or dim display repair</li>
-          <li>Vertical/Horizontal lines fix</li>
-          <li>Hinge repair & Body reconstruction</li>
-          <li>Display cable (Video Flex) replacement</li>
+          <li>LED/LCD Screen replacements</li>
+          <li>Flickering or dim display fixes</li>
+          <li>Hinge & Back cover reconstruction</li>
+          <li>Display cable (EDP) replacement</li>
         </ul>
       </div>
 
       <div class="service-card">
         <div class="service-icon"><i class="fab fa-windows"></i></div>
-        <h4>Windows & Software</h4>
+        <h4>OS & Software</h4>
         <ul>
-          <li>Genuine Windows 10/11 Professional install</li>
-          <li>Microsoft Office & Driver configuration</li>
-          <li>Malware, Spyware & Virus removal</li>
-          <li>System boot error & Blue screen fixes</li>
-          <li>Slow laptop optimization (Speed up)</li>
+          <li>Genuine Windows 10/11 Installation</li>
+          <li>Microsoft Office & Drivers setup</li>
+          <li>Virus & Malware deep cleaning</li>
+          <li>System boot error & BSOD fixes</li>
         </ul>
       </div>
 
       <div class="service-card">
-        <div class="service-icon"><i class="fas fa-rocket"></i></div>
-        <h4>Upgrades & Maintenance</h4>
+        <div class="service-icon"><i class="fas fa-tools"></i></div>
+        <h4>General Maintenance</h4>
         <ul>
-          <li>SSD Upgrades (SATA & NVMe)</li>
-          <li>RAM (Memory) expansion</li>
+          <li>SSD Upgrades (Speed Optimization)</li>
+          <li>RAM expansion (DDR3/DDR4/DDR5)</li>
+          <li>Internal cleaning & Thermal repasting</li>
           <li>Battery & Keyboard replacements</li>
-          <li>Internal dust cleaning & Thermal repasting</li>
-          <li>Data recovery from corrupted drives</li>
         </ul>
       </div>
     </div>
 
     <div class="repair-cta">
-      <h2 style="color: var(--berkeley-blue); margin-top: 0;">Ready to fix your device?</h2>
-      <p style="margin-bottom: 30px;">Visit us at Platinum Plaza or chat with us for a free estimate.</p>
-      <a href="https://wa.me/254708902232?text=Hi%2C%20I%20need%20help%20repairing%20my%20laptop" target="_blank" class="buy-btn">
+      <h2>Visit the Service Center Today</h2>
+      <p>We are located at <strong>Platinum Plaza, Nairobi</strong>. Most software and part replacements are done while you wait.</p>
+      <a href="https://wa.me/254708902232?text=I%20need%20a%20repair%20quote" target="_blank" class="buy-btn">
         <i class="fab fa-whatsapp"></i> Chat with a Technician
       </a>
     </div>
@@ -219,7 +219,7 @@
       <div>
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="#">News</a></li>
+          <li><a href="#">News & Updates</a></li>
           <li><a href="#">Events</a></li>
           <li><a href="#">Jobs</a></li>
         </ul>
