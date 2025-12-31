@@ -50,6 +50,24 @@
     .buy-btn { background: var(--berkeley-blue); color: white; padding: 12px; display: block; text-align: center; text-decoration: none; font-weight: bold; border-radius: 50px; }
     .buy-btn:hover { background: var(--berkeley-gold); color: var(--berkeley-blue); }
 
+  /* Status Tags */
+.status-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  z-index: 5;
+  text-transform: uppercase;
+}
+.status-reserved { background: var(--warning-orange); color: white; }
+.status-purchased { background: #333; color: white; }
+
+/* Sold out look */
+.sold-out { opacity: 0.6; filter: grayscale(0.8); pointer-events: none; }
+
     /* --- FOOTER --- */
     footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; }
@@ -108,63 +126,58 @@
 
   <main class="section">
     
-    <div class="tier-label">Essential Series (KSh 20,000 - 35,000)</div>
-    <div class="laptop-grid">
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg"></div>
-        <div class="laptop-info"><h3>HP ProBook 11 G2</h3><p>Touch | 8GB RAM | 256GB SSD</p><span class="price">KSh 24,897</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20HP%20ProBook%2011%20G2" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?w=400"></div>
-        <div class="laptop-info"><h3>HP Stream 11 Pro</h3><p>Celeron | 4GB RAM | 64GB eMMC</p><span class="price">KSh 20,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20HP%20Stream%2011" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=400"></div>
-        <div class="laptop-info"><h3>Dell Latitude 3380</h3><p>Core i3 | 8GB RAM | 128GB SSD</p><span class="price">KSh 26,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Dell%203380" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1525547718511-ad74bc3ad7c2?w=400"></div>
-        <div class="laptop-info"><h3>Lenovo ThinkPad L460</h3><p>Core i5 | 8GB RAM | 256GB SSD</p><span class="price">KSh 29,999</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Lenovo%20L460" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400"></div>
-        <div class="laptop-info"><h3>Dell Latitude 3190</h3><p>Intel Quad | 8GB RAM | 256GB SSD</p><span class="price">KSh 28,453</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Dell%203190" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"></div>
-        <div class="laptop-info"><h3>Lenovo ThinkPad 11e</h3><p>Rugged | 8GB RAM | 128GB SSD</p><span class="price">KSh 21,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Lenovo%2011e" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
+    <div class="section" id="shop">
+  <div class="tier-label">Essential Series (KSh 20,000 - 35,000)</div>
+  <div class="laptop-grid">
+    
+    <div class="laptop-card">
+      <div class="laptop-img"><img src="https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg"></div>
+      <div class="laptop-info"><h3>HP ProBook 11 G2</h3><p>Touch | 8GB RAM | 256GB SSD</p><span class="price">KSh 24,897</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20HP%20ProBook%2011%20G2" target="_blank" class="buy-btn">BUY NOW</a></div>
     </div>
-    <div class="laptop-card" style="position: relative;">
-  <div style="position: absolute; top: 10px; right: 10px; background: var(--warning-orange); color: white; padding: 5px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; z-index: 2;">RESERVED</div>
-  <div class="laptop-img"><img src="https://images.unsplash.com/photo-1516387936249-136ba69a8410?w=400"></div>
-  <div class="laptop-info">
-    <h3>HP EliteBook 820 G3</h3>
-    <p>i5 6th Gen | 8GB RAM | 256GB SSD</p>
-    <span class="price">KSh 27,000</span>
-    <a href="https://wa.me/254708902232?text=Inquire%20about%20Reserved%20HP%20EliteBook%20820" target="_blank" class="buy-btn" style="background: #6c757d;">Inquire Status</a>
-  </div>
-</div>
 
-<div class="laptop-card" style="position: relative;">
-  <div style="position: absolute; top: 10px; right: 10px; background: var(--warning-orange); color: white; padding: 5px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; z-index: 2;">RESERVED</div>
-  <div class="laptop-img"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"></div>
-  <div class="laptop-info">
-    <h3>Lenovo Yoga 11e</h3>
-    <p>Touch 360° | 4GB RAM | 128GB SSD</p>
-    <span class="price">KSh 22,500</span>
-    <a href="https://wa.me/254708902232?text=Inquire%20about%20Reserved%20Lenovo%20Yoga" target="_blank" class="buy-btn" style="background: #6c757d;">Inquire Status</a>
-  </div>
-</div>
+    <div class="laptop-card">
+      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?w=400"></div>
+      <div class="laptop-info"><h3>HP Stream 11 Pro</h3><p>Celeron | 4GB RAM | 64GB eMMC</p><span class="price">KSh 20,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20HP%20Stream%2011" target="_blank" class="buy-btn">BUY NOW</a></div>
+    </div>
 
-<div class="laptop-card" style="opacity: 0.7; filter: grayscale(0.5);">
-  <div style="position: absolute; top: 10px; right: 10px; background: #333; color: white; padding: 5px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; z-index: 2;">PURCHASED</div>
-  <div class="laptop-img"><img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400"></div>
-  <div class="laptop-info">
-    <h3>Dell Latitude 3480</h3>
-    <p>i5 7th Gen | 8GB RAM | 500GB HDD</p>
-    <span class="price" style="text-decoration: line-through; color: #888;">KSh 32,000</span>
-    <a href="#" class="buy-btn" style="background: #d1d1d1; cursor: not-allowed; pointer-events: none;">SOLD OUT</a>
+    <div class="laptop-card">
+      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=400"></div>
+      <div class="laptop-info"><h3>Dell Latitude 3380</h3><p>Core i3 | 8GB RAM | 128GB SSD</p><span class="price">KSh 26,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Dell%203380" target="_blank" class="buy-btn">BUY NOW</a></div>
+    </div>
+
+    <div class="laptop-card">
+      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1525547718511-ad74bc3ad7c2?w=400"></div>
+      <div class="laptop-info"><h3>Lenovo ThinkPad L460</h3><p>Core i5 | 8GB RAM | 256GB SSD</p><span class="price">KSh 29,999</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Lenovo%20L460" target="_blank" class="buy-btn">BUY NOW</a></div>
+    </div>
+
+    <div class="laptop-card">
+      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400"></div>
+      <div class="laptop-info"><h3>Dell Latitude 3190</h3><p>Intel Quad | 8GB RAM | 256GB SSD</p><span class="price">KSh 28,453</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Dell%203190" target="_blank" class="buy-btn">BUY NOW</a></div>
+    </div>
+
+    <div class="laptop-card">
+      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"></div>
+      <div class="laptop-info"><h3>Lenovo ThinkPad 11e</h3><p>Rugged | 8GB RAM | 128GB SSD</p><span class="price">KSh 21,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Lenovo%2011e" target="_blank" class="buy-btn">BUY NOW</a></div>
+    </div>
+
+    <div class="laptop-card">
+      <span class="status-badge status-reserved">Reserved</span>
+      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1516387936249-136ba69a8410?w=400"></div>
+      <div class="laptop-info"><h3>HP EliteBook 820 G3</h3><p>i5 6th Gen | 8GB RAM | 256GB SSD</p><span class="price">KSh 27,000</span><a href="https://wa.me/254708902232?text=Is%20the%20reserved%20HP%20820%20available?" target="_blank" class="buy-btn" style="background:#6c757d;">INQUIRE</a></div>
+    </div>
+
+    <div class="laptop-card">
+      <span class="status-badge status-reserved">Reserved</span>
+      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400"></div>
+      <div class="laptop-info"><h3>Lenovo Yoga 11e</h3><p>Touch 360° | 4GB RAM | 128GB SSD</p><span class="price">KSh 22,500</span><a href="https://wa.me/254708902232?text=Is%20the%20reserved%20Yoga%2011e%20available?" target="_blank" class="buy-btn" style="background:#6c757d;">INQUIRE</a></div>
+    </div>
+
+    <div class="laptop-card sold-out">
+      <span class="status-badge status-purchased">Purchased</span>
+      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=400"></div>
+      <div class="laptop-info"><h3>Dell Latitude 3480</h3><p>i5 7th Gen | 8GB RAM | 500GB HDD</p><span class="price">KSh 32,000</span><a href="#" class="buy-btn" style="background:#d1d1d1;">SOLD OUT</a></div>
+    </div>
+
   </div>
 </div>
 
