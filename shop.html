@@ -13,12 +13,13 @@
       --white: #ffffff;
       --text-main: #333;
       --success-green: #28a745;
+      --warning-orange: #fd7e14;
     }
 
-    body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); }
+    body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); overflow-x: hidden; }
 
     /* --- NAVIGATION --- */
-    .utility-nav { background: var(--berkeley-blue); padding: 10px 10%; display: flex; justify-content: flex-end; gap: 20px; font-size: 12px; }
+    .utility-nav { background: var(--berkeley-blue); padding: 10px 10%; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
     .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
     header { background: var(--white); text-align: center; padding-top: 20px; border-bottom: 4px solid var(--berkeley-gold); }
     .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 15px; }
@@ -33,73 +34,46 @@
     .summary-item strong { display: block; font-size: 1.5rem; color: var(--berkeley-blue); }
     .summary-item span { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #666; }
 
-    /* --- PRODUCT GRID --- */
-    .section { padding: 40px 10%; max-width: 1400px; margin: auto; }
+    /* --- PRODUCT GRID SYSTEM --- */
+    .section { padding: 20px 10%; max-width: 1400px; margin: auto; }
     .tier-label { font-size: 24px; color: var(--berkeley-blue); border-left: 5px solid var(--berkeley-gold); padding-left: 15px; margin: 40px 0 20px; font-weight: bold; text-transform: uppercase; }
-    .laptop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
-    .laptop-card { background: #fff; border-radius: 8px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    
+    .laptop-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+      gap: 30px; 
+      margin-bottom: 50px;
+    }
+
+    .laptop-card { 
+      background: #fff; 
+      border-radius: 8px; 
+      overflow: hidden; 
+      transition: 0.3s; 
+      display: flex; 
+      flex-direction: column; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+      position: relative;
+      height: 100%;
+    }
     .laptop-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
     
     .laptop-img { height: 200px; display: flex; align-items: center; justify-content: center; background: #fff; padding: 20px; }
     .laptop-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-    .laptop-info { padding: 20px; text-align: center; flex-grow: 1; }
-    .laptop-info h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--berkeley-blue); }
-    .laptop-info p { font-size: 0.85rem; color: #666; height: 40px; overflow: hidden; }
-    .price { font-size: 20px; font-weight: 800; color: #b71c1c; display: block; margin: 15px 0; }
-    .buy-btn { background: var(--berkeley-blue); color: white; padding: 12px; display: block; text-align: center; text-decoration: none; font-weight: bold; border-radius: 50px; }
+    .laptop-info { padding: 20px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
+    .laptop-info h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--berkeley-blue); height: 2.4em; overflow: hidden; }
+    .laptop-info p { font-size: 0.85rem; color: #666; margin-bottom: 10px; }
+    .price { font-size: 20px; font-weight: 800; color: #b71c1c; display: block; margin: auto 0 15px; }
+    .buy-btn { background: var(--berkeley-blue); color: white; padding: 12px; display: block; text-align: center; text-decoration: none; font-weight: bold; border-radius: 50px; transition: 0.3s; }
     .buy-btn:hover { background: var(--berkeley-gold); color: var(--berkeley-blue); }
 
-  /* 1. Ensure the card is the anchor for the badge */
-.laptop-card {
-  position: relative; /* CRITICAL: Keeps badge inside the card */
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  height: 100%; /* Keeps all cards same height in a row */
-}
-
-/* 2. Status Tags Rectified */
-.status-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  padding: 6px 14px;
-  border-radius: 4px;
-  font-size: 10px; /* Slightly smaller for a cleaner look */
-  font-weight: 800;
-  z-index: 10;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Makes it pop against the image */
-}
-
-.status-reserved { 
-  background-color: #fd7e14; /* Using standard orange if var fails */
-  background: var(--warning-orange); 
-  color: white; 
-}
-
-.status-purchased { 
-  background: #333333; 
-  color: white; 
-}
-
-/* 3. Sold Out Look Rectified */
-.sold-out { 
-  opacity: 0.7; 
-  filter: grayscale(1); 
-  /* Removed pointer-events: none; so users can still interact with the page normally */
-}
-
-/* 4. Disable ONLY the button for sold out items */
-.sold-out .buy-btn {
-  background: #999 !important;
-  cursor: not-allowed;
-  pointer-events: none; /* Only the button is unclickable now */
-}
+    /* --- STATUS TAGS --- */
+    .status-badge { position: absolute; top: 12px; right: 12px; padding: 6px 14px; border-radius: 4px; font-size: 10px; font-weight: 800; z-index: 10; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+    .status-reserved { background: var(--warning-orange); color: white; }
+    .status-purchased { background: #333; color: white; }
+    .sold-out { opacity: 0.7; filter: grayscale(1); }
+    .sold-out .buy-btn { background: #999 !important; cursor: not-allowed; pointer-events: none; }
 
     /* --- FOOTER --- */
     footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 50px; }
@@ -118,12 +92,12 @@
       <a href="#">Map & Store</a>
       <a href="#">Technical Support</a>
     </div>
-    <a href="https://wa.me/254708902232" target="_blank" style="color: var(--berkeley-gold); border-left: 1px solid rgba(255,255,255,0.3); padding-left: 20px;">
+    <a href="https://wa.me/254708902232" target="_blank" style="color: var(--berkeley-gold)">
       <i class="fab fa-whatsapp"></i> Get a Quote
     </a>
   </div>
 
- <header>
+  <header>
     <a href="index.html" class="brand">PRIME TECH <span>SOLUTIONS</span></a>
     <ul class="main-nav">
       <li><a href="index.html">Home</a></li>
@@ -136,83 +110,54 @@
 
   <div class="stock-summary">
     <div class="summary-item">
-      <img src="https://cdn-icons-png.flaticon.com/512/428/428001.png" alt="Units">
+      <img src="https://cdn-icons-png.flaticon.com/512/428/428001.png">
       <span>Total Units</span><strong>30</strong>
     </div>
     <div class="summary-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" alt="HP">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg">
       <span>HP Laptops</span><strong>15</strong>
     </div>
     <div class="summary-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg" alt="Dell">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg">
       <span>Dell Laptops</span><strong>10</strong>
     </div>
     <div class="summary-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Lenovo_logo_2015.svg" alt="Lenovo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Lenovo_logo_2015.svg">
       <span>Lenovo Laptops</span><strong>5</strong>
     </div>
     <div class="summary-item" style="border-color: var(--success-green);">
-      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Available">
+      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png">
       <span>Available</span><strong>22</strong>
     </div>
   </div>
 
   <main class="section">
     
-    <div class="section" id="shop">
-  <div class="tier-label">Essential Series (KSh 20,000 - 35,000)</div>
-  <div class="laptop-grid">
-    
-    <div class="laptop-card">
-      <div class="laptop-img"><img src="https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg"></div>
-      <div class="laptop-info"><h3>HP ProBook 11 G2</h3><p>Touch | 8GB RAM | 256GB SSD</p><span class="price">KSh 24,897</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20HP%20ProBook%2011%20G2" target="_blank" class="buy-btn">BUY NOW</a></div>
+    <div class="tier-label">Essential Series (KSh 20,000 - 35,000)</div>
+    <div class="laptop-grid">
+      <div class="laptop-card">
+        <div class="laptop-img"><img src="https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg"></div>
+        <div class="laptop-info"><h3>HP ProBook 11 G2</h3><p>Touch | 8GB RAM | 256GB SSD</p><span class="price">KSh 24,897</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20HP%20ProBook%2011%20G2" target="_blank" class="buy-btn">BUY NOW</a></div>
+      </div>
+      <div class="laptop-card">
+        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?w=400"></div>
+        <div class="laptop-info"><h3>HP Stream 11 Pro</h3><p>Celeron | 4GB RAM | 64GB eMMC</p><span class="price">KSh 20,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20HP%20Stream%2011" target="_blank" class="buy-btn">BUY NOW</a></div>
+      </div>
+      <div class="laptop-card">
+        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=400"></div>
+        <div class="laptop-info"><h3>Dell Latitude 3380</h3><p>Core i3 | 8GB RAM | 128GB SSD</p><span class="price">KSh 26,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Dell%203380" target="_blank" class="buy-btn">BUY NOW</a></div>
+      </div>
+      <div class="laptop-card">
+        <span class="status-badge status-reserved">Reserved</span>
+        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1516387936249-136ba69a8410?w=400"></div>
+        <div class="laptop-info"><h3>HP EliteBook 820 G3</h3><p>i5 6th Gen | 8GB RAM | 256GB SSD</p><span class="price">KSh 27,000</span><a href="https://wa.me/254708902232?text=Inquiry%20HP%20820" target="_blank" class="buy-btn" style="background:#6c757d;">INQUIRE</a></div>
+      </div>
+      <div class="laptop-card sold-out">
+        <span class="status-badge status-purchased">Purchased</span>
+        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=400"></div>
+        <div class="laptop-info"><h3>Dell Latitude 3480</h3><p>i5 7th Gen | 8GB RAM | 500GB HDD</p><span class="price">KSh 32,000</span><a href="#" class="buy-btn">SOLD OUT</a></div>
+      </div>
     </div>
-
-    <div class="laptop-card">
-      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?w=400"></div>
-      <div class="laptop-info"><h3>HP Stream 11 Pro</h3><p>Celeron | 4GB RAM | 64GB eMMC</p><span class="price">KSh 20,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20HP%20Stream%2011" target="_blank" class="buy-btn">BUY NOW</a></div>
-    </div>
-
-    <div class="laptop-card">
-      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=400"></div>
-      <div class="laptop-info"><h3>Dell Latitude 3380</h3><p>Core i3 | 8GB RAM | 128GB SSD</p><span class="price">KSh 26,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Dell%203380" target="_blank" class="buy-btn">BUY NOW</a></div>
-    </div>
-
-    <div class="laptop-card">
-      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1525547718511-ad74bc3ad7c2?w=400"></div>
-      <div class="laptop-info"><h3>Lenovo ThinkPad L460</h3><p>Core i5 | 8GB RAM | 256GB SSD</p><span class="price">KSh 29,999</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Lenovo%20L460" target="_blank" class="buy-btn">BUY NOW</a></div>
-    </div>
-
-    <div class="laptop-card">
-      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400"></div>
-      <div class="laptop-info"><h3>Dell Latitude 3190</h3><p>Intel Quad | 8GB RAM | 256GB SSD</p><span class="price">KSh 28,453</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Dell%203190" target="_blank" class="buy-btn">BUY NOW</a></div>
-    </div>
-
-    <div class="laptop-card">
-      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"></div>
-      <div class="laptop-info"><h3>Lenovo ThinkPad 11e</h3><p>Rugged | 8GB RAM | 128GB SSD</p><span class="price">KSh 21,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Lenovo%2011e" target="_blank" class="buy-btn">BUY NOW</a></div>
-    </div>
-
-    <div class="laptop-card">
-      <span class="status-badge status-reserved">Reserved</span>
-      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1516387936249-136ba69a8410?w=400"></div>
-      <div class="laptop-info"><h3>HP EliteBook 820 G3</h3><p>i5 6th Gen | 8GB RAM | 256GB SSD</p><span class="price">KSh 27,000</span><a href="https://wa.me/254708902232?text=Is%20the%20reserved%20HP%20820%20available?" target="_blank" class="buy-btn" style="background:#6c757d;">INQUIRE</a></div>
-    </div>
-
-    <div class="laptop-card">
-      <span class="status-badge status-reserved">Reserved</span>
-      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400"></div>
-      <div class="laptop-info"><h3>Lenovo Yoga 11e</h3><p>Touch 360° | 4GB RAM | 128GB SSD</p><span class="price">KSh 22,500</span><a href="https://wa.me/254708902232?text=Is%20the%20reserved%20Yoga%2011e%20available?" target="_blank" class="buy-btn" style="background:#6c757d;">INQUIRE</a></div>
-    </div>
-
-    <div class="laptop-card sold-out">
-      <span class="status-badge status-purchased">Purchased</span>
-      <div class="laptop-img"><img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=400"></div>
-      <div class="laptop-info"><h3>Dell Latitude 3480</h3><p>i5 7th Gen | 8GB RAM | 500GB HDD</p><span class="price">KSh 32,000</span><a href="#" class="buy-btn" style="background:#d1d1d1;">SOLD OUT</a></div>
-    </div>
-
-  </div>
-</div>
 
     <div class="tier-label">Professional Series (KSh 36,000 - 75,000)</div>
     <div class="laptop-grid">
@@ -227,18 +172,6 @@
       <div class="laptop-card">
         <div class="laptop-img"><img src="https://pics.computerbase.de/8/5/9/8/4/1-1080.1426858125.jpg"></div>
         <div class="laptop-info"><h3>ThinkPad X1 Carbon G6</h3><p>i5 | 16GB RAM | 256GB SSD</p><span class="price">KSh 55,000</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20X1%20Carbon" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1516387936249-136ba69a8410?w=400"></div>
-        <div class="laptop-info"><h3>HP ProBook 450 G6</h3><p>i5 8th Gen | 8GB | 256GB SSD</p><span class="price">KSh 45,000</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20ProBook%20450" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"></div>
-        <div class="laptop-info"><h3>Dell Latitude 5400</h3><p>i5 8th Gen | 16GB | 512GB SSD</p><span class="price">KSh 41,000</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Dell%205400" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400"></div>
-        <div class="laptop-info"><h3>Lenovo ThinkPad T480</h3><p>i5 8th Gen | 16GB | Dual Battery</p><span class="price">KSh 39,500</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20ThinkPad%20T480" target="_blank" class="buy-btn">BUY NOW</a></div>
       </div>
     </div>
 
@@ -256,18 +189,6 @@
         <div class="laptop-img"><img src="https://images.unsplash.com/photo-1593642634367-d91a135567b5?w=400"></div>
         <div class="laptop-info"><h3>HP ZBook Studio G5</h3><p>Xeon | 32GB RAM | 1TB SSD</p><span class="price">KSh 125,000</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20ZBook" target="_blank" class="buy-btn">BUY NOW</a></div>
       </div>
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400"></div>
-        <div class="laptop-info"><h3>MacBook Pro M1</h3><p>8GB RAM | 256GB SSD | Retina</p><span class="price">KSh 110,000</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20MacBook%20M1" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1580522151917-ad5001e4a276?w=400"></div>
-        <div class="laptop-info"><h3>Dell XPS 15 9570</h3><p>i9 | 32GB RAM | 4K Touch</p><span class="price">KSh 135,000</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20Dell%20XPS%2015" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
-      <div class="laptop-card">
-        <div class="laptop-img"><img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400"></div>
-        <div class="laptop-info"><h3>ThinkPad P52</h3><p>i7 | 64GB RAM | NVIDIA Quadro</p><span class="price">KSh 105,000</span><a href="https://wa.me/254708902232?text=I%20want%20to%20buy%20ThinkPad%20P52" target="_blank" class="buy-btn">BUY NOW</a></div>
-      </div>
     </div>
   </main>
 
@@ -275,10 +196,10 @@
     <div class="footer-grid">
       <div><h4>Visit</h4><ul><li>Store Locator</li><li>Service Center</li><li>Campus Outreach</li></ul></div>
       <div><h4>Quick Links</h4><ul><li>News</li><li>Events</li><li>Jobs</li></ul></div>
-      <div><h4>Opening Hours</h4><ul><li>Mon - Sat: 8:00 AM - 7:00 PM</li><li>Sunday: Closed</li><li>Holidays: 10:00 AM - 4:00 PM</li></ul></div>
+      <div><h4>Opening Hours</h4><ul><li>Mon - Sat: 8:00 AM - 7:00 PM</li><li>Sunday: Closed</li></ul></div>
       <div><h4>Contact</h4><p>Nairobi, Kenya<br><strong>Tel:</strong> +254 708902232<br><strong>Email:</strong> wesongatimoth@gmail.com</p></div>
     </div>
-    <p style="text-align: center; font-size: 11px; opacity: 0.6; margin-top: 30px;">© 2026 Prime Tech Solutions. Fast. Reliable. Genuine. Buy one.</p>
+    <p style="text-align: center; font-size: 11px; opacity: 0.6; margin-top: 30px;">© 2026 Prime Tech Solutions. Fast. Reliable. Genuine.</p>
   </footer>
 
 </body>
