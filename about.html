@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Prime Tech Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --berkeley-blue: #003262;
+      --berkeley-gold: #FDB515;
+      --silver-bg: #e5e7e9; 
+      --white: #ffffff;
+      --text-main: #333;
+    }
+
+    /* --- GLOBAL BACKGROUND --- */
+    body { 
+      font-family: 'Open Sans', Arial, sans-serif; 
+      margin: 0; color: var(--text-main); line-height: 1.6; 
+      background-image: linear-gradient(rgba(229, 231, 233, 0.92), rgba(229, 231, 233, 0.92)), 
+                        url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=2070');
+      background-attachment: fixed; background-size: cover; background-position: center;
+    }
+
+    /* --- REFINED UTILITY BAR --- */
+    .utility-nav { 
+      background: var(--berkeley-blue); 
+      padding: 10px 10%; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      font-size: 11px; 
+    }
+    .utility-segments { display: flex; gap: 20px; }
+    .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
+    .utility-nav a:hover { color: var(--berkeley-gold); }
+
+    /* --- HEADER --- */
+    header { background: var(--white); text-align: center; padding-top: 30px; }
+    .brand { font-size: 36px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 20px; }
+    .brand span { color: var(--berkeley-gold); }
+    .nav-container { border-bottom: 4px solid var(--berkeley-gold); background: var(--white); display: flex; justify-content: center; }
+    .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 15px 0; }
+    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; }
+    .main-nav a.active { color: var(--berkeley-gold); border-bottom: 2px solid var(--berkeley-gold); padding-bottom: 5px; }
+
+    /* --- CONTENT --- */
+    .section { padding: 60px 10%; max-width: 1200px; margin: auto; }
+    .tier-label { font-size: 28px; color: var(--berkeley-blue); border-left: 5px solid var(--berkeley-gold); padding-left: 15px; margin-bottom: 30px; font-weight: bold; text-transform: uppercase; }
+    
+    .about-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 80px; }
+    .about-intro img { width: 100%; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+    /* --- SPECIALIZED SEGMENTS GRID --- */
+    .segments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+    .segment-card { 
+      background: var(--white); padding: 35px; border-radius: 10px; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--berkeley-blue);
+      transition: 0.3s;
+    }
+    .segment-card:hover { transform: translateY(-10px); border-top-color: var(--berkeley-gold); }
+    .segment-card i { font-size: 30px; color: var(--berkeley-blue); margin-bottom: 15px; }
+    .segment-card h4 { margin: 10px 0; color: var(--berkeley-blue); font-size: 1.2rem; }
+    .segment-card p { font-size: 0.9rem; color: #555; }
+
+    /* --- FOOTER --- */
+    footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 80px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
+    footer h4 { color: #fff; text-transform: uppercase; font-size: 12px; border-bottom: 2px solid var(--berkeley-gold); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; }
+    footer ul { list-style: none; padding: 0; }
+    footer a { color: #ccc; text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 900px) {
+      .about-intro { grid-template-columns: 1fr; }
+      .utility-nav { flex-direction: column; gap: 10px; height: auto; padding: 15px; }
+      .utility-segments { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="utility-nav">
+    <div class="utility-segments">
+      <a href="#"><i class="fas fa-briefcase"></i> Corporate Sales</a>
+      <a href="repair.html"><i class="fas fa-headset"></i> Technical Support</a>
+      <a href="#"><i class="fas fa-landmark"></i> Government & NGO</a>
+    </div>
+    <div class="utility-actions">
+      <a href="https://maps.app.goo.gl/4eTt5YdxNzWcNmqG6" target="_blank"><i class="fas fa-map-marker-alt"></i> Map & Store</a>
+      <a href="https://wa.me/254708902232" style="margin-left: 20px; color: var(--berkeley-gold);"><i class="fas fa-file-invoice-dollar"></i> Get a Quote</a>
+    </div>
+  </div>
+
+  <header>
+    <a href="index.html" class="brand">PRIME TECH <span>SOLUTIONS</span></a>
+    <div class="nav-container">
+      <ul class="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop Laptops</a></li>
+        <li><a href="repair.html">Repair Services</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="about-intro">
+      <div class="intro-text">
+        <div class="tier-label">Our Enterprise</div>
+        <h2>Defining Excellence in Kenya's IT Sector</h2>
+        <p>Prime Tech Solutions is more than a laptop retailer; we are a strategic technology partner headquartered at <strong>Platinum Plaza, Nairobi</strong>. We specialize in providing high-end computing infrastructure for high-growth organizations.</p>
+        <p>By maintaining direct supply chains for HP, Dell, and Lenovo, we ensure that every unit delivered—whether to a single professional or a massive NGO project—is 100% certified genuine.</p>
+      </div>
+      <div class="intro-image">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1470" alt="Corporate Teamwork">
+      </div>
+    </div>
+
+    <div class="tier-label">Who We Serve</div>
+    <div class="segments-grid">
+      <div class="segment-card">
+        <i class="fas fa-building"></i>
+        <h4>Corporate Sales</h4>
+        <p>Providing fleet management and bulk laptop procurement for businesses. We offer flexible credit terms and asset tagging for our corporate partners.</p>
+      </div>
+
+      <div class="segment-card">
+        <i class="fas fa-tools"></i>
+        <h4>Technical Support</h4>
+        <p>Our Platinum Plaza service center offers 24/7 priority support, chip-level motherboard repairs, and scheduled onsite maintenance for offices.</p>
+      </div>
+
+      <div class="segment-card">
+        <i class="fas fa-globe-africa"></i>
+        <h4>Government & NGO</h4>
+        <p>We facilitate large-scale tenders and project-based supply for non-profits and government agencies across East Africa with full compliance.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 60px; background: var(--berkeley-blue); padding: 40px; border-radius: 12px; text-align: center; color: white;">
+      <h3 style="color: var(--berkeley-gold); margin-top: 0;">Institutional Inquiries</h3>
+      <p>Looking for a bulk quote or specialized technical contract?</p>
+      <a href="https://wa.me/254708902232?text=I%20am%20interested%20in%20a%20Corporate/NGO%20quote" class="active" style="color: var(--berkeley-gold); font-weight: bold; text-decoration: none; font-size: 1.2rem;">
+        Request a Professional Quote Today →
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="https://maps.app.goo.gl/4eTt5YdxNzWcNmqG6" target="_blank">Map & Store Locator</a></li>
+          <li><a href="repair.html">Technical Support Center</a></li>
+          <li><a href="#">Campus Outreach</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Partnerships</h4>
+        <ul>
+          <li><a href="#">Corporate Sales</a></li>
+          <li><a href="#">Government & NGO Tenders</a></li>
+          <li><a href="#">Partner Program</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Opening Hours</h4>
+        <ul>
+          <li>Mon - Sat: 8:00 AM - 7:00 PM</li>
+          <li>Sunday: Closed</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>
+          <strong>Platinum Plaza</strong>, Nairobi<br>
+          <strong>Tel:</strong> <a href="tel:+254708902232" style="color: #ccc;">+254 708 902 232</a><br>
+          <strong>Email:</strong> <a href="mailto:wesongatimoth@gmail.com" style="color: #ccc;">wesongatimoth@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <p style="text-align: center; font-size: 11px; opacity: 0.5; margin-top: 40px;">© 2026 Prime Tech Solutions. Fast. Reliable. Genuine.</p>
+  </footer>
+
+</body>
+</html>
