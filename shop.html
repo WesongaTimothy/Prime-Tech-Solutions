@@ -50,23 +50,56 @@
     .buy-btn { background: var(--berkeley-blue); color: white; padding: 12px; display: block; text-align: center; text-decoration: none; font-weight: bold; border-radius: 50px; }
     .buy-btn:hover { background: var(--berkeley-gold); color: var(--berkeley-blue); }
 
-  /* Status Tags */
+  /* 1. Ensure the card is the anchor for the badge */
+.laptop-card {
+  position: relative; /* CRITICAL: Keeps badge inside the card */
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%; /* Keeps all cards same height in a row */
+}
+
+/* 2. Status Tags Rectified */
 .status-badge {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  padding: 5px 12px;
+  top: 12px;
+  right: 12px;
+  padding: 6px 14px;
   border-radius: 4px;
-  font-size: 11px;
-  font-weight: bold;
-  z-index: 5;
+  font-size: 10px; /* Slightly smaller for a cleaner look */
+  font-weight: 800;
+  z-index: 10;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Makes it pop against the image */
 }
-.status-reserved { background: var(--warning-orange); color: white; }
-.status-purchased { background: #333; color: white; }
 
-/* Sold out look */
-.sold-out { opacity: 0.6; filter: grayscale(0.8); pointer-events: none; }
+.status-reserved { 
+  background-color: #fd7e14; /* Using standard orange if var fails */
+  background: var(--warning-orange); 
+  color: white; 
+}
+
+.status-purchased { 
+  background: #333333; 
+  color: white; 
+}
+
+/* 3. Sold Out Look Rectified */
+.sold-out { 
+  opacity: 0.7; 
+  filter: grayscale(1); 
+  /* Removed pointer-events: none; so users can still interact with the page normally */
+}
+
+/* 4. Disable ONLY the button for sold out items */
+.sold-out .buy-btn {
+  background: #999 !important;
+  cursor: not-allowed;
+  pointer-events: none; /* Only the button is unclickable now */
+}
 
     /* --- FOOTER --- */
     footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 50px; }
