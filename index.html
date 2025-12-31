@@ -99,8 +99,24 @@
     .laptop-card { border: 1px solid #ddd; transition: 0.4s; background: #fff; position: relative; border-radius: 2px; }
     .laptop-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
     
-    .laptop-img { width: 100%; height: 220px; background: #fdfdfd; display: flex; align-items: center; justify-content: center; padding-top: 15px; }
-    .laptop-img img { width: 85%; height: auto; object-fit: contain; }
+    .laptop-img { 
+  width: 100%; 
+  height: 220px; 
+  background: #fdfdfd; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 10px; /* Changed from padding-top to even padding */
+  box-sizing: border-box; /* Ensures padding doesn't increase container size */
+}
+
+.laptop-img img { 
+  max-width: 90%; 
+  max-height: 100%; /* This prevents the image from being taller than 220px */
+  width: auto; 
+  height: auto; 
+  object-fit: contain; 
+}
     
     .laptop-info { padding: 20px; text-align: left; }
     .laptop-info h3 { margin: 0; font-size: 18px; color: var(--berkeley-blue); height: 45px; }
