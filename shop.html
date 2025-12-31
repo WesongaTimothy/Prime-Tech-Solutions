@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prime Tech Solutions | Full Inventory</title>
+  <title>Prime Tech Solutions | Kenya's Premier IT Partner</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
@@ -12,24 +12,73 @@
       --silver-bg: #e5e7e9; 
       --white: #ffffff;
       --text-main: #333;
-      --success-green: #28a745;
-      --warning-orange: #fd7e14;
     }
 
-    body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); overflow-x: hidden; }
+    body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); }
 
-      /* --- REFINED UTILITY BAR --- */
-    .utility-nav { 
-      background: var(--berkeley-blue); 
-      padding: 10px 10%; 
+    /* --- TOP UTILITY BAR --- */
+    .utility-nav {
+      background: var(--berkeley-blue);
+      padding: 10px 10%;
       display: flex;
       justify-content: flex-end;
-      font-size: 12px; 
+      gap: 20px;
+      font-size: 12px;
     }
-    .utility-segments { display: flex; gap: 20px; }
-    .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
-    .utility-nav a:hover { color: var(--berkeley-gold); }
+    .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
 
+    /* --- MAIN HEADER --- */
+    header { background: var(--white); text-align: center; padding-top: 20px; }
+    .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); letter-spacing: -1px; display: block; margin-bottom: 15px; }
+    .brand span { color: var(--berkeley-gold); }
+    
+    .nav-container { border-bottom: 4px solid var(--berkeley-gold); padding-bottom: 15px; background: var(--white); }
+    .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 0; }
+    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
+    .main-nav a:hover { color: var(--berkeley-gold); }
+
+    /* --- HERO SECTION --- */
+   .hero {
+  /* Replace the URL below with your chosen option from above */
+  background: linear-gradient(rgba(0,50,98,0.6), rgba(0,50,98,0.6)), 
+              url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1470');
+  height: 500px; 
+  background-size: cover; 
+  background-position: center;
+  background-attachment: fixed; /* Parallax effect for premium feel */
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  color: white; 
+  text-align: center; 
+  padding: 0 10%;
+}
+
+.hero-content {
+  background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.hero h1 { 
+  font-family: 'Playfair Display', serif; /* Elegant serif font */
+  font-size: 56px; 
+  margin: 0; 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero p { 
+  font-size: 22px; 
+  max-width: 800px; 
+  margin: 20px 0 30px; 
+  font-weight: 300;
+  letter-spacing: 1px;
+}
     /* --- NAVIGATION --- */
     .utility-nav { background: var(--berkeley-blue); padding: 10px 10%; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
     .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
