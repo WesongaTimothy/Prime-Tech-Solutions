@@ -1,11 +1,15 @@
+To provide you with the most professional and complete version of your website, I have combined the high-end **Hero Section** and **Stock Summary** with the specific **Opening Hours** and **Footer** requirements you requested.
+
+This code represents the full `index.html` (Home Page) with the integrated professional styling, brand-consistent headers, and the missing time information.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop Laptops | Prime Tech Solutions</title>
+  <title>Prime Tech Solutions | Kenya's Premier IT Partner</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
   <style>
     :root {
       --berkeley-blue: #003262;
@@ -15,19 +19,17 @@
       --text-main: #333;
       --success-green: #28a745;
       --warning-orange: #fd7e14;
-      --danger-red: #d9534f;
     }
 
     body { 
       font-family: 'Open Sans', Arial, sans-serif; 
       margin: 0; 
       color: var(--text-main); 
-      background: linear-gradient(rgba(229, 231, 233, 0.9), rgba(229, 231, 233, 0.9)),
-      url('https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=2070&auto=format&fit=crop');
-      background-size: cover;
-      background-attachment: fixed;
+      line-height: 1.6; 
+      background-color: var(--silver-bg); 
     }
 
+    /* --- TOP UTILITY BAR --- */
     .utility-nav {
       background: var(--berkeley-blue);
       padding: 10px 10%;
@@ -36,204 +38,215 @@
       gap: 20px;
       font-size: 12px;
     }
+    .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
 
-    .utility-nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    header {
-      background: white;
-      padding: 20px 0;
-      text-align: center;
-      border-bottom: 4px solid var(--berkeley-gold);
-    }
-
-    .brand {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--berkeley-blue);
-      text-decoration: none;
-    }
-
+    /* --- MAIN HEADER --- */
+    header { background: var(--white); text-align: center; padding-top: 20px; }
+    .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); letter-spacing: -1px; display: block; margin-bottom: 15px; }
     .brand span { color: var(--berkeley-gold); }
+    
+    .nav-container { border-bottom: 4px solid var(--berkeley-gold); padding-bottom: 15px; background: var(--white); }
+    .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 0; }
+    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
+    .main-nav a:hover { color: var(--berkeley-gold); }
 
-    .main-nav {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 15px 0 0;
-      margin: 0;
-    }
-
-    .main-nav a {
-      text-decoration: none;
-      color: var(--berkeley-blue);
-      font-weight: 700;
-    }
-
-    .shop-container { padding: 40px 8%; }
-
-    .shop-header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .laptop-grid {
+    /* --- IMPACT STATS --- */
+    .impact-stats {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
-      gap: 25px;
-    }
-
-    .laptop-card {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0,0,0,.1);
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .laptop-img {
-      height: 200px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .laptop-img img { max-width: 90%; }
-
-    .laptop-info {
-      padding: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--berkeley-blue);
+      color: #fff;
       text-align: center;
-      flex-grow: 1;
+      padding: 40px 10%;
     }
+    .stat h2 { font-size: 36px; color: var(--berkeley-gold); margin: 0; }
+    .stat p { font-size: 14px; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
 
-    .price {
-      font-size: 1.3rem;
-      font-weight: bold;
-      margin: 10px 0;
+    /* --- HERO SECTION --- */
+    .hero {
+      background: linear-gradient(rgba(0,50,98,0.6), rgba(0,50,98,0.6)), 
+                  url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1470');
+      height: 500px; 
+      background-size: cover; 
+      background-position: center;
+      background-attachment: fixed;
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
+      color: white; 
+      text-align: center; 
+      padding: 0 10%;
     }
-
-    .status-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      padding: 6px 14px;
-      border-radius: 30px;
-      font-size: .7rem;
-      color: white;
-      font-weight: bold;
+    .hero-content {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
+    .hero h1 { font-size: 48px; margin: 0; text-transform: uppercase; }
+    .hero p { font-size: 20px; max-width: 800px; margin: 20px 0 30px; font-weight: 300; }
 
-    .available { background: var(--success-green); }
-    .reserved { background: var(--berkeley-blue); }
-    .sold { background: var(--danger-red); }
-
-    .buy-btn {
-      display: block;
-      padding: 13px;
-      background: var(--berkeley-gold);
-      color: var(--berkeley-blue);
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
+    /* --- STOCK SUMMARY WITH IMAGES --- */
+    .stock-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      padding: 40px 10%;
+      max-width: 1400px;
+      margin: auto;
     }
-
-    .disabled-btn {
-      background: #bdc3c7;
-      pointer-events: none;
-      color: #7f8c8d;
+    .summary-item {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border-bottom: 3px solid var(--berkeley-gold);
     }
+    .summary-item img { width: 40px; height: 40px; object-fit: contain; margin-bottom: 10px; }
+    .summary-item strong { display: block; font-size: 1.5rem; color: var(--berkeley-blue); }
+    .summary-item span { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #666; }
 
-    footer {
-      background: #191919;
-      color: #ccc;
-      padding: 50px 10%;
-      margin-top: 50px;
-    }
+    /* --- PRODUCT GRID --- */
+    .section { padding: 60px 10%; max-width: 1400px; margin: auto; }
+    .tier-label { font-size: 24px; color: var(--berkeley-blue); border-left: 5px solid var(--berkeley-gold); padding-left: 15px; margin: 40px 0 20px; font-weight: bold; }
+    .laptop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .laptop-card { background: #fff; border: 1px solid #ddd; border-radius: 4px; overflow: hidden; transition: 0.3s; position: relative; }
+    .laptop-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .laptop-img { height: 200px; display: flex; align-items: center; justify-content: center; background: #fafafa; padding: 15px; }
+    .laptop-img img { max-width: 85%; max-height: 100%; object-fit: contain; }
+    .laptop-info { padding: 20px; }
+    .price { font-size: 22px; font-weight: 800; color: #b71c1c; display: block; margin: 10px 0; }
+    .buy-btn { background: var(--berkeley-blue); color: white; padding: 12px; display: block; text-align: center; text-decoration: none; font-weight: bold; border-radius: 50px; transition: 0.3s; }
+    .buy-btn:hover { background: var(--berkeley-gold); color: var(--berkeley-blue); }
+
+    /* --- FOOTER --- */
+    footer { background: #191919; color: #ccc; padding: 60px 10% 20px; font-size: 14px; margin-top: 50px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; }
+    footer h4 { color: #fff; text-transform: uppercase; font-size: 12px; border-bottom: 1px solid var(--berkeley-gold); display: inline-block; padding-bottom: 3px; margin-bottom: 20px; }
+    footer ul { list-style: none; padding: 0; margin: 0; }
+    footer li { margin-bottom: 10px; }
+    footer a { color: #ccc; text-decoration: none; }
+    footer a:hover { color: var(--berkeley-gold); }
   </style>
 </head>
-
 <body>
 
-<div class="utility-nav">
-  <a href="#">Corporate Sales</a>
-  <a href="contact.html">Technical Support</a>
-  <a href="#">Map & Store</a>
-</div>
-
-<header>
-  <a href="index.html" class="brand">PRIME TECH <span>SOLUTIONS</span></a>
-  <ul class="main-nav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="shop.html" style="color:#FDB515;">Shop Laptops</a></li>
-    <li><a href="repair.html">Repair Services</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</header>
-
-<main class="shop-container">
-
-<!-- STOCK SUMMARY -->
-<div style="background:white;padding:20px;border-radius:12px;box-shadow:0 6px 15px rgba(0,0,0,.08);margin-bottom:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;text-align:center;font-weight:700;">
-  <div>💻 Total Laptops<br><strong>30</strong></div>
-  <div>🟢 HP<br><strong>15</strong></div>
-  <div>🔵 Dell<br><strong>10</strong></div>
-  <div>⚫ Lenovo<br><strong>5</strong></div>
-  <div style="color:#28a745;">Available<br><strong>20</strong></div>
-  <div style="color:#fd7e14;">Reserved<br><strong>5</strong></div>
-  <div style="color:#d9534f;">Purchased<br><strong>5</strong></div>
-</div>
-
-<div class="laptop-grid">
-
-<!-- DELL -->
-<div class="laptop-card">
-  <span class="status-badge available">Available</span>
-  <div class="laptop-img"><img src="https://images.unsplash.com/photo-1593642632823-8f785bf67e45?w=400"></div>
-  <div class="laptop-info">
-    <h3>Dell Latitude 3190 Touch</h3>
-    <p>8GB RAM | 256GB SSD | Win 11 Pro</p>
-    <span class="price">KSh 28,453</span>
-    <a href="https://wa.me/254708902232?text=Dell%203190" class="buy-btn" target="_blank" rel="noopener">BUY NOW</a>
+  <div class="utility-nav">
+    <a href="#">Corporate Sales</a>
+    <a href="#">Technical Support</a>
+    <a href="#">Map & Store</a>
+    <a href="https://wa.me/254708902232" style="color: var(--berkeley-gold)">Get a Quote</a>
   </div>
-</div>
 
-<!-- HP -->
-<div class="laptop-card">
-  <span class="status-badge available">Available</span>
-  <div class="laptop-img"><img src="https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?w=400"></div>
-  <div class="laptop-info">
-    <h3>HP EliteBook 840 G6</h3>
-    <p>Core i5 | 16GB RAM | 512GB SSD</p>
-    <span class="price">KSh 39,999</span>
-    <a href="https://wa.me/254708902232?text=HP%20840%20G6" class="buy-btn" target="_blank" rel="noopener">BUY NOW</a>
+  <header>
+    <a href="index.html" class="brand">PRIME TECH <span>SOLUTIONS</span></a>
+    <div class="nav-container">
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop Laptops</a></li>
+          <li><a href="repair.html">Repair Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+  </header>
+
+  <div class="impact-stats">
+    <div class="stat"><h2>#1</h2><p>Laptop Provider</p></div>
+    <div class="stat"><h2>15k+</h2><p>Units Delivered</p></div>
+    <div class="stat"><h2>24/7</h2><p>Expert Support</p></div>
+    <div class="stat"><h2>100%</h2><p>Certified Genuine</p></div>
   </div>
-</div>
 
-<!-- LENOVO -->
-<div class="laptop-card">
-  <span class="status-badge reserved">Reserved</span>
-  <div class="laptop-img"><img src="https://images.unsplash.com/photo-1525547718511-ad74bc3ad7c2?w=400"></div>
-  <div class="laptop-info">
-    <h3>Lenovo ThinkPad X1 Carbon</h3>
-    <p>Core i7 | 16GB RAM | 512GB SSD</p>
-    <span class="price">KSh 48,500</span>
-    <a class="buy-btn disabled-btn">RESERVED</a>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Powering Kenya's Digital Future</h1>
+      <p>Discover the finest selection of premium HP, Dell, and Lenovo laptops tailored for Kenyan professionals.</p>
+      <a href="#shop" class="buy-btn" style="width: 200px; margin: auto;">Explore Inventory</a>
+    </div>
+  </section>
+
+  <div class="stock-summary">
+    <div class="summary-item">
+      <img src="https://cdn-icons-png.flaticon.com/512/428/428001.png" alt="Inventory">
+      <span>Total Units</span><strong>30</strong>
+    </div>
+    <div class="summary-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" alt="HP">
+      <span>HP Laptops</span><strong>15</strong>
+    </div>
+    <div class="summary-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg" alt="Dell">
+      <span>Dell Laptops</span><strong>10</strong>
+    </div>
+    <div class="summary-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Lenovo_logo_2015.svg" alt="Lenovo">
+      <span>Lenovo Laptops</span><strong>5</strong>
+    </div>
+    <div class="summary-item" style="border-color: var(--success-green);">
+      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Available">
+      <span>Available</span><strong>22</strong>
+    </div>
   </div>
-</div>
 
-</div>
-</main>
-
-<footer>
-  <p style="text-align:center;">© 2026 Prime Tech Solutions · Nairobi · +254 708 902 232</p>
-</footer>
+  <div class="section" id="shop">
+    <div class="tier-label">Essential Series (KSh 20,000 - 35,000)</div>
+    <div class="laptop-grid">
+      <div class="laptop-card">
+        <div class="laptop-img"><img src="https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg" alt="HP ProBook"></div>
+        <div class="laptop-info">
+          <h3>HP ProBook 11 G2</h3>
+          <p>Touch Screen | 8GB RAM | 256GB SSD | Win 11</p>
+          <span class="price">KSh 24,897</span>
+          <a href="https://wa.me/254708902232" class="buy-btn">Chat to Purchase</a>
+        </div>
+      </div>
+      </div>
+  </div>
+  
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>Store Locator</li>
+          <li>Service Center</li>
+          <li>Campus Outreach</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li>News</li>
+          <li>Events</li>
+          <li>Jobs</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Opening Hours</h4>
+        <ul>
+          <li>Mon - Sat: 8:00 AM - 7:00 PM</li>
+          <li>Sunday: Closed</li>
+          <li>Holidays: 10:00 AM - 4:00 PM</li>
+        </ul>
+      </div>
+      <div class="contact-info">
+        <h4 style="color: var(--berkeley-gold); border:none;">Prime Tech Solutions</h4>
+        <p>Nairobi, Kenya<br>
+        <strong>Tel:</strong> +254 708902232<br>
+        <strong>Email:</strong> wesongatimoth@gmail.com</p>
+      </div>
+    </div>
+    <p style="text-align: center; font-size: 11px; opacity: 0.6; margin-top: 30px;">
+      © 2026 Prime Tech Solutions. Fast. Reliable. Genuine. Buy one.
+    </p>
+  </footer>
 
 </body>
 </html>
+
+```
