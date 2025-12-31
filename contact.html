@@ -1,3 +1,8 @@
+To ensure that the **WhatsApp – Timothy Wesonga** link and your social media links clearly indicate they are clickable, I have updated the CSS to include a **hover state**. Now, when a customer places their mouse over these links, they will change color to **Berkeley Gold**.
+
+I have also ensured that the **Store Locator**, **Service Center**, and other footer items are included as per your request, maintaining the full structure of your previous layout.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +21,7 @@
 
     body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); }
 
-    /* --- TOP UTILITY BAR (Restored) --- */
+    /* --- TOP UTILITY BAR --- */
     .utility-nav {
       background: var(--berkeley-blue);
       padding: 10px 10%;
@@ -27,7 +32,7 @@
     }
     .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
 
-    /* --- MAIN HEADER (Restored) --- */
+    /* --- MAIN HEADER --- */
     header { background: var(--white); text-align: center; padding-top: 20px; }
     .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); letter-spacing: -1px; display: block; margin-bottom: 15px; }
     .brand span { color: var(--berkeley-gold); }
@@ -52,12 +57,16 @@
 
     .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 16px; }
     .contact-item i { color: var(--berkeley-gold); font-size: 18px; width: 20px; }
-    .contact-item a { color: var(--text-main); text-decoration: none; }
+    
+    /* HOVER EFFECT FOR CONTACT LINKS */
+    .contact-item a { color: var(--text-main); text-decoration: none; transition: 0.3s; }
+    .contact-item a:hover { color: var(--berkeley-gold); }
 
-    /* Social Links List - Medium Size */
+    /* Social Links List - Medium Size with Hover */
     .social-links-list { list-style: none; padding: 0; margin-top: 20px; }
     .social-links-list li { margin-bottom: 15px; }
-    .social-links-list a { text-decoration: none; color: var(--berkeley-blue); font-weight: bold; font-size: 16px; display: flex; align-items: center; gap: 12px; }
+    .social-links-list a { text-decoration: none; color: var(--berkeley-blue); font-weight: bold; font-size: 16px; display: flex; align-items: center; gap: 12px; transition: 0.3s; }
+    .social-links-list a:hover { color: var(--berkeley-gold); }
     .social-links-list i { font-size: 20px; color: var(--berkeley-gold); }
 
     /* Request Service Form Styles */
@@ -89,9 +98,11 @@
     /* --- FOOTER --- */
     footer { background: #191919; color: #ccc; padding: 60px 10% 20px; font-size: 14px; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; margin-bottom: 20px; }
-    .footer-grid h4 { color: #fff; text-transform: uppercase; border-bottom: 1px solid var(--berkeley-gold); display: inline-block; padding-bottom: 3px; }
-    .footer-grid ul { list-style: none; padding: 0; }
-    .footer-grid a { color: #ccc; text-decoration: none; }
+    .footer-grid h4 { color: #fff; text-transform: uppercase; border-bottom: 1px solid var(--berkeley-gold); display: inline-block; padding-bottom: 3px; margin-bottom: 15px; }
+    .footer-grid ul { list-style: none; padding: 0; margin: 0; }
+    .footer-grid li { margin-bottom: 10px; }
+    .footer-grid a { color: #ccc; text-decoration: none; transition: 0.3s; }
+    .footer-grid a:hover { color: var(--berkeley-gold); }
   </style>
 </head>
 <body>
@@ -182,21 +193,32 @@
     <div class="footer-grid">
       <div>
         <h4>Visit</h4>
-        <ul><li>Store Locator</li><li>Service Center</li></ul>
+        <ul>
+          <li><a href="#">Store Locator</a></li>
+          <li><a href="#">Service Center</a></li>
+          <li><a href="#">Campus Outreach</a></li>
+        </ul>
       </div>
       <div>
         <h4>Quick Links</h4>
-        <ul><li>News</li><li>Events</li></ul>
+        <ul>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Jobs</a></li>
+        </ul>
       </div>
       <div>
         <h4>Support</h4>
-        <ul><li>Warranty Policy</li><li>Privacy Policy</li></ul>
+        <ul>
+          <li><a href="#">Warranty Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
       </div>
       <div class="contact-info">
         <h4 style="color: var(--berkeley-gold);">Prime Tech Solutions</h4>
         <p>Nairobi, Kenya<br>
-        <strong>Tel:</strong> <a href="tel:+254708902232" style="color: #ccc; text-decoration: none;">+254 708 902 232</a><br>
-        <strong>Email:</strong> <a href="mailto:wesongatimoth@gmail.com" style="color: #ccc; text-decoration: none;">wesongatimoth@gmail.com</a></p>
+        <strong>Tel:</strong> <a href="tel:+254708902232">+254 708 902 232</a><br>
+        <strong>Email:</strong> <a href="mailto:wesongatimoth@gmail.com">wesongatimoth@gmail.com</a></p>
       </div>
     </div>
     <p style="text-align: center; font-size: 11px; opacity: 0.6; margin-top: 30px;">© 2026 Prime Tech Solutions. Fast. Reliable. Genuine Buy one.</p>
@@ -204,3 +226,5 @@
 
 </body>
 </html>
+
+```
