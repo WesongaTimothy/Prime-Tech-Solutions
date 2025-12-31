@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repair Services | Prime Tech Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --berkeley-blue: #003262;
+      --berkeley-gold: #FDB515;
+      --silver-bg: #e5e7e9; 
+      --white: #ffffff;
+      --text-main: #333;
+      --success-green: #28a745;
+      --warning-orange: #fd7e14;
+    }
+
+    body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); }
+
+    /* --- NAVIGATION --- */
+    .utility-nav { background: var(--berkeley-blue); padding: 10px 10%; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+    .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
+    header { background: var(--white); text-align: center; padding-top: 20px; border-bottom: 4px solid var(--berkeley-gold); }
+    .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 15px; }
+    .brand span { color: var(--berkeley-gold); }
+    .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; padding: 15px 0; margin: 0; }
+    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; }
+    .main-nav a.active { color: var(--berkeley-gold); border-bottom: 2px solid var(--berkeley-gold); padding-bottom: 5px; }
+
+    /* --- REPAIR LAYOUT --- */
+    .section { padding: 40px 10%; max-width: 1400px; margin: auto; }
+    .tier-label { font-size: 28px; color: var(--berkeley-blue); border-left: 5px solid var(--berkeley-gold); padding-left: 15px; margin: 20px 0; font-weight: bold; text-transform: uppercase; }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .service-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: left;
+      border-top: 5px solid var(--berkeley-blue);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      border-top-color: var(--berkeley-gold);
+      transform: translateY(-5px);
+    }
+
+    .service-icon {
+      font-size: 40px;
+      color: var(--berkeley-blue);
+      margin-bottom: 20px;
+    }
+
+    .service-card h4 {
+      margin: 0 0 15px 0;
+      color: var(--berkeley-blue);
+      font-size: 1.3rem;
+      text-transform: uppercase;
+    }
+
+    .service-card ul {
+      padding-left: 20px;
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .service-card ul li { margin-bottom: 10px; }
+
+    /* --- CALL TO ACTION --- */
+    .repair-cta {
+      background: #fff;
+      border: 2px dashed var(--berkeley-gold);
+      padding: 40px;
+      text-align: center;
+      border-radius: 15px;
+      margin-top: 50px;
+    }
+
+    .buy-btn { 
+      background: var(--berkeley-blue); 
+      color: white; 
+      padding: 15px 35px; 
+      display: inline-block; 
+      text-align: center; 
+      text-decoration: none; 
+      font-weight: bold; 
+      border-radius: 50px; 
+      transition: 0.3s;
+    }
+    .buy-btn:hover { background: var(--berkeley-gold); color: var(--berkeley-blue); }
+
+    /* --- FOOTER --- */
+    footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 50px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; }
+    footer h4 { color: #fff; text-transform: uppercase; font-size: 14px; border-bottom: 2px solid var(--berkeley-gold); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; }
+    footer ul { list-style: none; padding: 0; margin: 0; }
+    footer li { margin-bottom: 10px; font-size: 13px; }
+    footer a { color: #ccc; text-decoration: none; transition: 0.3s; }
+    footer a:hover { color: var(--berkeley-gold); }
+
+    @media (max-width: 768px) {
+      .main-nav { gap: 15px; font-size: 12px; flex-wrap: wrap; }
+      .utility-nav { flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="utility-nav">
+    <div style="display: flex; gap: 15px;">
+      <a href="#">Corporate Sales</a>
+      <a href="#">Government & NGO</a>
+      <a href="#">Map & Store</a>
+    </div>
+    <a href="https://wa.me/254708902232" target="_blank" style="color: var(--berkeley-gold)">
+      <i class="fab fa-whatsapp"></i> Get a Repair Quote
+    </a>
+  </div>
+
+  <header>
+    <a href="index.html" class="brand">PRIME TECH <span>SOLUTIONS</span></a>
+    <ul class="main-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop Laptops</a></li>
+      <li><a href="repair.html" class="active">Repair Services</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </header>
+
+  <main class="section">
+    <div class="tier-label">Laptop Repair & Maintenance</div>
+    <p style="max-width: 800px; font-size: 1.1rem; color: #555;">
+      Don't let a broken laptop slow you down. Our certified technicians at <strong>Platinum Plaza</strong> provide expert chip-level repairs, display replacements, and software installations.
+    </p>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-microchip"></i></div>
+        <h4>Motherboard & Chip-Level</h4>
+        <ul>
+          <li>Dead laptop power-on troubleshooting</li>
+          <li>Short circuit detection & repair</li>
+          <li>Liquid damage / Water spill cleaning</li>
+          <li>BIOS flashing & Password removal</li>
+          <li>Charging system & IC replacement</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-laptop"></i></div>
+        <h4>Screen & Display Fixes</h4>
+        <ul>
+          <li>Cracked/Broken LED & LCD replacement</li>
+          <li>Flickering or dim display repair</li>
+          <li>Vertical/Horizontal lines fix</li>
+          <li>Hinge repair & Body reconstruction</li>
+          <li>Display cable (Video Flex) replacement</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fab fa-windows"></i></div>
+        <h4>Windows & Software</h4>
+        <ul>
+          <li>Genuine Windows 10/11 Professional install</li>
+          <li>Microsoft Office & Driver configuration</li>
+          <li>Malware, Spyware & Virus removal</li>
+          <li>System boot error & Blue screen fixes</li>
+          <li>Slow laptop optimization (Speed up)</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-rocket"></i></div>
+        <h4>Upgrades & Maintenance</h4>
+        <ul>
+          <li>SSD Upgrades (SATA & NVMe)</li>
+          <li>RAM (Memory) expansion</li>
+          <li>Battery & Keyboard replacements</li>
+          <li>Internal dust cleaning & Thermal repasting</li>
+          <li>Data recovery from corrupted drives</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="repair-cta">
+      <h2 style="color: var(--berkeley-blue); margin-top: 0;">Ready to fix your device?</h2>
+      <p style="margin-bottom: 30px;">Visit us at Platinum Plaza or chat with us for a free estimate.</p>
+      <a href="https://wa.me/254708902232?text=Hi%2C%20I%20need%20help%20repairing%20my%20laptop" target="_blank" class="buy-btn">
+        <i class="fab fa-whatsapp"></i> Chat with a Technician
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="https://maps.app.goo.gl/4eTt5YdxNzWcNmqG6" target="_blank">Store Locator</a></li>
+          <li><a href="repair.html">Service Center</a></li>
+          <li><a href="#">Campus Outreach</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Jobs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Opening Hours</h4>
+        <ul>
+          <li>Mon - Sat: 8:00 AM - 7:00 PM</li>
+          <li>Sunday: Closed</li>
+          <li>Holidays: 10:00 AM - 4:00 PM</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>
+          <a href="https://maps.app.goo.gl/4eTt5YdxNzWcNmqG6" target="_blank">
+            <strong>Platinum Plaza</strong><br>
+            Nairobi, Kenya<br>
+            <small style="color: var(--berkeley-gold);">(Get Directions)</small>
+          </a><br><br>
+          <strong>Tel:</strong> <a href="tel:+254708902232">+254 708 902 232</a><br>
+          <strong>Email:</strong> <a href="mailto:wesongatimoth@gmail.com">wesongatimoth@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <p style="text-align: center; font-size: 11px; opacity: 0.6; margin-top: 30px;">
+      © 2026 Prime Tech Solutions. Fast. Reliable. Genuine.
+    </p>
+  </footer>
+
+</body>
+</html>
