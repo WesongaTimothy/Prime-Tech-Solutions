@@ -136,6 +136,18 @@
     .sold-out { opacity: 0.7; filter: grayscale(1); }
     .sold-out .buy-btn { background: #999 !important; cursor: not-allowed; pointer-events: none; }
 
+    /* --- MOBILE RESPONSIVENESS (The "Mobile View" Logic) --- */
+    @media (max-width: 768px) {
+      .utility-nav { justify-content: center; text-align: center; }
+      .brand { font-size: 22px; }
+      .main-nav { gap: 10px; }
+      .main-nav a { font-size: 11px; }
+      .hero h1 { font-size: 28px; }
+      .hero p { font-size: 14px; }
+      .laptop-grid { grid-template-columns: 1fr; } /* Force cards to 1 per row on very small screens */
+      .stock-summary { grid-template-columns: repeat(2, 1fr); } /* 2 columns for summary on mobile */
+    }
+
     /* --- FOOTER --- */
     footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; }
