@@ -8,13 +8,13 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(rgba(10, 25, 47, 0.92), rgba(10, 25, 47, 0.92)), 
+            background: linear-gradient(rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.9)), 
                         url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2070');
             background-size: cover;
             background-attachment: fixed;
             margin: 0;
             padding: 40px 20px;
-            color: #333;
+            color: #222;
         }
 
         .receipt-container {
@@ -22,13 +22,13 @@
             margin: auto;
             background: #ffffff;
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             position: relative;
             overflow: hidden;
         }
 
-        /* Subtle Security Watermark */
+        /* Security Watermark in Light Grey */
         .receipt-container::before {
             content: "PRIME TECH SOLUTIONS | KENYA'S PREMIER IT";
             position: absolute;
@@ -37,7 +37,7 @@
             transform: translate(-50%, -50%) rotate(-45deg);
             font-size: 32px;
             font-weight: 800;
-            color: rgba(0, 86, 179, 0.04);
+            color: rgba(0, 0, 0, 0.03);
             white-space: nowrap;
             pointer-events: none;
             z-index: 0;
@@ -47,7 +47,7 @@
 
         .header {
             text-align: center;
-            border-bottom: 3px solid #0056b3;
+            border-bottom: 2px solid #222;
             padding-bottom: 20px;
             margin-bottom: 25px;
             position: relative;
@@ -56,7 +56,7 @@
 
         .header h1 {
             margin: 0;
-            color: #003366;
+            color: #000;
             letter-spacing: 1px;
             font-size: 26px;
             font-weight: 800;
@@ -65,7 +65,7 @@
         .header p {
             margin: 4px 0;
             font-size: 13px;
-            color: #666;
+            color: #555;
         }
 
         .receipt-details {
@@ -85,14 +85,15 @@
             z-index: 1;
         }
 
+        /* Cream Block for Header */
         table th {
-            background-color: #0056b3;
-            color: white;
+            background-color: #fdf5e6; /* Cream */
+            color: #222;
             padding: 12px;
             text-align: left;
             text-transform: uppercase;
             font-size: 12px;
-            letter-spacing: 0.5px;
+            border-bottom: 1px solid #ddd;
         }
 
         table td {
@@ -106,16 +107,18 @@
             margin-bottom: 35px;
             position: relative;
             z-index: 1;
+            padding: 20px;
+            background-color: #fdf5e6; /* Cream Block */
+            border-radius: 4px;
         }
 
         .total-amount {
             font-size: 24px;
             font-weight: 800;
-            color: #0056b3;
+            color: #000;
             margin-top: 8px;
         }
 
-        /* Verification & Signature Section */
         .auth-row {
             display: flex;
             justify-content: space-between;
@@ -128,7 +131,7 @@
         .qr-code {
             text-align: center;
             font-size: 10px;
-            color: #999;
+            color: #888;
         }
 
         .qr-code img {
@@ -136,7 +139,6 @@
             height: 75px;
             margin-bottom: 4px;
             filter: grayscale(1);
-            opacity: 0.8;
         }
 
         .signature-container {
@@ -147,30 +149,28 @@
         .digital-signature {
             font-family: 'Cedarville Cursive', cursive;
             font-size: 28px;
-            color: #1a237e; /* Sophisticated deep blue ink color */
-            margin-bottom: -10px;
+            color: #222; /* Black Signature */
+            margin-bottom: -5px;
             display: block;
-            transform: rotate(-2deg);
         }
 
         .signature-line {
-            border-top: 1.5px solid #333;
+            border-top: 1.5px solid #222;
             padding-top: 5px;
             font-size: 11px;
             font-weight: 700;
-            color: #444;
+            color: #222;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
+        /* Cream Block for Notes */
         .notes {
             font-size: 11px;
-            color: #666;
-            background: #fcfcfc;
+            color: #444;
+            background: #fdf5e6; 
             padding: 15px;
-            border-radius: 6px;
-            border: 1px solid #eee;
-            border-left: 4px solid #0056b3;
+            border-radius: 4px;
+            border-left: 5px solid #222;
             margin-top: 30px;
             position: relative;
             z-index: 1;
@@ -180,14 +180,13 @@
             text-align: center;
             margin-top: 30px;
             font-size: 12px;
-            color: #003366;
+            color: #000;
             font-weight: 800;
             text-transform: uppercase;
             position: relative;
             z-index: 1;
         }
 
-        /* Action Buttons */
         .actions {
             text-align: center;
             margin-top: 30px;
@@ -197,24 +196,22 @@
             display: inline-block;
             padding: 12px 24px;
             margin: 5px;
-            border-radius: 6px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 14px;
             cursor: pointer;
             border: none;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
-        .btn-print { background-color: #0056b3; color: white; }
-        .btn-print:hover { background-color: #003d82; transform: translateY(-1px); }
-        .btn-home { background-color: #2c3e50; color: white; }
+        .btn-print { background-color: #222; color: #fff; }
+        .btn-home { background-color: #eee; color: #222; }
 
         @media print {
             body { background: none; padding: 0; }
             .receipt-container { box-shadow: none; border: 1px solid #ddd; width: 100%; }
             .actions { display: none; }
-            .receipt-container::before { color: rgba(0, 0, 0, 0.02); }
+            .total-section, .notes, table th { background-color: #fdf5e6 !important; -webkit-print-color-adjust: exact; }
         }
     </style>
 </head>
@@ -268,7 +265,7 @@
     </table>
 
     <div class="total-section">
-        <p style="font-size: 14px; color: #666;">Subtotal: KES 34,000.00</p>
+        <p style="margin: 0; font-size: 14px;">Subtotal: KES 34,000.00</p>
         <div class="total-amount">TOTAL: KES 34,000.00</div>
     </div>
 
@@ -289,7 +286,7 @@
         <ul style="padding-left: 18px; margin: 5px 0;">
             <li>12 months warranty for new / 6 months for refurbished equipment.</li>
             <li>Physical damage, power surges, and software are not covered.</li>
-            <li>All sales are final. Exchanges only for factory defects.</li>
+            <li>Valid receipt required for all warranty claims.</li>
         </ul>
     </div>
 
