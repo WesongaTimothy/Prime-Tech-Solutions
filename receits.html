@@ -3,93 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Receipt - ONETECH COMPUTERS</title>
+    <title>E-Receipt - PRIME TECH SOLUTIONS</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            /* Professional Tech Background */
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-attachment: fixed;
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
+            color: #333;
         }
+
         .receipt-container {
-            max-width: 600px;
+            max-width: 650px;
             margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
         }
+
+        /* The Watermark */
+        .receipt-container::before {
+            content: "PRIME TECH SOLUTIONS | KENYA'S PREMIER IT";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(0, 102, 204, 0.05); /* Very subtle */
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+            width: 150%;
+            text-align: center;
+        }
+
         .header {
             text-align: center;
-            border-bottom: 2px solid #333;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            border-bottom: 3px solid #0056b3;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
         }
+
         .header h1 {
             margin: 0;
-            color: #2c3e50;
-            text-transform: uppercase;
+            color: #003366;
+            letter-spacing: 2px;
+            font-size: 28px;
         }
+
         .header p {
             margin: 5px 0;
             font-size: 14px;
-            color: #555;
+            color: #666;
+            font-weight: 500;
         }
+
         .receipt-details {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-size: 14px;
+            position: relative;
+            z-index: 1;
         }
-        .receipt-details div p {
-            margin: 3px 0;
-        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
         }
+
         table th {
-            background-color: #f8f9fa;
-            border-bottom: 2px solid #dee2e6;
-            padding: 10px;
+            background-color: #0056b3;
+            color: white;
+            padding: 12px;
             text-align: left;
+            text-transform: uppercase;
+            font-size: 13px;
         }
+
         table td {
-            padding: 10px;
+            padding: 15px 12px;
             border-bottom: 1px solid #eee;
             font-size: 14px;
         }
+
         .total-section {
             text-align: right;
-            font-size: 16px;
             margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
         }
-        .total-section p {
-            margin: 5px 0;
-        }
+
         .total-amount {
-            font-size: 20px;
-            font-weight: bold;
-            color: #d35400;
+            font-size: 24px;
+            font-weight: 800;
+            color: #0056b3;
+            margin-top: 10px;
         }
+
         .notes {
             font-size: 12px;
-            color: #777;
-            background: #fdfdfd;
-            padding: 15px;
-            border-left: 4px solid #3498db;
+            color: #555;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #0056b3;
+            position: relative;
+            z-index: 1;
         }
+
         .footer {
             text-align: center;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #2c3e50;
+            margin-top: 40px;
+            font-size: 15px;
+            color: #003366;
             font-weight: bold;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
         }
-        @print {
+
+        @media print {
             body { background: none; padding: 0; }
-            .receipt-container { box-shadow: none; border: 1px solid #ccc; }
+            .receipt-container { box-shadow: none; border: 1px solid #ddd; }
+            .receipt-container::before { color: rgba(0, 0, 0, 0.03); }
         }
     </style>
 </head>
@@ -97,21 +147,21 @@
 
 <div class="receipt-container">
     <div class="header">
-        <h1>ONETECH COMPUTERS</h1>
+        <h1>PRIME TECH SOLUTIONS</h1>
         <p>Old Nation House, Tom Mboya Street, Nairobi</p>
-        <p>Email: onetechcomputers2@gmail.com | Tel: 0708405238</p>
+        <p>Email: info@primetech.co.ke | Tel: 0708902232 </p>
     </div>
 
     <div class="receipt-details">
         <div>
-            <p><strong>Customer:</strong> Wesonga Timothy</p>
-            <p><strong>Served By:</strong> Grace Grace</p>
-            <p><strong>Payment Method:</strong> M-PESA</p>
+            <p><strong>CUSTOMER:</strong> Wesonga Timothy</p>
+            <p><strong>SERVED BY:</strong> Grace Grace</p>
+            <p><strong>PAYMENT:</strong> M-PESA</p>
         </div>
         <div style="text-align: right;">
-            <p><strong>Receipt #:</strong> OCTM-280312-0</p>
-            <p><strong>Date:</strong> 12/03/2026</p>
-            <p><strong>Time:</strong> 06:37 PM</p>
+            <p><strong>RECEIPT #:</strong> PTS-280312-0</p>
+            <p><strong>DATE:</strong> 12/03/2026</p>
+            <p><strong>TIME:</strong> 06:37 PM</p>
         </div>
     </div>
 
@@ -127,12 +177,12 @@
             <tr>
                 <td>HP P27VU G4 (SN: 1CR14115XX)</td>
                 <td>1</td>
-                <td style="text-align: right;">12,500.00</td>
+                <td style="text-align: right;">13,500.00</td>
             </tr>
             <tr>
                 <td>HP 705 G4 (SN: MXL8294SVY)</td>
                 <td>1</td>
-                <td style="text-align: right;">21,000.00</td>
+                <td style="text-align: right;">24,000.00</td>
             </tr>
             <tr>
                 <td>DISPLAY 2 HDMI CABLE</td>
@@ -143,21 +193,21 @@
     </table>
 
     <div class="total-section">
-        <p>Subtotal: KES 34,000.00</p>
-        <p class="total-amount">Total: KES 34,000.00</p>
+        <p>Subtotal: KES 38,000.00</p>
+        <div class="total-amount">TOTAL: KES 38,000.00</div>
     </div>
 
     <div class="notes">
-        <p><strong>Important Information:</strong></p>
-        <ul>
-            <li>Warranty: 12 months for new equipment, 6 months for refurbished.</li>
-            <li>Not Covered: Power adapters, RAM, storage, peripherals, and software.</li>
-            <li>All sales are final. Exchanges only for defective items within warranty.</li>
+        <p><strong>TERMS & CONDITIONS:</strong></p>
+        <ul style="padding-left: 20px; margin: 5px 0;">
+            <li>Warranty: 12 months (New) | 6 months (Refurbished).</li>
+            <li>Excludes: Software, physical damage, and power surges.</li>
+            <li>Valid receipt required for all warranty claims.</li>
         </ul>
     </div>
 
     <div class="footer">
-        THANK YOU FOR YOUR PURCHASE!
+        KENYA'S PREMIER IT PARTNER
     </div>
 </div>
 
