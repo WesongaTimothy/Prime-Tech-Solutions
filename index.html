@@ -17,6 +17,19 @@
       --white: #ffffff;
       --text-main: #333;
     }
+    <h1>Receipts</h1>
+
+    <!-- This is where receipts will load -->
+    <div id="receipts-container"></div>
+
+    <script>
+    fetch('assets/index.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('receipts-container').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading file:', error));
+    </script>
 
     body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); }
 
