@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: prime-laptop-solutions
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
