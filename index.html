@@ -17,21 +17,18 @@
       --white: #ffffff;
       --text-main: #333;
     }
-    <h1>Receipts</h1>
+   body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); }
+    body {
+  overflow-x: hidden;
+}
 
-    <!-- This is where receipts will load -->
-    <div id="receipts-container"></div>
+.laptop-info h3 {
+  height: auto;
+}
 
-    <script>
-    fetch('assets/index.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('receipts-container').innerHTML = data;
-      })
-      .catch(error => console.error('Error loading file:', error));
-    </script>
-
-    body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); }
+.laptop-info p {
+  font-size: 14px;
+}
 
     /* --- TOP UTILITY BAR --- */
     .utility-nav {
@@ -155,6 +152,47 @@
     .footer-grid a { color: #ccc; text-decoration: none; }
     .footer-grid a:hover { color: var(--berkeley-gold); }
   </style>
+  <style>
+  /* your existing CSS here */
+
+  footer { background: #191919; }
+
+  /* ✅ ADD IT HERE (VERY LAST THING INSIDE STYLE) */
+  @media (max-width: 768px) {
+
+    .main-nav {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero {
+      height: auto;
+      padding: 40px 20px;
+      background-attachment: scroll;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+    }
+
+    .hero p {
+      font-size: 16px;
+    }
+
+    .impact-stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .laptop-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 </head>
 <body>
 
@@ -344,3 +382,4 @@
 
 </body>
 </html>
+
