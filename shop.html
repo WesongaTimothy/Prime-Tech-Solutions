@@ -16,6 +16,27 @@
 
     body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); }
 
+    .utility-nav {
+  background: var(--berkeley-blue);
+  padding: 10px 10%;
+  display: flex;
+  justify-content: space-between; /* distributes links across full width */
+  align-items: center;
+  font-size: 12px;
+}
+
+.utility-nav a { 
+  color: #fff; 
+  text-decoration: none; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+}
+
+.utility-nav .center-link {
+  text-align: center;
+  flex-grow: 1; /* stays in center */
+}
+    
     /* --- TOP UTILITY BAR --- */
     .utility-nav {
       background: var(--berkeley-blue);
