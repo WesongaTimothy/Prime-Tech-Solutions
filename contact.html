@@ -18,19 +18,17 @@
       height: 100%; /* Fix: Ensure full height for sticky footer */
       margin: 0;
     }
-
-    body { 
-      font-family: 'Open Sans', Arial, sans-serif;
-      display: flex;
-      flex-direction: column; /* Fix: Required to push footer to bottom */
+body { 
+      font-family: 'Open Sans', Arial, sans-serif; 
+      margin: 0; 
       color: var(--text-main); 
       line-height: 1.6; 
       background: linear-gradient(rgba(229, 231, 233, 0.85), rgba(229, 231, 233, 0.85)), 
-                  url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1470');
+                  url('https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=2070&auto=format&fit=crop');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-    }
+    } 
 
     /* --- UTILITY & HEADER --- */
     .utility-nav {
@@ -41,6 +39,15 @@
       gap: 20px;
       font-size: 12px;
     }
+    /* --- TOP UTILITY BAR --- */
+    .utility-nav {
+      background: var(--berkeley-blue);
+      padding: 10px 10%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      font-size: 12px;
+    }    
     .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
 
     header { background: var(--white); text-align: center; padding: 20px 0; border-bottom: 4px solid var(--berkeley-gold); }
@@ -50,13 +57,18 @@
     .main-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px 30px; list-style: none; padding: 0; margin: 10px 0; }
     .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
 
+     /* --- MAIN HEADER --- */
+    header { background: var(--white); text-align: center; padding: 20px 0; border-bottom: 4px solid var(--berkeley-gold); }
+    .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 10px; }
+    .brand span { color: var(--berkeley-gold); }
+
     /* --- CONTENT CONTAINER --- */
     main.contact-container {
       flex: 1 0 auto; /* Fix: This pushes the footer to the bottom */
       display: grid;
       grid-template-columns: 1fr 1.5fr;
-      gap: 40px;
-      padding: 40px 10%;
+      gap: 50px;
+      padding: 60px 10%;
       max-width: 1200px;
       margin: auto;
       width: 100%;
@@ -66,16 +78,20 @@
     /* --- INFO & FORM PANELS --- */
     .info-panel, .contact-form {
       backdrop-filter: blur(5px);
-      padding: 30px;
+      padding: 40px;
       border-radius: 10px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
-    .info-panel { background: rgba(255, 255, 255, 0.9) !important; }
+    .info-panel { background: rgba(255, 255, 255, 0.9) !important; margin-bottom: 25px; border-left: 5px solid var(--berkeley-gold); padding-left: 15px;}
     .contact-form { background: rgba(0, 50, 98, 0.95) !important; color: white; }
     .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 17px; }
     .contact-item i { color: var(--berkeley-gold); width: 25px; }
     .form-group { margin-bottom: 20px; }
     .form-group input, .form-group textarea { width: 100%; padding: 12px; border: none; border-radius: 5px; box-sizing: border-box; }
+    /* Hover effects for contact links */
+    .contact-item a { color: var(--text-main); text-decoration: none; transition: 0.3s; font-weight: 500; }
+    .contact-item a:hover { color: var(--berkeley-gold); font-weight: bold; }
+
     
     .submit-btn { 
       background: var(--berkeley-gold); color: var(--berkeley-blue); border: none; padding: 15px; 
