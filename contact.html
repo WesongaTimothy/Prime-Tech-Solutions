@@ -13,12 +13,8 @@
       --text-main: #333;
     }
 
-    /* --- GLOBAL STYLES --- */
-    html, body {
-      height: 100%; /* Fix: Ensure full height for sticky footer */
-      margin: 0;
-    }
-body { 
+    /* --- GLOBAL STYLES & BACKGROUND IMAGE --- */
+    body { 
       font-family: 'Open Sans', Arial, sans-serif; 
       margin: 0; 
       color: var(--text-main); 
@@ -28,17 +24,8 @@ body {
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-    } 
-
-    /* --- UTILITY & HEADER --- */
-    .utility-nav {
-      background: var(--berkeley-blue);
-      padding: 10px 10%;
-      display: flex;
-      justify-content: flex-end;
-      gap: 20px;
-      font-size: 12px;
     }
+
     /* --- TOP UTILITY BAR --- */
     .utility-nav {
       background: var(--berkeley-blue);
@@ -47,57 +34,79 @@ body {
       justify-content: flex-end;
       gap: 20px;
       font-size: 12px;
-    }    
+    }
     .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
 
-    header { background: var(--white); text-align: center; padding: 20px 0; border-bottom: 4px solid var(--berkeley-gold); }
-    .brand { font-size: clamp(24px, 5vw, 32px); font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 10px; }
-    .brand span { color: var(--berkeley-gold); }
-    
-    .main-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px 30px; list-style: none; padding: 0; margin: 10px 0; }
-    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
-
-     /* --- MAIN HEADER --- */
+    /* --- MAIN HEADER --- */
     header { background: var(--white); text-align: center; padding: 20px 0; border-bottom: 4px solid var(--berkeley-gold); }
     .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 10px; }
     .brand span { color: var(--berkeley-gold); }
+    
+    .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; padding: 0; margin: 10px 0; }
+    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
+    .main-nav a:hover { color: var(--berkeley-gold); }
 
-    /* --- CONTENT CONTAINER --- */
-    main.contact-container {
-      flex: 1 0 auto; /* Fix: This pushes the footer to the bottom */
+    /* --- CONTACT LAYOUT --- */
+    .contact-container {
       display: grid;
       grid-template-columns: 1fr 1.5fr;
       gap: 50px;
       padding: 60px 10%;
       max-width: 1200px;
       margin: auto;
-      width: 100%;
-      box-sizing: border-box;
     }
 
-    /* --- INFO & FORM PANELS --- */
-    .info-panel, .contact-form {
+    /* --- INFO PANEL STYLES (GET IN TOUCH) --- */
+    .info-panel { 
       backdrop-filter: blur(5px);
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.9) !important; 
+      padding: 40px; 
+      border-radius: 10px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
     }
-    .info-panel { background: rgba(255, 255, 255, 0.9) !important; margin-bottom: 25px; border-left: 5px solid var(--berkeley-gold); padding-left: 15px;}
-    .contact-form { background: rgba(0, 50, 98, 0.95) !important; color: white; }
+    .info-panel h2 { color: var(--berkeley-blue); margin-bottom: 25px; border-left: 5px solid var(--berkeley-gold); padding-left: 15px; }
+
     .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 17px; }
-    .contact-item i { color: var(--berkeley-gold); width: 25px; }
-    .form-group { margin-bottom: 20px; }
-    .form-group input, .form-group textarea { width: 100%; padding: 12px; border: none; border-radius: 5px; box-sizing: border-box; }
+    .contact-item i { color: var(--berkeley-gold); font-size: 20px; width: 25px; }
+    
     /* Hover effects for contact links */
     .contact-item a { color: var(--text-main); text-decoration: none; transition: 0.3s; font-weight: 500; }
     .contact-item a:hover { color: var(--berkeley-gold); font-weight: bold; }
 
+    /* Social Links - Medium Size */
+    .social-links-list { list-style: none; padding: 0; margin-top: 25px; }
+    .social-links-list li { margin-bottom: 15px; }
+    .social-links-list a { text-decoration: none; color: var(--berkeley-blue); font-weight: bold; font-size: 16px; display: flex; align-items: center; gap: 12px; transition: 0.3s; }
+    .social-links-list a:hover { color: var(--berkeley-gold); transform: translateX(8px); }
+
+    /* --- FORM STYLES --- */
+    .contact-form { 
+      backdrop-filter: blur(5px);
+      background: rgba(0, 50, 98, 0.95) !important; 
+      padding: 40px; 
+      border-radius: 10px; 
+      color: white; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    }
+    .contact-form h2 { color: var(--berkeley-gold); margin-bottom: 10px; }
+    
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: bold; }
+    .form-group input, .form-group textarea { width: 100%; padding: 12px; border: none; border-radius: 5px; box-sizing: border-box; }
     
     .submit-btn { 
-      background: var(--berkeley-gold); color: var(--berkeley-blue); border: none; padding: 15px; 
-      font-weight: 800; cursor: pointer; width: 100%; border-radius: 5px; transition: 0.3s; 
+      background: var(--berkeley-gold); 
+      color: var(--berkeley-blue); 
+      border: none; 
+      padding: 15px; 
+      font-weight: 800; 
+      text-transform: uppercase; 
+      cursor: pointer; 
+      width: 100%; 
+      border-radius: 5px; 
+      transition: 0.3s; 
     }
-    .submit-btn:hover { background: white; transform: scale(1.02); } /* Fixed missing bracket */
+    .submit-btn:hover { background: white; transform: scale(1.02); }
 
     /* --- FOOTER --- */
     footer { 
