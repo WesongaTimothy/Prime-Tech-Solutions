@@ -1,283 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invoice Payment | PRIME TECH SOLUTIONS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Payment | Prime Tech Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --berkeley-blue: #003262;
+      --berkeley-gold: #FDB515;
+      --silver-bg: #e5e7e9; 
+      --white: #ffffff;
+      --text-main: #333;
+      --mpesa-green: #10b981;
+    }
+
+    body { 
+      font-family: 'Open Sans', Arial, sans-serif; 
+      margin: 0; 
+      color: var(--text-main); 
+      line-height: 1.6; 
+      background-color: var(--silver-bg); 
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* --- TOP UTILITY BAR --- */
+    .utility-nav {
+      background: var(--berkeley-blue);
+      padding: 10px 10%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      font-size: 12px;
+    }
+    .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
+
+    /* --- MAIN HEADER (Matching Index) --- */
+    header { background: var(--white); text-align: center; padding-top: 27px; }
+    .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); letter-spacing: -1px; display: block; margin-bottom: 15px; }
+    .brand span { color: var(--berkeley-gold); }
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    .nav-container { border-bottom: 4px solid var(--berkeley-gold); padding-bottom: 15px; background: var(--white); }
+    .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 0; }
+    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
+    .main-nav a:hover, .main-nav a.active { color: var(--berkeley-gold); }
+
+    /* --- PAYMENT CONTENT AREA --- */
+    .payment-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 10%;
+      /* Background image with overlay to match the "Hero" feel */
+      background: linear-gradient(rgba(0,50,98,0.8), rgba(0,50,98,0.8)), 
+                  url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1470');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .payment-card {
+      background: var(--white);
+      width: 100%;
+      max-width: 480px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      animation: slideUp 0.5s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .payment-card-header {
+      background: var(--berkeley-blue);
+      color: white;
+      padding: 25px;
+      text-align: center;
+      border-bottom: 4px solid var(--berkeley-gold);
+    }
+
+    .payment-card-header h2 { margin: 0; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
+
+    .payment-body { padding: 30px; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    .service-box {
+      background: #f8f9fa;
+      border-left: 4px solid var(--berkeley-blue);
+      padding: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .method-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #666;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-group {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .data-row:last-child { border-bottom: none; }
+
+    .label { font-size: 13px; color: #777; }
+    .value { font-size: 15px; font-weight: 700; color: var(--berkeley-blue); }
+
+    .copy-btn {
+      background: var(--silver-bg);
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--berkeley-blue);
+    }
+    .copy-btn:hover { background: var(--berkeley-gold); }
+
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+    .whatsapp-btn:hover { background: #128C7E; transform: scale(1.02); }
+
+    /* --- FOOTER (Matching Index) --- */
+    footer { background: #191919; color: #ccc; padding: 60px 10% 20px; font-size: 14px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; margin-bottom: 20px; }
+    .footer-grid h4 { color: #fff; text-transform: uppercase; margin-bottom: 20px; font-size: 12px; border-bottom: 1px solid var(--berkeley-gold); display: inline-block; padding-bottom: 3px; }
+    .footer-grid ul { list-style: none; padding: 0; margin: 0; }
+    .footer-grid li { margin-bottom: 10px; }
+    .footer-grid a { color: #ccc; text-decoration: none; }
     
-    <style>
-        :root {
-            --card-bg: rgba(255, 255, 255, 0.94);
-            --accent-blue: #2563eb;
-            --mpesa-green: #10b981;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            /* Placeholder Image - Replace with your actual background image URL */
-            --bg-image-url: url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-        }
+    #toast {
+      visibility: hidden;
+      background: var(--berkeley-blue);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      z-index: 1000;
+    }
+    #toast.show { visibility: visible; animation: pop 0.3s; }
+    @keyframes pop { from { opacity: 0; bottom: 0; } to { opacity: 1; bottom: 30px; } }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            min-height: 100vh;
-            color: var(--text-dark);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* --- Background Setup --- */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: var(--bg-image-url);
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(15, 23, 42, 0.7); /* Dark overlay for readability */
-            z-index: -1;
-        }
-
-        /* --- Header / Navigation Integration --- */
-        header {
-            background: rgba(15, 23, 42, 0.95);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .brand {
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-        }
-
-        .brand span { color: var(--accent-blue); }
-
-        .main-nav {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .main-nav a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .main-nav a:hover, .main-nav li a[href="Invoice.html"] {
-            color: white;
-            border-bottom: 2px solid var(--accent-blue);
-        }
-
-        /* --- Payment Card Container --- */
-        .main-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        .payment-card {
-            background: var(--card-bg);
-            width: 100%;
-            max-width: 480px;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .payment-header {
-            background: #0f172a;
-            padding: 30px;
-            text-align: center;
-            color: white;
-        }
-
-        .content { padding: 30px 25px; }
-
-        .info-group {
-            background: white;
-            border: 1px solid #f1f5f9;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 20px;
-        }
-
-        .data-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .data-row:last-child { border-bottom: none; }
-
-        .label { font-size: 12px; color: var(--text-muted); font-weight: 600; }
-        .value { font-size: 14px; font-weight: 700; color: var(--text-dark); }
-
-        .copy-btn {
-            background: #eff6ff;
-            color: var(--accent-blue);
-            border: none;
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .whatsapp-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 14px;
-            font-weight: 700;
-            margin-top: 10px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-
-        #toast {
-            visibility: hidden;
-            background: #1e293b;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2000;
-        }
-
-        #toast.show { visibility: visible; animation: pop 0.3s; }
-
-        @keyframes pop { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
-
-        /* Mobile Optimization */
-        @media (max-width: 768px) {
-            .nav-container { display: none; } /* Consider adding a mobile menu icon later */
-            header { justify-content: center; }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .main-nav { flex-direction: column; gap: 10px; }
+      .payment-container { padding: 40px 20px; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <a href="index.html" class="brand">PRIME TECH <span>SOLUTIONS</span></a>
-        <div class="nav-container">
-            <ul class="main-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="shop.html">Shop Laptops</a></li>
-                <li><a href="repair.html">Repair Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="Invoice.html">Invoice</a></li>
-            </ul>
-        </div>
-    </header>
+  <div class="utility-nav">
+    <a href="#">Corporate Sales</a>
+    <a href="#">Technical Support</a>
+    <a href="https://wa.me/254708902232" style="color: var(--berkeley-gold)">Get a Quote</a>
+  </div>
 
-    <div class="main-container">
-        <div class="payment-card">
-            <div class="payment-header">
-                <h2 style="font-size: 1.2rem;">Secure Payment Portal</h2>
-                <p style="font-size: 11px; color: #94a3b8; margin-top: 5px; text-transform: uppercase;">Verified Business Account</p>
-            </div>
-
-            <div class="content">
-                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px; text-align: center;">Please use the details below to complete your transaction.</p>
-
-                <div class="label" style="margin-bottom: 8px;"><i class="fas fa-mobile-alt"></i> M-PESA PAYBILL</div>
-                <div class="info-group">
-                    <div class="data-row">
-                        <span class="label">Business No.</span>
-                        <div><span class="value">880100</span> <button class="copy-btn" onclick="copy('880100')">COPY</button></div>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">Account No.</span>
-                        <div><span class="value">902232</span> <button class="copy-btn" onclick="copy('902232')">COPY</button></div>
-                    </div>
-                </div>
-
-                <div class="label" style="margin-bottom: 8px;"><i class="fas fa-university"></i> BANK TRANSFER</div>
-                <div class="info-group">
-                    <div class="data-row">
-                        <span class="label">Bank</span>
-                        <span class="value">Stanbic Bank</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">A/C Name</span>
-                        <span class="value">Timothy Wesonga</span>
-                    </div>
-                    <div class="data-row">
-                        <span class="label">A/C Number</span>
-                        <div><span class="value">0100012147346</span> <button class="copy-btn" onclick="copy('0100012147346')">COPY</button></div>
-                    </div>
-                </div>
-
-                <a href="https://wa.me/254708902232?text=I%20have%20sent%20payment%20for%20my%20invoice." class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Confirm Payment
-                </a>
-            </div>
-        </div>
+  <header>
+    <a href="index.html" class="brand">PRIME TECH <span>SOLUTIONS</span></a>
+    <div class="nav-container">
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="shop.html">Shop Laptops</a></li>
+          <li><a href="repair.html">Repair Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="Invoice.html" class="active">Invoice</a></li>
+        </ul>
     </div>
+  </header>
 
-    <div id="toast">Details copied to clipboard!</div>
+  <main class="payment-container">
+    <div class="payment-card">
+      <div class="payment-card-header">
+        <h2>Secure Payment Portal</h2>
+      </div>
+      
+      <div class="payment-body">
+        <div class="service-box">
+          <i class="fas fa-file-invoice-dollar" style="font-size: 24px; color: var(--berkeley-blue);"></i>
+          <div>
+            <div style="font-weight: bold; color: var(--berkeley-blue);">Service Settlement</div>
+            <div style="font-size: 12px; color: #666;">IT Support & Software Systems</div>
+          </div>
+        </div>
 
-    <script>
-        function copy(text) {
-            navigator.clipboard.writeText(text);
-            const toast = document.getElementById("toast");
-            toast.className = "show";
-            setTimeout(() => { toast.className = ""; }, 2000);
-        }
-    </script>
+        <div class="method-label"><i class="fas fa-mobile-alt" style="color: var(--mpesa-green);"></i> M-Pesa Paybill</div>
+        <div class="info-group">
+          <div class="data-row">
+            <span class="label">Business Number</span>
+            <div>
+              <span class="value">880100</span>
+              <button class="copy-btn" onclick="copy('880100')">COPY</button>
+            </div>
+          </div>
+          <div class="data-row">
+            <span class="label">Account Number</span>
+            <div>
+              <span class="value">902232</span>
+              <button class="copy-btn" onclick="copy('902232')">COPY</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="method-label"><i class="fas fa-university"></i> Bank Transfer (Stanbic)</div>
+        <div class="info-group">
+          <div class="data-row">
+            <span class="label">Account Name</span>
+            <span class="value">Timothy Wesonga</span>
+          </div>
+          <div class="data-row">
+            <span class="label">Account Number</span>
+            <div>
+              <span class="value">0100012147346</span>
+              <button class="copy-btn" onclick="copy('0100012147346')">COPY</button>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/254708902232?text=I%20have%20completed%20the%20payment%20for%20my%20Prime%20Tech%20invoice." class="whatsapp-btn">
+          <i class="fab fa-whatsapp"></i> Confirm Payment
+        </a>
+        <p style="text-align: center; font-size: 11px; color: #999; margin-top: 15px;">
+          <i class="fas fa-shield-alt"></i> Secure 256-bit encrypted transaction
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>Store Locator</li>
+          <li>Service Center</li>
+          <li>Campus Outreach</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li>News</li>
+          <li>Events</li>
+          <li>Jobs</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li>Warranty Policy</li>
+          <li>Privacy Policy</li>
+        </ul>
+      </div>
+      <div class="contact-info">
+        <h4 style="color: var(--berkeley-gold);">Prime Tech Solutions</h4>
+        <p>Nairobi, Kenya<br>
+        <strong>Tel:</strong> +254 708902232<br>
+        <strong>Email:</strong> wesongatimoth@gmail.com</p>
+      </div>
+    </div>
+    <p style="text-align: center; font-size: 11px; opacity: 0.6; margin-top: 30px;">© 2026 Prime Tech Solutions. Fast. Reliable. Genuine.</p>
+  </footer>
+
+  <div id="toast">Copied to clipboard!</div>
+
+  <script>
+    function copy(text) {
+      navigator.clipboard.writeText(text);
+      const toast = document.getElementById("toast");
+      toast.className = "show";
+      setTimeout(() => { toast.className = ""; }, 2000);
+    }
+  </script>
 </body>
 </html>
