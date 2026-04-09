@@ -10,12 +10,13 @@
     
     <style>
         :root {
-            --primary-bg: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.98);
+            --card-bg: rgba(255, 255, 255, 0.92); /* Increased transparency for Glassmorphism */
             --accent-blue: #2563eb;
             --mpesa-green: #10b981;
             --text-dark: #1e293b;
             --text-muted: #64748b;
+            /* Update this URL to your chosen professional image background */
+            --bg-image-url: url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
         }
 
         * {
@@ -27,46 +28,71 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at top right, #1e293b, #080c14);
-            background-attachment: fixed;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px; /* Ensures space on small screens */
+            padding: 15px;
             color: var(--text-dark);
+            position: relative;
+            overflow: hidden; /* Prevent scrolling background */
         }
 
-        /* Animated Tech Glows */
-        .glow {
+        /* --- Updated: Image Background & Dark Overlay --- */
+        body::before {
+            content: '';
             position: fixed;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Apply background image */
+            background-image: var(--bg-image-url);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -2; /* Background at the very bottom */
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Dark semi-transparent overlay to ensure text contrast */
+            background-color: rgba(15, 23, 42, 0.65); /* Navy-dark overlay */
+            z-index: -1; /* Above the image, below the card */
         }
 
         .payment-card {
             background: var(--card-bg);
             width: 100%;
             max-width: 480px;
-            border-radius: 24px;
+            border-radius: 28px; /* Slightly smoother corners */
             overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.5s ease-out;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle glass border */
+            
+            /* Glassmorphism blur effect */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); /* Safary support */
+            
+            animation: fadeInAndSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInAndSlide {
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .header {
-            background: #0f172a;
-            padding: 30px 20px;
+            background: rgba(15, 23, 42, 0.9); /* Transparent dark header */
+            padding: 35px 20px;
             text-align: center;
             color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
@@ -91,8 +117,8 @@
         }
 
         .service-info {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background: rgba(248, 250, 252, 0.8);
+            border: 1px solid rgba(226, 232, 240, 0.5);
             border-radius: 16px;
             padding: 15px;
             margin-bottom: 24px;
@@ -152,8 +178,8 @@
         .footer {
             padding: 20px;
             text-align: center;
-            background: #f8fafc;
-            border-top: 1px solid #f1f5f9;
+            background: rgba(248, 250, 252, 0.8);
+            border-top: 1px solid rgba(241, 245, 249, 0.5);
         }
 
         .whatsapp-btn {
@@ -206,9 +232,6 @@
     </style>
 </head>
 <body>
-
-<div class="glow" style="top: 10%; right: 10%;"></div>
-<div class="glow" style="bottom: 10%; left: 10%;"></div>
 
 <div class="payment-card">
     <div class="header">
