@@ -221,6 +221,7 @@
             text-align: center;
             margin-top: 30px;
         }
+        
 
         .btn {
             display: inline-block;
@@ -233,7 +234,37 @@
             border: none;
             transition: 0.3s;
         }
+/* Signature Container must be relative for the stamp to float */
+.signature-container {
+    text-align: center;
+    width: 220px;
+    position: relative; /* Crucial for placement */
+}
 
+/* The Stamp Styling */
+.stamp-container {
+    position: absolute;
+    top: -20px; /* Adjust this to move it up or down */
+    right: 10px; /* Adjust this to move it left or right */
+    opacity: 0.15; /* Makes it look like a faint ink stamp */
+    transform: rotate(-15deg); /* Tilts the stamp */
+    pointer-events: none; /* Allows you to click "through" it */
+    z-index: 0;
+}
+
+.stamp-image {
+    width: 80px; /* Adjust size of the stamp */
+    height: auto;
+    filter: grayscale(1) contrast(1.5); /* Makes it look like black ink */
+}
+
+/* Ensure stamp prints correctly */
+@media print {
+    .stamp-container {
+        -webkit-print-color-adjust: exact;
+        opacity: 0.2;
+    }
+}
         .btn-print { background-color: #222; color: #fff; }
         .btn-home { background-color: #eee; color: #222; }
 
