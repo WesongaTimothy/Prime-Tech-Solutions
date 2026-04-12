@@ -3,31 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Receipt - PRIME TECH SOLUTIONS</title>
+    <title>E-Receipt | Prime Tech Solutions Kenya</title>
     <link rel="canonical" href="https://www.primetechsolutions.co.ke/">
     <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
-    <meta name="description" content="Official electronic receipt from Prime Tech Solutions. Your trusted partner for IT services and hardware in Nairobi.">
-    <meta property="og:title" content="E-Receipt - Prime Tech Solutions">
-    <meta property="og:image" content="https://www.primetechsolutions.co.ke/Logo1.jpg">
-    <meta name="robots" content="noindex"> <link rel="icon" href="Logo1.jpg" type="image/jpeg">
-    <link rel="icon" href="Logo1.jpg" type="image/jpg">
-<link rel="apple-touch-icon" href="Logo1.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <meta name="description" content="Official electronic receipt from Prime Tech Solutions. Your trusted partner for IT services in Nairobi.">
+    <meta name="robots" content="noindex"> 
+    <link rel="icon" href="Logo1.jpg" type="image/jpeg">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Prime Tech Solutions",
-  "url": "https://www.primetechsolutions.co.ke/",
-  "logo": "https://www.primetechsolutions.co.ke/Logo.jpg",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://www.primetechsolutions.co.ke/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
     <style>
+        :root {
+            --berkeley-blue: #003262;
+            --berkeley-gold: #FDB515;
+            --white: #ffffff;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.9)), 
@@ -35,13 +26,36 @@
             background-size: cover;
             background-attachment: fixed;
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
             color: #222;
         }
 
+        /* --- TOP UTILITY BAR --- */
+        .utility-nav {
+            background: var(--berkeley-blue);
+            padding: 10px 10%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            font-size: 12px;
+        }
+        .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
+
+        /* --- MAIN HEADER --- */
+        header { background: var(--white); text-align: center; padding-top: 30px; }
+        .brand { font-size: 36px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 20px; }
+        .brand span { color: var(--berkeley-gold); }
+        
+        .nav-container { border-bottom: 4px solid var(--berkeley-gold); background: var(--white); display: flex; justify-content: center; }
+        .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 15px 0; }
+        .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
+        .main-nav a.active { color: var(--berkeley-gold); border-bottom: 2px solid var(--berkeley-gold); padding-bottom: 5px; }
+
+        /* --- RECEIPT CONTAINER --- */
         .receipt-container {
             max-width: 650px;
-            margin: auto;
+            margin: 40px auto;
             background: #ffffff;
             padding: 40px;
             border-radius: 8px;
@@ -50,212 +64,129 @@
             overflow: hidden;
         }
 
-        /* Security Watermark in Light Grey */
-        .receipt-container::before {
-            content: "PRIME TECH SOLUTIONS | KENYA'S PREMIER IT";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 32px;
-            font-weight: 800;
-            color: rgba(0, 0, 0, 0.03);
-            white-space: nowrap;
-            pointer-events: none;
-            z-index: 0;
-            width: 150%;
-            text-align: center;
-        }
+        .receipt-logo { text-align: center; margin-bottom: 10px; }
+        .receipt-logo img { max-height: 70px; width: auto; }
 
-        .header {
+        .receipt-header {
             text-align: center;
             border-bottom: 2px solid #222;
             padding-bottom: 20px;
             margin-bottom: 25px;
-            position: relative;
-            z-index: 1;
         }
-
-        .header h1 {
-            margin: 0;
-            color: #000;
-            letter-spacing: 1px;
-            font-size: 26px;
-            font-weight: 800;
-        }
-
-        .header p {
-            margin: 4px 0;
-            font-size: 13px;
-            color: #555;
-        }
-
-        .receipt-details {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            font-size: 14px;
-            position: relative;
-            z-index: 1;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Cream Block for Header */
-        table th {
-            background-color: #fdf5e6; /* Cream */
-            color: #222;
-            padding: 12px;
-            text-align: left;
-            text-transform: uppercase;
-            font-size: 12px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        table td {
-            padding: 14px 12px;
-            border-bottom: 1px solid #eee;
-            font-size: 14px;
-        }
-
-        .total-section {
-            text-align: right;
-            margin-bottom: 35px;
-            position: relative;
-            z-index: 1;
-            padding: 20px;
-            background-color: #fdf5e6; /* Cream Block */
-            border-radius: 4px;
-        }
-
-        .total-amount {
-            font-size: 16px;
-            font-weight: 800;
-            color: #000;
-            margin-top: 8px;
-        }
-
-        .auth-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-top: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .qr-code {
-            text-align: center;
-            font-size: 10px;
-            color: #888;
-        }
-
-        .qr-code img {
-            width: 75px;
-            height: 75px;
-            margin-bottom: 4px;
-            filter: grayscale(1);
-        }
-
-        .signature-container {
-            text-align: center;
-            width: 220px;
-        }
-
-        .digital-signature {
-            font-family: 'Cedarville Cursive', cursive;
-            font-size: 18px;
-            color: #222; /* Black Signature */
-            margin-bottom: -5px;
-            display: block;
-        }
-
-        .signature-line {
-            border-top: 1.5px solid #222;
-            padding-top: 5px;
-            font-size: 11px;
-            font-weight: 700;
-            color: #222;
-            text-transform: uppercase;
-        }
-
-        /* Cream Block for Notes */
-        .notes {
-            font-size: 11px;
-            color: #444;
-            background: #fdf5e6; 
-            padding: 15px;
-            border-radius: 4px;
-            border-left: 5px solid #222;
-            margin-top: 30px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 12px;
-            color: #000;
-            font-weight: 800;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 1;
-        }
-
-        .actions {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            margin: 5px;
-            border-radius: 4px;
+        .receipt-header h1 { margin: 0; font-size: 26px; font-weight: 800; }
+        .receipt-header p { margin: 4px 0; font-size: 13px; color: #555; }
+        .receipt-url { 
+            display: block; 
+            margin-top: 8px; 
+            font-weight: 800; 
+            color: var(--berkeley-blue); 
             text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-            transition: 0.3s;
+            font-size: 14px;
         }
 
-        .btn-print { background-color: #222; color: #fff; }
-        .btn-home { background-color: #eee; color: #222; }
+        .receipt-details { display: flex; justify-content: space-between; margin-bottom: 30px; font-size: 14px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+        table th { background-color: #fdf5e6; padding: 12px; text-align: left; font-size: 12px; text-transform: uppercase; }
+        table td { padding: 14px 12px; border-bottom: 1px solid #eee; font-size: 14px; }
+
+        .total-section { text-align: right; padding: 20px; background-color: #fdf5e6; border-radius: 4px; margin-bottom: 35px; }
+        .total-amount { font-size: 18px; font-weight: 800; margin-top: 5px; }
+
+        .auth-row { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px; }
+        .qr-code { text-align: center; font-size: 10px; color: #888; }
+        .qr-code img { width: 70px; filter: grayscale(1); }
+
+        .signature-container { text-align: center; width: 220px; position: relative; }
+        .stamp-container { position: absolute; top: -25px; right: 20px; opacity: 0.12; transform: rotate(0deg); pointer-events: none; z-index: 0; }
+        .stamp-image { width: 90px; filter: grayscale(1); }
+
+        .digital-signature { font-family: 'Cedarville Cursive', cursive; font-size: 20px; position: relative; z-index: 1; }
+        .signature-line { border-top: 1.5px solid #222; padding-top: 5px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+        .notes { font-size: 11px; background: #fdf5e6; padding: 15px; border-left: 5px solid #222; margin-top: 30px; }
+
+        /* Receipt-specific Footer inside container */
+        .receipt-footer-box {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #000;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .actions { text-align: center; margin: 30px 0; }
+        .btn { padding: 12px 24px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; margin: 5px; transition: 0.3s; }
+        .btn-print { background: #222; color: #fff; }
+        .btn-home { background: #eee; color: #222; }
+
+        /* --- MAIN SITE FOOTER --- */
+        footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; }
+        footer h4 { color: #fff; text-transform: uppercase; font-size: 12px; border-bottom: 2px solid var(--berkeley-gold); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; }
+        footer ul { list-style: none; padding: 0; margin: 0; }
+        footer li { margin-bottom: 10px; font-size: 13px; }
+        footer a { color: #ccc; text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--berkeley-gold); }
+
+        @media (max-width: 768px) {
+            .main-nav { gap: 15px; flex-wrap: wrap; }
+            .brand { font-size: 28px; }
+            .receipt-container { margin: 20px; padding: 20px; }
+        }
 
         @media print {
             body { background: none; padding: 0; }
-            .receipt-container { box-shadow: none; border: 1px solid #ddd; width: 100%; }
-            .actions { display: none; }
-            .total-section, .notes, table th { background-color: #fdf5e6 !important; -webkit-print-color-adjust: exact; }
+            header, footer, .utility-nav, .actions { display: none; }
+            .receipt-container { box-shadow: none; border: 1px solid #ddd; margin: 0 auto; }
+            .receipt-url { color: #000 !important; } /* Ensure black text for printing */
         }
     </style>
 </head>
 <body>
 
-<div class="receipt-container">
-    <div class="header">
+  <div class="utility-nav">
+    <a href="#">Corporate Sales</a>
+    <a href="#">Technical Support</a>
+    <a href="https://www.google.com/maps?q=Platinum+Plaza+Nairobi" target="_blank" style="color: var(--berkeley-gold)">
+      <i class="fas fa-map-marker-alt"></i> Platinum Plaza, Nairobi</a>
+  </div>
+
+  <header>
+    <a href="index.html" class="brand">PRIME TECH <span>SOLUTIONS</span></a>
+    <div class="nav-container">
+      <ul class="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="shop.html">Shop Laptops</a></li>
+        <li><a href="repair.html" class="active">Repair Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="Invoice.html">Invoice</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="receipt-container">
+    <div class="receipt-logo">
+        <img src="Logo1.jpg" alt="Logo">
+    </div>
+
+    <div class="receipt-header">
         <h1>PRIME TECH SOLUTIONS</h1>
-        <p>Old Nation House, Tom Mboya Street, Nairobi</p>
-        <p>Email: wesongatimoth@gmail.com | Tel: 0708902232 </p>
+        <p>Platinum Plaza, Nairobi, Kenya</p>
+        <p>Email: wesongatimoth@gmail.com | Tel: +254 708 902 232</p>
+        <a href="https://www.primetechsolutions.co.ke" class="receipt-url" target="_blank">www.primetechsolutions.co.ke</a>
     </div>
 
     <div class="receipt-details">
         <div>
             <p><strong>CUSTOMER:</strong> Felix Obuya</p>
             <p><strong>SERVED BY:</strong> Wesonga Timothy</p>
-            <p><strong>PAYMENT:</strong> M-PESA:UCB68984P6</p>
         </div>
         <div style="text-align: right;">
             <p><strong>RECEIPT #:</strong> OCTM-280312-0</p>
             <p><strong>DATE:</strong> 12/03/2026</p>
-            <p><strong>TIME:</strong> 06:37 PM</p>
         </div>
     </div>
 
@@ -269,35 +200,32 @@
         </thead>
         <tbody>
             <tr>
-                <td>HP P27VU G4 (SN: 1CR14115XX)</td>
+                <td>HP P27VU G4 Monitor</td>
                 <td>1</td>
                 <td style="text-align: right;">13,499.00</td>
             </tr>
             <tr>
-                <td>HP 705 G4 (SN: MXL8294SVY)</td>
+                <td>HP 705 G4 Desktop</td>
                 <td>1</td>
                 <td style="text-align: right;">24,000.00</td>
-            </tr>
-            <tr>
-                <td>DISPLAY 2 HDMI CABLE</td>
-                <td>1</td>
-                <td style="text-align: right;">501.00</td>
             </tr>
         </tbody>
     </table>
 
     <div class="total-section">
-        <p style="margin: 0; font-size: 12px;">Subtotal: KES 38,000.00</p>
-        <div class="total-amount">TOTAL: KES 38,000.00</div>
+        <div class="total-amount">TOTAL: KES 37,499.00</div>
     </div>
 
     <div class="auth-row">
         <div class="qr-code">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=VERIFIED-PTS-280312-0" alt="QR Verify">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=VERIFIED-PTS-280312-0" alt="QR">
             <p>SCAN TO VERIFY</p>
         </div>
         
         <div class="signature-container">
+            <div class="stamp-container">
+                <img src="Logo1.jpg" alt="Stamp" class="stamp-image">
+            </div>
             <span class="digital-signature">WesongaTimothy</span>
             <div class="signature-line">Authorised Signature</div>
         </div>
@@ -305,22 +233,62 @@
 
     <div class="notes">
         <p><strong>WARRANTY & TERMS:</strong></p>
-        <ul style="padding-left: 18px; margin: 5px 0;">
-            <li>12 months warranty for new / 6 months for refurbished equipment.</li>
-            <li>Physical damage, power surges, and software are not covered.</li>
-            <li>Valid receipt required for all warranty claims.</li>
+        <p>12 months warranty for new / 6 months for refurbished equipment. Valid receipt required for claims.</p>
+    </div>
+
+    <div class="receipt-footer-box" style="text-align: center; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+    <div style="margin-bottom: 8px; font-size: 11px; letter-spacing: 0.5px; font-weight: 800;">
+        SHOP ONLINE: 
+        <a href="https://www.primetechsolutions.co.ke" target="_blank" style="color: #003262; text-decoration: none;">
+            WWW.PRIMETECHSOLUTIONS.CO.KE </a>
+    </div>
+    <div style="font-size: 10px; color: #222; font-weight: 700; text-transform: uppercase;">
+        THANK YOU FOR CHOOSING PRIME TECH SOLUTIONS | Kenya's Premier IT Partner
+    </div>
+</div>
+
+  <div class="actions">
+      <button onclick="window.print()" class="btn btn-print">Print / Save as PDF</button>
+      <a href="index.html" class="btn btn-home">Return Home</a>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="#">Platinum Plaza, Nairobi</a></li>
+          <li><a href="repair.html">Service Center</a></li>
+          <li><a href="index.html">Main Store</a></li>
         </ul>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="shop.html">Laptops</a></li>
+          <li><a href="Invoice.html">Invoicing</a></li>
+          <li><a href="contact.html">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Opening Hours</h4>
+        <ul>
+          <li>Mon - Sun: 8:00 AM - 8:00 PM</li>
+          <li>Holidays: 10:00 AM - 4:00 PM</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>
+          <strong>Tel:</strong> <a href="tel:+254708902232">+254 708 902 232</a><br>
+          <strong>Email:</strong> <a href="mailto:wesongatimoth@gmail.com">wesongatimoth@gmail.com</a>
+        </p>
+      </div>
     </div>
-
-    <div class="footer">
-        THANK YOU FOR CHOOSING PRIME TECH SOLUTIONS| Kenya's Premier IT Partner
-    </div>
-</div>
-
-<div class="actions">
-    <button onclick="window.print()" class="btn btn-print">Print / Save as PDF</button>
-    <a href="index.html" class="btn btn-home">Return Home</a>
-</div>
+    <p style="text-align: center; font-size: 11px; opacity: 0.6; margin-top: 30px;">
+      © 2026 Prime Tech Solutions. Fast. Reliable. Genuine.
+    </p>
+  </footer>
 
 </body>
 </html>
