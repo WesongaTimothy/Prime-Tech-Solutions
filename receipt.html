@@ -6,12 +6,19 @@
     <title>E-Receipt | Prime Tech Solutions Kenya</title>
     <link rel="canonical" href="https://www.primetechsolutions.co.ke/">
     <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <meta name="description" content="Official electronic receipt from Prime Tech Solutions. Your trusted partner for IT services in Nairobi.">
     <meta name="robots" content="noindex"> 
     <link rel="icon" href="Logo1.jpg" type="image/jpeg">
 
     <style>
+        :root {
+            --berkeley-blue: #003262;
+            --berkeley-gold: #FDB515;
+            --white: #ffffff;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.9)), 
@@ -19,34 +26,36 @@
             background-size: cover;
             background-attachment: fixed;
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
             color: #222;
         }
-  /* --- TOP UTILITY BAR --- */
-    .utility-nav {
-      background: var(--berkeley-blue);
-      padding: 10px 10%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 20px;
-      font-size: 12px;
-    }
-    .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
 
-    /* --- MAIN HEADER --- */
-    header { background: var(--white); text-align: center; padding-top: 30px; }
-    .brand { font-size: 36px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 20px; }
-    .brand span { color: var(--berkeley-gold); }
-    
-    .nav-container { border-bottom: 4px solid var(--berkeley-gold); background: var(--white); display: flex; justify-content: center; }
-    .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 15px 0; }
-    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
-    .main-nav a.active { color: var(--berkeley-gold); border-bottom: 2px solid var(--berkeley-gold); padding-bottom: 5px; }
+        /* --- TOP UTILITY BAR --- */
+        .utility-nav {
+            background: var(--berkeley-blue);
+            padding: 10px 10%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            font-size: 12px;
+        }
+        .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
+
+        /* --- MAIN HEADER --- */
+        header { background: var(--white); text-align: center; padding-top: 30px; }
+        .brand { font-size: 36px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 20px; }
+        .brand span { color: var(--berkeley-gold); }
         
+        .nav-container { border-bottom: 4px solid var(--berkeley-gold); background: var(--white); display: flex; justify-content: center; }
+        .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 15px 0; }
+        .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
+        .main-nav a.active { color: var(--berkeley-gold); border-bottom: 2px solid var(--berkeley-gold); padding-bottom: 5px; }
+
+        /* --- RECEIPT CONTAINER --- */
         .receipt-container {
             max-width: 650px;
-            margin: auto;
+            margin: 40px auto;
             background: #ffffff;
             padding: 40px;
             border-radius: 8px;
@@ -55,159 +64,74 @@
             overflow: hidden;
         }
 
-        /* Top Logo Styling */
-        .receipt-logo {
-            text-align: center;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-        .receipt-logo img {
-            max-height: 70px;
-            width: auto;
-        }
+        .receipt-logo { text-align: center; margin-bottom: 10px; }
+        .receipt-logo img { max-height: 70px; width: auto; }
 
-        /* Header / Address Section */
-        .header {
+        .receipt-header {
             text-align: center;
             border-bottom: 2px solid #222;
             padding-bottom: 20px;
             margin-bottom: 25px;
-            position: relative;
-            z-index: 1;
         }
-        .header h1 {
-            margin: 0;
-            font-size: 26px;
-            font-weight: 800;
-        }
-        .header p {
-            margin: 4px 0;
-            font-size: 13px;
-            color: #555;
-        }
+        .receipt-header h1 { margin: 0; font-size: 26px; font-weight: 800; }
+        .receipt-header p { margin: 4px 0; font-size: 13px; color: #555; }
 
-        /* Table & Details */
-        .receipt-details {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 25px;
-        }
-        table th {
-            background-color: #fdf5e6;
-            padding: 12px;
-            text-align: left;
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-        table td {
-            padding: 14px 12px;
-            border-bottom: 1px solid #eee;
-            font-size: 14px;
-        }
+        .receipt-details { display: flex; justify-content: space-between; margin-bottom: 30px; font-size: 14px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+        table th { background-color: #fdf5e6; padding: 12px; text-align: left; font-size: 12px; text-transform: uppercase; }
+        table td { padding: 14px 12px; border-bottom: 1px solid #eee; font-size: 14px; }
 
-        /* Total Section */
-        .total-section {
-            text-align: right;
-            padding: 20px;
-            background-color: #fdf5e6;
-            border-radius: 4px;
-            margin-bottom: 35px;
-        }
-        .total-amount {
-            font-size: 18px;
-            font-weight: 800;
-            margin-top: 5px;
-        }
+        .total-section { text-align: right; padding: 20px; background-color: #fdf5e6; border-radius: 4px; margin-bottom: 35px; }
+        .total-amount { font-size: 18px; font-weight: 800; margin-top: 5px; }
 
-        /* Auth Row & Signature Stamp Area */
-        .auth-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-top: 20px;
-        }
+        .auth-row { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px; }
         .qr-code { text-align: center; font-size: 10px; color: #888; }
         .qr-code img { width: 70px; filter: grayscale(1); }
 
-        .signature-container {
-            text-align: center;
-            width: 220px;
-            position: relative;
-        }
-        /* THE STAMP */
-        .stamp-container {
-            position: absolute;
-            top: -25px;
-            right: 20px;
-            opacity: 0.12; /* Subtle ink look */
-            transform: rotate(0deg);
-            pointer-events: none;
-            z-index: 0;
-        }
+        .signature-container { text-align: center; width: 220px; position: relative; }
+        .stamp-container { position: absolute; top: -25px; right: 20px; opacity: 0.12; transform: rotate(0deg); pointer-events: none; z-index: 0; }
         .stamp-image { width: 90px; filter: grayscale(1); }
 
-        .digital-signature {
-            font-family: 'Cedarville Cursive', cursive;
-            font-size: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        .signature-line {
-            border-top: 1.5px solid #222;
-            padding-top: 5px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
+        .digital-signature { font-family: 'Cedarville Cursive', cursive; font-size: 20px; position: relative; z-index: 1; }
+        .signature-line { border-top: 1.5px solid #222; padding-top: 5px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
 
-        .notes {
-            font-size: 11px;
-            background: #fdf5e6;
-            padding: 15px;
-            border-left: 5px solid #222;
-            margin-top: 30px;
-        }
+        .notes { font-size: 11px; background: #fdf5e6; padding: 15px; border-left: 5px solid #222; margin-top: 30px; }
 
-        .actions { text-align: center; margin-top: 30px; }
-        .btn { padding: 12px 24px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; margin: 5px;}
+        .actions { text-align: center; margin: 30px 0; }
+        .btn { padding: 12px 24px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; margin: 5px; transition: 0.3s; }
         .btn-print { background: #222; color: #fff; }
         .btn-home { background: #eee; color: #222; }
 
+        /* --- FOOTER --- */
+        footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; }
+        footer h4 { color: #fff; text-transform: uppercase; font-size: 12px; border-bottom: 2px solid var(--berkeley-gold); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; }
+        footer ul { list-style: none; padding: 0; margin: 0; }
+        footer li { margin-bottom: 10px; font-size: 13px; }
+        footer a { color: #ccc; text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--berkeley-gold); }
+
+        @media (max-width: 768px) {
+            .main-nav { gap: 15px; flex-wrap: wrap; }
+            .brand { font-size: 28px; }
+            .receipt-container { margin: 20px; padding: 20px; }
+        }
+
         @media print {
             body { background: none; padding: 0; }
-            .actions { display: none; }
-            .receipt-container { box-shadow: none; border: 1px solid #ddd; }
+            header, footer, .utility-nav, .actions { display: none; }
+            .receipt-container { box-shadow: none; border: 1px solid #ddd; margin: 0 auto; }
         }
     </style>
-     /* --- FOOTER --- */
-    footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 80px; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; }
-    footer h4 { color: #fff; text-transform: uppercase; font-size: 12px; border-bottom: 2px solid var(--berkeley-gold); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; }
-    footer ul { list-style: none; padding: 0; margin: 0; }
-    footer li { margin-bottom: 10px; font-size: 13px; }
-    footer a { color: #ccc; text-decoration: none; transition: 0.3s; }
-    footer a:hover { color: var(--berkeley-gold); }
-
-    @media (max-width: 768px) {
-      .main-nav { gap: 15px; flex-wrap: wrap; }
-      .brand { font-size: 28px; }
-      .section { padding: 40px 5%; }
-    }
-  </style>
 </head>
 <body>
-      <div class="utility-nav">
+
+  <div class="utility-nav">
     <a href="#">Corporate Sales</a>
     <a href="#">Technical Support</a>
-   <a href="https://maps.app.goo.gl/4eTt5YdxNzWcNmqG6" target="_blank" style="color: var(--berkeley-gold)">
-      <i class="fas fa-map-marker-alt"></i> Find us at Platinum Plaza</a>
+    <a href="https://maps.google.com" target="_blank" style="color: var(--berkeley-gold)">
+      <i class="fas fa-map-marker-alt"></i> Platinum Plaza, Nairobi</a>
   </div>
 
   <header>
@@ -215,7 +139,7 @@
     <div class="nav-container">
       <ul class="main-nav">
         <li><a href="index.html">Home</a></li>
-         <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html">About Us</a></li>
         <li><a href="shop.html">Shop Laptops</a></li>
         <li><a href="repair.html" class="active">Repair Services</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -224,12 +148,12 @@
     </div>
   </header>
 
-<div class="receipt-container">
+  <div class="receipt-container">
     <div class="receipt-logo">
         <img src="Logo1.jpg" alt="Logo">
     </div>
 
-    <div class="header">
+    <div class="receipt-header">
         <h1>PRIME TECH SOLUTIONS</h1>
         <p>Platinum Plaza, Nairobi, Kenya</p>
         <p>Email: wesongatimoth@gmail.com | Tel: +254 708 902 232</p>
@@ -291,36 +215,35 @@
         <p><strong>WARRANTY & TERMS:</strong></p>
         <p>12 months warranty for new / 6 months for refurbished equipment. Valid receipt required for claims.</p>
     </div>
-</div>
+  </div>
 
-<div class="actions">
-    <button onclick="window.print()" class="btn btn-print">Print / Save as PDF</button>
-    <a href="index.html" class="btn btn-home">Return Home</a>
-</div>
+  <div class="actions">
+      <button onclick="window.print()" class="btn btn-print">Print / Save as PDF</button>
+      <a href="index.html" class="btn btn-home">Return Home</a>
+  </div>
 
   <footer>
     <div class="footer-grid">
       <div>
         <h4>Visit</h4>
         <ul>
-          <li><a href="https://maps.app.goo.gl/4eTt5YdxNzWcNmqG6" target="_blank">Store Locator</a></li>
+          <li><a href="#">Platinum Plaza, Nairobi</a></li>
           <li><a href="repair.html">Service Center</a></li>
-          <li><a href="#">Campus Outreach</a></li>
+          <li><a href="index.html">Main Store</a></li>
         </ul>
       </div>
       <div>
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="#">News & Updates</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#">Jobs</a></li>
+          <li><a href="shop.html">Laptops</a></li>
+          <li><a href="Invoice.html">Invoicing</a></li>
+          <li><a href="contact.html">Support</a></li>
         </ul>
       </div>
       <div>
         <h4>Opening Hours</h4>
         <ul>
-          <li>Mon - Sat: 8:00 AM - 7:00 PM</li>
-          <li>Sunday: Closed</li>
+          <li>Mon - Sun: 8:00 AM - 8:00 PM</li>
           <li>Holidays: 10:00 AM - 4:00 PM</li>
         </ul>
       </div>
