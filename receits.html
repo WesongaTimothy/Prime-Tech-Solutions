@@ -152,29 +152,6 @@
         footer a { color: #ccc; text-decoration: none; transition: 0.3s; }
         footer a:hover { color: var(--berkeley-gold); }
 
-        /* --- WATERMARK PLACEMENT --- */
-.watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-30deg);
-    font-size: 32px;
-    font-weight: 800;
-    color: rgba(0, 50, 98, 0.05); /* This makes it very faint */
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 0;
-    text-align: center;
-    width: 100%;
-    line-height: 1.2;
-    text-transform: uppercase;
-}
-
-.receipt-container {
-    position: relative; /* This allows the watermark to center inside the box */
-    z-index: 1;
-}
-
         @media (max-width: 768px) {
             .main-nav { gap: 15px; flex-wrap: wrap; }
             .brand { font-size: 28px; }
@@ -212,13 +189,7 @@
     </div>
   </header>
 
-    <div class="receipt-container">
-    <div class="watermark">
-        PRIME TECH SOLUTIONS <br>
-        <span style="font-size: 18px;">Kenya's Premier IT Partner</span>
-    </div>
-
-  <div class="receipt-container">
+ <div class="receipt-container">
     <div class="receipt-logo">
         <img src="Logo1.jpg" alt="Logo">
     </div>
