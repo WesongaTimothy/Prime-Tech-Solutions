@@ -115,46 +115,54 @@
     .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
 
     /* --- MAIN HEADER --- */
-    /* --- RECTIFIED HEADER STYLES --- */
-header {
+ header {
     background: var(--white);
-    padding-top: 20px;
+    padding: 20px 0 0 0;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; /* Aligns logos with the bottom of the nav bar */
+    align-items: center; /* Keeps logos vertically centered relative to the whole header */
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 5%;
 }
 
 .header-center {
-    flex-grow: 1;
-    text-align: center;
-}
-
-/* This is the yellow line fix */
-.nav-container {
-    border-bottom: 4px solid var(--berkeley-gold); 
-    padding-bottom: 15px;
-    margin-top: 15px;
-    width: 100%;
     display: flex;
-    justify-content: center;
-}
-
-.header-logo img {
-    max-height: 85px; /* Matches your Platinum Plaza professional branding */
-    width: auto;
-    margin-bottom: 5px; /* Lifts logo slightly off the yellow line */
+    flex-direction: column; /* This puts Brand on line 1 and Nav on line 2 */
+    align-items: center;
+    flex-grow: 1;
 }
 
 .brand {
     font-size: 32px;
     font-weight: 800;
-    margin-bottom: 5px;
+    text-decoration: none;
+    color: var(--berkeley-blue);
+    margin-bottom: 10px; /* Space between brand and the yellow line */
+    display: block;
+}
+
+.nav-container {
+    border-top: 4px solid var(--berkeley-gold); /* The gold line is now above the nav */
+    padding-top: 15px;
+    width: 100%;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-logo img {
+    max-height: 80px;
+    width: auto;
 }
     .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); letter-spacing: -1px; display: block; margin-bottom: 15px; }
     .brand span { color: var(--berkeley-gold); }
