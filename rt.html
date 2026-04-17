@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Naivas Receipt - Exact Replica</title>
+    <title>Naivas Receipt - Dotted Style</title>
     <style>
         body {
             background-color: #e0e0e0;
@@ -30,7 +30,8 @@
         .header h1 { font-size: 18px; margin: 0; }
         .header p { margin: 2px 0; font-size: 11px; }
 
-        .divider { border-top: 1px dashed #000; margin: 10px 0; }
+        /* Changed to dotted line */
+        .divider { border-top: 1px dotted #000; margin: 10px 0; }
 
         .barcode {
             margin: 15px 0;
@@ -42,9 +43,10 @@
         }
 
         table { width: 100%; border-collapse: collapse; margin-top: 5px; }
-        th { border-bottom: 1px solid #000; text-align: left; font-size: 11px; padding-bottom: 3px; }
         
-        /* Adjusted padding and alignment for better item spacing */
+        /* Changed header line to dotted */
+        th { border-bottom: 1px dotted #000; text-align: left; font-size: 11px; padding-bottom: 3px; }
+        
         td { 
             padding: 6px 0; 
             vertical-align: top; 
@@ -52,13 +54,16 @@
         
         .right { text-align: right; white-space: nowrap; padding-left: 5px; }
 
-        .totals { margin-top: 10px; border-top: 1px solid #000; padding-top: 8px; }
+        /* Changed totals section top line to dotted */
+        .totals { margin-top: 10px; border-top: 1px dotted #000; padding-top: 8px; }
         .totals-row { display: flex; justify-content: space-between; margin-bottom: 3px; }
+        
+        /* Changed grand total borders to dotted */
         .grand-total { 
             font-size: 14px; 
             font-weight: bold; 
-            border-top: 1px double #000; 
-            border-bottom: 1px double #000; 
+            border-top: 1px dotted #000; 
+            border-bottom: 1px dotted #000; 
             padding: 4px 0; 
             margin-top: 7px; 
         }
@@ -161,4 +166,3 @@
 
 </body>
 </html>
-```
