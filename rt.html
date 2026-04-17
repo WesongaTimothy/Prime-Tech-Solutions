@@ -1,65 +1,163 @@
-from weasyprint import HTML
-
-# 1. Define the HTML structure and CSS styling
-html_content = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Naivas Receipt - Exact Replica</title>
     <style>
-        @page { size: A4; margin: 20mm; }
-        body { font-family: 'Courier New', Courier, monospace; color: #333; }
-        .receipt-box { max-width: 400px; margin: 0 auto; border: 1px solid #eee; padding: 20px; }
-        .header { text-align: center; border-bottom: 1px dashed #ccc; padding-bottom: 15px; }
-        .header h1 { font-size: 16pt; margin: 0; text-transform: uppercase; }
-        .meta-info { font-size: 9pt; margin: 15px 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        table { width: 100%; border-collapse: collapse; font-size: 9pt; }
-        th { text-align: left; border-bottom: 1px solid #333; }
-        td { padding: 5pt 0; }
-        .text-right { text-align: right; }
-        .discount-text { color: #d00; font-style: italic; font-size: 8pt; }
-        .totals-section { border-top: 1px dashed #333; margin-top: 10px; font-size: 10pt; }
-        .grand-total { font-weight: bold; font-size: 13pt; border-top: 1pt solid #333; margin-top: 10px; padding: 5pt 0; }
+        body {
+            background-color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Slim thermal paper styling */
+        .receipt {
+            background-color: #fff;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            color: #000;
+            font-size: 12px;
+            line-height: 1.2;
+        }
+
+        .center { text-align: center; }
+        .bold { font-weight: bold; }
+        
+        .header h1 { font-size: 18px; margin: 0; }
+        .header p { margin: 2px 0; font-size: 11px; }
+
+        .divider { border-top: 1px dashed #000; margin: 10px 0; }
+
+        /* Barcode Styling */
+        .barcode {
+            margin: 15px 0;
+            text-align: center;
+        }
+        .barcode img {
+            width: 100%;
+            height: 50px;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 5px; }
+        th { border-bottom: 1px solid #000; text-align: left; font-size: 11px; padding-bottom: 3px; }
+        td { padding: 4px 0; vertical-align: top; }
+        .right { text-align: right; white-space: nowrap; }
+
+        .totals { margin-top: 10px; border-top: 1px solid #000; padding-top: 8px; }
+        .totals-row { display: flex; justify-content: space-between; margin-bottom: 3px; }
+        .grand-total { 
+            font-size: 16px; 
+            font-weight: bold; 
+            border-top: 1px double #000; 
+            border-bottom: 1px double #000; 
+            padding: 5px 0; 
+            margin-top: 8px; 
+        }
+
+        .actions { margin-top: 30px; display: flex; gap: 10px; }
+        .btn {
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-family: sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-print { background-color: #28a745; color: white; }
+        .btn-home { background-color: #007bff; color: white; }
+        
+        @media print {
+            body { background: none; padding: 0; }
+            .receipt { box-shadow: none; width: 100%; padding: 0; }
+            .actions { display: none; }
+        }
     </style>
 </head>
 <body>
-    <div class="receipt-box">
-        <div class="header">
-            <h1>Naivas Limited</h1>
-            <p>P.O Box 61600 - 00100 Nairobi<br>VAT #: 0109300U | PIN: P051123223G</p>
-        </div>
 
-        <div class="meta-info">
-            <div>Receipt No: 1244-06100053729</div>
-            <div>Date/Time: 02 Apr 2026 09:32:14</div>
-            <div>Store: WOOD AVENUE KILIMANI</div>
-        </div>
+<div class="receipt">
+    <div class="header center">
+        <h1>NAIVAS LIMITED</h1>
+        <p>P.O BOX 61600 - 00100 NAIROBI</p>
+        <p>TELEPHONE NO: </p>
+        <p>VAT # : 0109300U</p>
+        <p>PIN : P051123223G</p>
+        <p class="bold" style="margin-top:10px;">START OF FISCAL RECEIPT</p>
+    </div>
 
-        <table>
-            <thead>
-                <tr><th>ITEM</th><th class="text-right">QTY</th><th class="text-right">AMT</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>KERICHO GOLD TEA BAGS</td><td class="text-right">1</td><td class="text-right">105.00</td></tr>
-                <tr><td>MACCOFFEE CLASSIC 1.6G</td><td class="text-right">6</td><td class="text-right">60.00</td></tr>
-                <tr><td>TOILEX TISSUE 10PK</td><td class="text-right">1</td><td class="text-right">295.00</td></tr>
-                <tr class="discount-text"><td colspan="2">CHANDARIA OFFER</td><td class="text-right">-45.00</td></tr>
-            </tbody>
-        </table>
+    <div class="divider"></div>
 
-        <div class="totals-section">
-            <div style="display:flex; justify-content:space-between;"><span>Subtotal:</span><span>372.24</span></div>
-            <div style="display:flex; justify-content:space-between;"><span>VAT:</span><span>42.76</span></div>
-            <div class="grand-total" style="display:flex; justify-content:space-between;">
-                <span>TOTAL:</span><span>415.00</span>
-            </div>
+    <div style="font-size: 11px;">
+        <div>RECEIPT No: 1244-06100053729</div>
+        <div>DATETIME : 02 Apr 2026 09:32:14</div>
+        <div>STORE : WOOD AVENUE KILIMANI &nbsp; TILL # : 124-06</div>
+    </div>
+
+    <div class="barcode">
+        <img src="https://bwipjs-api.metafloor.com/?bcid=code128&text=124406100053729&scale=2&rotate=N&includetext" alt="Barcode">
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ITEM</th>
+                <th class="right">QTY/PRICE</th>
+                <th class="right">AMOUNT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>11000933<br>KERICHO GOLD ENVELOPED TEA BAGS 25'S</td>
+                <td class="right">1 x 105.00</td>
+                <td class="right">105.00 C</td>
+            </tr>
+            <tr>
+                <td>11000879<br>MACCOFFEE CLASSIC INSTANT COFFEE 1.6G</td>
+                <td class="right">6 x 10.00</td>
+                <td class="right">60.00 A</td>
+            </tr>
+            <tr>
+                <td>N078640<br>TOILEX EXTRA WHITE TISSUE PAPER 10PACK UNWRAPPED</td>
+                <td class="right">1.000000 x 295</td>
+                <td class="right">295.00</td>
+            </tr>
+            <tr style="font-style: italic; color: #555;">
+                <td colspan="2">CHANDARIA PRODUCTS MAR-APR 2026 OFFER</td>
+                <td class="right">-45.00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="totals">
+        <div class="totals-row"><span>TOTAL LINES:</span><span>3</span></div>
+        <div class="totals-row"><span>TOTAL BEFORE DISCOUNT:</span><span>460.00</span></div>
+        <div class="totals-row"><span>TOTAL DISCOUNT AWARDED:</span><span>45.00</span></div>
+        <div class="divider"></div>
+        <div class="totals-row"><span>SUBTOTAL:</span><span>372.24</span></div>
+        <div class="totals-row"><span>VAT:</span><span>42.76</span></div>
+        <div class="totals-row grand-total">
+            <span>TOTAL:</span>
+            <span>415.00</span>
         </div>
     </div>
+
+    <div class="center" style="margin-top: 15px; font-size: 10px;">
+        *** ASANTE / THANK YOU ***<br>
+        PLEASE RETAIN YOUR RECEIPT
+    </div>
+</div>
+
+<div class="actions">
+    <button onclick="window.print()" class="btn btn-print">Print / Save as PDF</button>
+    <a href="index.html" class="btn btn-home">Return Home</a>
+</div>
+
 </body>
 </html>
-"""
-
-# 2. Execute the conversion to PDF
-HTML(string=html_content).write_pdf("naivas_receipt.pdf")
-
-print("PDF generated successfully.")
