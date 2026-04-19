@@ -4,17 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Writers Market Place | Turnitin, Data Analysis & Premium Tools Kenya</title>
-  <meta name="description" content="Nairobi's premier hub for Turnitin reports, AI removal, Data Analysis (SPSS, R, Python), and premium software licenses. Fast, reliable service by Prime Tech Solutions.">
-  <meta name="keywords" content="Turnitin reports Kenya, AI removal services, StealthWriter premium, Data Analyst Nairobi, SPSS training Kenya, Adobe licenses Nairobi, M-Pesa payments">
-  <meta name="author" content="Timothy Wesonga">
+  <title>Writers Market Place | Turnitin, AI Humanizers & Academic Unlocks</title>
+  <meta name="description" content="Nairobi's #1 Writers Market Place. Instant Turnitin reports, GPTinf, StealthWriter Premium, ChatGPT 5.2, and CourseHero unlocks. Provided by Prime Tech Solutions.">
+  <meta name="keywords" content="Turnitin reports Kenya, GPTinf humaniser, StealthWriter premium, CourseHero unlocks, ChatGPT 5.2, SuperGrok AI, Claude AI, VPN Nairobi, Prime Tech Solutions">
+  <meta name="author" content="Prime Tech Solutions">
   
-  <meta property="og:title" content="Writers Market Place - Professional Academic & Tech Services">
-  <meta property="og:description" content="Get instant Turnitin reports, AI humanizer tools, and expert data analysis. Pay via M-Pesa.">
-  <meta property="og:image" content="Logo1.jpg">
-  <meta property="og:url" content="https://www.primetechsolutions.co.ke/writers-market">
-
   <link rel="icon" href="Logo1.jpg" type="image/jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
@@ -22,286 +18,287 @@
       --berkeley-blue: #003262;
       --berkeley-gold: #FDB515;
       --deep-navy: #001A33;
-      --glass: rgba(255, 255, 255, 0.95);
-      --white: #ffffff;
+      --glass: rgba(255, 255, 255, 0.92);
+      --text-dark: #2d3436;
     }
 
     body { 
-        font-family: 'Poppins', sans-serif; 
-        margin: 0; 
-        background: #f0f2f5; 
-        color: #333; 
-        scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif; 
+      margin: 0; 
+      padding: 0;
+      /* HIGH-END BACKGROUND IMAGE */
+      background: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1470') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-dark);
     }
 
-    /* --- BACKGROUND GRAPHICS --- */
-    .bg-pattern {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: radial-gradient(var(--berkeley-gold) 0.5px, transparent 0.5px);
-        background-size: 30px 30px;
-        opacity: 0.1;
-        z-index: -1;
+    .main-overlay {
+      background: rgba(244, 247, 250, 0.88);
+      min-height: 100vh;
     }
 
-    /* --- HEADER & NAV --- */
-    header { background: var(--white); border-bottom: 4px solid var(--berkeley-gold); padding: 20px 10%; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .brand { font-size: 26px; font-weight: 900; color: var(--berkeley-blue); text-decoration: none; text-transform: uppercase; }
+    /* --- HEADER --- */
+    header { 
+      background: #ffffff; 
+      border-bottom: 5px solid var(--berkeley-gold); 
+      padding: 20px 10%; 
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .brand { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: var(--berkeley-blue); text-decoration: none; text-transform: uppercase; }
     .brand span { color: var(--berkeley-gold); }
-    
-    .main-nav { display: flex; justify-content: center; gap: 25px; list-style: none; margin: 15px 0 0; padding: 0; }
-    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.3s; }
-    .main-nav a:hover { color: var(--berkeley-gold); }
 
-    /* --- HERO SECTION --- */
+    /* --- HERO --- */
     .hero {
-      background: linear-gradient(135deg, rgba(0,50,98,0.9), rgba(0,26,51,0.8)), 
-                  url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1470');
-      background-size: cover; background-position: center;
-      height: 450px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 10%;
+      background: linear-gradient(135deg, rgba(0, 50, 98, 0.95), rgba(0, 26, 51, 0.9));
+      color: white; padding: 100px 10% 80px; text-align: center;
     }
-    .hero-content h1 { font-size: 52px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-    .hero-content p { font-size: 20px; color: var(--berkeley-gold); font-weight: 300; }
+    .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 52px; margin: 0; letter-spacing: -1px; }
+    .hero p { font-size: 22px; color: var(--berkeley-gold); margin-top: 10px; font-weight: 300; }
 
-    /* --- SERVICE GRID --- */
+    /* --- CONTAINER --- */
     .container { padding: 60px 10%; }
-    .section-title { 
-        font-size: 28px; color: var(--berkeley-blue); 
-        margin: 40px 0 20px; border-left: 6px solid var(--berkeley-gold); 
-        padding-left: 20px; background: white; padding-block: 10px;
+    .section-header { 
+      font-family: 'Montserrat', sans-serif; font-size: 26px; color: var(--berkeley-blue);
+      border-left: 6px solid var(--berkeley-gold); padding-left: 20px; margin: 40px 0 30px;
+      text-transform: uppercase; font-weight: 700;
     }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 
+    /* --- CARDS --- */
     .card {
-        background: var(--white);
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        transition: 0.4s;
-        border: 1px solid #eee;
-        display: flex;
-        flex-direction: column;
+      background: var(--glass);
+      border-radius: 15px; padding: 35px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+      transition: 0.4s ease; display: flex; flex-direction: column;
+      border: 1px solid rgba(255,255,255,0.4);
     }
-    .card:hover { transform: translateY(-10px); border-color: var(--berkeley-gold); }
+    .card:hover { transform: translateY(-10px); border-color: var(--berkeley-gold); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    .card h3 { font-family: 'Montserrat', sans-serif; font-size: 22px; color: var(--berkeley-blue); margin-top: 0; display: flex; align-items: center; gap: 12px; }
+    .card h3 i { color: var(--berkeley-gold); }
     
-    .card-header { 
-        background: var(--berkeley-blue); color: white; padding: 20px; 
-        font-weight: 700; font-size: 18px; display: flex; align-items: center; gap: 10px;
-    }
-    .card-body { padding: 25px; flex-grow: 1; }
-    .card-body ul { list-style: none; padding: 0; margin: 0 0 20px; }
-    .card-body li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; color: #555; }
-    .card-body li i { color: var(--berkeley-gold); margin-right: 10px; }
+    .card ul { list-style: none; padding: 0; margin: 20px 0; flex-grow: 1; }
+    .card li { font-size: 15px; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); color: #444; }
+    .card li:last-child { border: none; }
 
-    .card-footer { padding: 20px; background: #fdfdfd; text-align: center; }
-
-    /* --- BUTTONS --- */
     .btn-pay {
-        background: var(--berkeley-blue);
-        color: white; border: none; padding: 12px 25px;
-        border-radius: 6px; font-weight: 800; cursor: pointer;
-        width: 100%; transition: 0.3s; text-transform: uppercase;
-        display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--berkeley-blue); color: #fff; border: none; padding: 16px;
+      border-radius: 10px; font-weight: 700; cursor: pointer; width: 100%;
+      transition: 0.3s; text-transform: uppercase; font-size: 14px;
+      letter-spacing: 1px;
     }
     .btn-pay:hover { background: var(--berkeley-gold); color: var(--berkeley-blue); }
 
+    /* --- THE STORY SECTION --- */
+    .story-section {
+      background: #ffffff;
+      padding: 80px 15%;
+      margin: 40px 0;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .story-section h2 { font-family: 'Montserrat', sans-serif; font-size: 36px; color: var(--berkeley-blue); margin-bottom: 25px; }
+    .story-section p { font-size: 17px; line-height: 1.9; color: #555; text-align: justify; }
+
     /* --- MODAL --- */
-    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,26,51,0.9); backdrop-filter: blur(5px); }
-    .modal-content { 
-        background: white; margin: 5% auto; width: 90%; max-width: 450px; 
-        border-radius: 15px; overflow: hidden; position: relative;
-        animation: pop 0.3s ease-out;
-    }
-    @keyframes pop { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
-
-    .modal-header { background: var(--berkeley-blue); color: white; padding: 25px; text-align: center; }
-    .modal-body { padding: 30px; text-align: center; }
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
+    .modal-content { background: #fff; margin: 10% auto; width: 90%; max-width: 450px; border-radius: 20px; overflow: hidden; animation: pop 0.3s; }
+    @keyframes pop { from {transform: scale(0.95); opacity: 0;} to {transform: scale(1); opacity: 1;} }
     
-    .pay-details-box { background: #f8f9fa; border: 2px dashed var(--berkeley-gold); padding: 20px; border-radius: 10px; margin-bottom: 20px; }
-    .pay-details-box strong { font-size: 20px; color: var(--berkeley-blue); }
-
-    .btn-whatsapp {
-        background: #25D366; color: white; text-decoration: none;
-        padding: 15px; border-radius: 8px; display: block;
-        font-weight: 800; margin-top: 15px; transition: 0.3s;
+    .modal-header { background: var(--berkeley-blue); color: #fff; padding: 25px; text-align: center; }
+    .modal-body { padding: 35px; text-align: center; }
+    .pay-info { background: #f0f4f8; border: 2px dashed var(--berkeley-gold); padding: 20px; border-radius: 12px; margin-bottom: 25px; }
+    
+    .wa-link { 
+      background: #25D366; color: white; text-decoration: none; padding: 18px; 
+      display: block; border-radius: 10px; font-weight: 800; font-size: 18px;
     }
-    .btn-whatsapp:hover { background: #128C7E; }
 
     /* --- FOOTER --- */
-    footer { background: #111; color: #aaa; padding: 60px 10% 20px; font-size: 13px; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-    .footer-grid h4 { color: white; border-bottom: 2px solid var(--berkeley-gold); display: inline-block; padding-bottom: 5px; }
+    footer { background: #111; color: #aaa; padding: 80px 10% 40px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; }
+    .footer-grid h4 { color: #fff; font-family: 'Montserrat', sans-serif; margin-bottom: 25px; text-transform: uppercase; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { color: #999; text-decoration: none; transition: 0.3s; }
+    .footer-links a:hover { color: var(--berkeley-gold); padding-left: 8px; }
 
     @media (max-width: 768px) {
-        .hero-content h1 { font-size: 32px; }
-        .main-nav { display: none; } /* Hide on mobile for brevity */
+      .hero h1 { font-size: 34px; }
+      .story-section { padding: 40px 8%; }
+      header { padding: 15px 5%; }
     }
   </style>
 </head>
 <body>
 
-<div class="bg-pattern"></div>
+<div class="main-overlay">
+  <header>
+    <a href="index.html" class="brand">PRIME TECH <span>SOLUTIONS</span></a>
+    <a href="https://wa.me/254708902232" style="background: var(--berkeley-gold); color: #000; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 13px;">LIVE HELP</a>
+  </header>
 
-<header>
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <a href="index.html" class="brand">PRIME TECH <span>SOLUTIONS</span></a>
-        <a href="https://wa.me/254708902232" style="background: var(--berkeley-gold); color: #000; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 12px;">LIVE CHAT</a>
-    </div>
-    <ul class="main-nav">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop Laptops</a></li>
-        <li><a href="repair.html">IT Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="Invoice.html">Generate Invoice</a></li>
-    </ul>
-</header>
+  <section class="hero">
+    <h1>Writers Market Place</h1>
+    <p>Empowering Writers with Elite AI Tools & Integrity Reports</p>
+  </section>
 
-<section class="hero">
-    <div class="hero-content">
-        <h1>Writers Market Place</h1>
-        <p>Premium Academic Support • Data Intelligence • Digital Verification</p>
-    </div>
-</section>
-
-<div class="container">
-
-    <div class="section-title">Academic & AI Integrity</div>
+  <div class="container">
+    
+    <h2 class="section-header">Academic Integrity & Reports</h2>
     <div class="grid">
-        <div class="card">
-            <div class="card-header"><i class="fas fa-file-contract"></i> Integrity Reports</div>
-            <div class="card-body">
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Turnitin Originality Report</li>
-                    <li><i class="fas fa-check-circle"></i> AI Detection (Copyleaks/GPTZero)</li>
-                    <li><i class="fas fa-check-circle"></i> Plagiarism-Only Checks</li>
-                </ul>
-            </div>
-            <div class="card-footer">
-                <button class="btn-pay" onclick="openPay('Integrity Reports')"><i class="fas fa-shopping-cart"></i> Pay for Service</button>
-            </div>
-        </div>
+      <div class="card">
+        <h3><i class="fas fa-file-contract"></i> Integrity Reports</h3>
+        <ul>
+          <li>• Instant Turnitin Originality Reports</li>
+          <li>• Copyleaks AI & Plag Reports</li>
+          <li>• GPTZero & ZeroGPT AI Scoring</li>
+          <li>• Turndetect.com Personal Slots</li>
+        </ul>
+        <button class="btn-pay" onclick="openPayment('Turnitin & AI Reports')">Pay for Service</button>
+      </div>
 
-        <div class="card">
-            <div class="card-header"><i class="fas fa-robot"></i> AI Humanizers</div>
-            <div class="card-body">
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> StealthWriter Premium</li>
-                    <li><i class="fas fa-check-circle"></i> Ryne AI Humanizer</li>
-                    <li><i class="fas fa-check-circle"></i> Content Humanization (Manual)</li>
-                </ul>
-            </div>
-            <div class="card-footer">
-                <button class="btn-pay" onclick="openPay('AI Humanizer')"><i class="fas fa-shopping-cart"></i> Pay for Service</button>
-            </div>
-        </div>
+      <div class="card">
+        <h3><i class="fas fa-user-check"></i> AI Humanizers</h3>
+        <ul>
+          <li>• GPTinf Unlimited (Best AI Remover)</li>
+          <li>• Ryne.ai Humanizer (Ruby Plan)</li>
+          <li>• StealthWriter Premium & Basic</li>
+          <li>• Writehuman & AI Removal Services</li>
+        </ul>
+        <button class="btn-pay" onclick="openPayment('AI Humanizer Tools')">Pay for Service</button>
+      </div>
 
-        <div class="card">
-            <div class="card-header"><i class="fas fa-pen-nib"></i> Writing Services</div>
-            <div class="card-body">
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Thesis & Dissertation Writing</li>
-                    <li><i class="fas fa-check-circle"></i> Professional CV & Cover Letters</li>
-                    <li><i class="fas fa-check-circle"></i> SEO Blogs & Copywriting</li>
-                </ul>
-            </div>
-            <div class="card-footer">
-                <button class="btn-pay" onclick="openPay('Writing Services')"><i class="fas fa-shopping-cart"></i> Pay for Service</button>
-            </div>
-        </div>
+      <div class="card">
+        <h3><i class="fas fa-unlock"></i> Platform Unlocks</h3>
+        <ul>
+          <li>• CourseHero & Chegg Unlocks</li>
+          <li>• Studocu, Scribd & Slideshare</li>
+          <li>• Studypool & Cliffnotes Unlocks</li>
+          <li>• E-Books & Academic Journals</li>
+        </ul>
+        <button class="btn-pay" onclick="openPayment('Academic Unlocks')">Pay for Service</button>
+      </div>
     </div>
 
-    <div class="section-title">Data Science & Software</div>
+    <h2 class="section-header">Premium Accounts & AI</h2>
     <div class="grid">
-        <div class="card">
-            <div class="card-header"><i class="fas fa-chart-line"></i> Data Analysis</div>
-            <div class="card-body">
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> R, Stata, SPSS & Python</li>
-                    <li><i class="fas fa-check-circle"></i> Tableau & Power BI Dashboards</li>
-                    <li><i class="fas fa-check-circle"></i> NVIVO Qualitative Analysis</li>
-                </ul>
-            </div>
-            <div class="card-footer">
-                <button class="btn-pay" onclick="openPay('Data Analysis')"><i class="fas fa-shopping-cart"></i> Pay for Service</button>
-            </div>
-        </div>
+      <div class="card">
+        <h3><i class="fas fa-robot"></i> Advanced AI</h3>
+        <ul>
+          <li>• ChatGPT 5.2 Teams (Shared/Personal)</li>
+          <li>• Claude 4.6 Opus Access</li>
+          <li>• SuperGrok Premium AI</li>
+          <li>• ChatGPT Plus Personal Profiles</li>
+        </ul>
+        <button class="btn-pay" onclick="openPayment('Premium AI Access')">Pay for Service</button>
+      </div>
 
-        <div class="card">
-            <div class="card-header"><i class="fas fa-save"></i> Licensed Software</div>
-            <div class="card-body">
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Adobe Master Collection (v25)</li>
-                    <li><i class="fas fa-check-circle"></i> Microsoft Office 2024 LTSC</li>
-                    <li><i class="fas fa-check-circle"></i> IBM SPSS v27 & Stata v13</li>
-                </ul>
-            </div>
-            <div class="card-footer">
-                <button class="btn-pay" onclick="openPay('Software License')"><i class="fas fa-shopping-cart"></i> Pay for Service</button>
-            </div>
-        </div>
+      <div class="card">
+        <h3><i class="fas fa-shield-alt"></i> VPN & Privacy</h3>
+        <ul>
+          <li>• NordVPN, ExpressVPN, Surfshark</li>
+          <li>• Windscribe Pro & Stable Proxies</li>
+          <li>• Static Residential Proxies</li>
+          <li>• VoIP Foreign Numbers (US/UK/SA)</li>
+        </ul>
+        <button class="btn-pay" onclick="openPayment('VPN & Proxy Services')">Pay for Service</button>
+      </div>
+
+      <div class="card">
+        <h3><i class="fas fa-star"></i> Creative & Productivity</h3>
+        <ul>
+          <li>• Grammarly Pro/Premium (Personal)</li>
+          <li>• Quillbot Premium Access</li>
+          <li>• Canva Pro & Netflix Ultra HD</li>
+          <li>• DStv Full Packages</li>
+        </ul>
+        <button class="btn-pay" onclick="openPayment('Creative Subscriptions')">Pay for Service</button>
+      </div>
     </div>
-</div>
 
-<div id="payModal" class="modal">
+    <div class="story-section">
+      <h2>The Writers Market Place Story</h2>
+      <p>
+        In an era where Artificial Intelligence and Digital Integrity intersect, professional writers face a dual challenge: maintaining absolute originality while leveraging modern efficiency. The <strong>Writers Market Place</strong> by Prime Tech Solutions was born from a need for a centralized, reliable repository of elite tools specifically for the academic and creative community in Nairobi and beyond.
+        <br><br>
+        We recognize that writers don't just want tools; they want <strong>assurance</strong>. They want to know that their Turnitin report is instant and accurate. They want the confidence that a humanizer like GPTinf or StealthWriter will truly refine their voice to bypass the most stringent AI detectors. From unlocking complex research on CourseHero to providing stable residential proxies for secure research, we bridge the gap between effort and excellence. 
+        <br><br>
+        At Prime Tech Solutions, we treat academic checks as a craft. We provide the high-performance software, the premium AI accounts like ChatGPT 5.2 and Claude, and the expert writing support that the modern market demands. This is more than a store—it is the engine behind the most successful writers in the industry.
+      </p>
+    </div>
+
+  </div>
+
+  <div id="payModal" class="modal">
     <div class="modal-content">
-        <div class="modal-header">
-            <h2 id="modalTitle" style="margin:0;">Payment Portal</h2>
+      <div class="modal-header">
+        <h3 id="serviceName" style="margin:0;">Secure Payment</h3>
+      </div>
+      <div class="modal-body">
+        <p>Complete your payment via M-Pesa Paybill</p>
+        <div class="pay-info">
+          <p>Paybill: <strong>880100</strong></p>
+          <p>Account No: <strong>902232</strong></p>
         </div>
-        <div class="modal-body">
-            <p>Please use the M-Pesa details below to settle your service fee.</p>
-            <div class="pay-details-box">
-                <p>Paybill: <strong>880100</strong></p>
-                <p>Account: <strong>902232</strong></p>
-            </div>
-            <p style="font-size: 11px; color: #777;">🛡️ Secure transaction verified by Prime Tech Solutions.</p>
-            
-            <a href="#" id="whatsappBtn" class="btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> I HAVE PAID - NOTIFY US
-            </a>
-            
-            <button onclick="closePay()" style="margin-top:20px; border:none; background:none; color:#999; cursor:pointer; text-decoration:underline;">Close Window</button>
-        </div>
+        <a href="#" id="waButton" class="wa-link"><i class="fab fa-whatsapp"></i> I HAVE PAID - NOTIFY US</a>
+        <p onclick="closePayment()" style="margin-top:20px; font-size: 12px; color: #999; cursor:pointer;">Cancel & Return</p>
+      </div>
     </div>
-</div>
+  </div>
 
-<footer>
+  <footer>
     <div class="footer-grid">
-        <div>
-            <h4>Prime Tech</h4>
-            <p>Nairobi, Kenya<br>Platinum Plaza, CBD</p>
-        </div>
-        <div>
-            <h4>Market Place</h4>
-            <p>Turnitin Reports<br>AI Humanizing<br>Data Analysis</p>
-        </div>
-        <div>
-            <h4>Contact</h4>
-            <p>+254 708 902 232<br>wesongatimoth@gmail.com</p>
-        </div>
+      <div>
+        <h4>Corporate</h4>
+        <ul class="footer-links">
+          <li><a href="#">Technical Support</a></li>
+          <li><a href="#">Repair Services</a></li>
+          <li><a href="#">Warranty Policy</a></li>
+        </ul>
+      </div> 
+      <div>
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="#">Academic Integrity</a></li>
+          <li><a href="#">Data Science</a></li>
+          <li><a href="#">Premium Software</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">News & Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:var(--berkeley-gold);">Contact Us</h4>
+        <p style="color:white;">Nairobi, Kenya<br>Tel: +254 708 902 232<br>Email: wesongatimoth@gmail.com</p>
+      </div>
     </div>
-    <div style="text-align: center; margin-top: 50px; opacity: 0.5;">
-        © 2026 Prime Tech Solutions. Fast. Reliable. Genuine.
+    <div style="text-align:center; margin-top:30px; font-size: 13px; opacity: 0.6;">
+      <p>© 2026 Prime Tech Solutions. Fast. Reliable. Genuine.</p>
     </div>
-</footer>
+  </footer>
+</div>
 
 <script>
-    function openPay(serviceName) {
-        document.getElementById('modalTitle').innerText = serviceName;
-        // Generate WhatsApp Link with Custom Message
-        const message = encodeURIComponent("Hello Prime Tech Solutions, I have just made a payment for: " + serviceName + ". Please confirm and proceed.");
-        document.getElementById('whatsappBtn').href = "https://wa.me/254708902232?text=" + message;
-        
+    function openPayment(service) {
+        document.getElementById('serviceName').innerText = service;
+        const msg = encodeURIComponent("Hello Prime Tech Solutions, I have just paid for " + service + " from the Writers Market Place. Please confirm and deliver.");
+        document.getElementById('waButton').href = "https://wa.me/254708902232?text=" + msg;
         document.getElementById('payModal').style.display = 'block';
     }
-
-    function closePay() {
+    function closePayment() {
         document.getElementById('payModal').style.display = 'none';
     }
-
-    // Close on outside click
-    window.onclick = function(e) {
-        if (e.target == document.getElementById('payModal')) closePay();
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('payModal')) closePayment();
     }
 </script>
 
