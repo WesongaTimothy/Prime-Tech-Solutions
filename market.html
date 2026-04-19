@@ -39,7 +39,8 @@
       justify-content: flex-end;
       gap: 20px;
     }
-    .utility-nav a { color: #fff; text-decoration: none; font-size: 12px; font-weight: 600; text-transform: uppercase; }
+    .utility-nav a { color: #fff; text-decoration: none; font-size: 12px; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+    .utility-nav a:hover { color: var(--berkeley-gold); }
 
     header { 
       background: var(--white); 
@@ -118,6 +119,7 @@
     @media (max-width: 768px) {
       .main-nav { display: none; }
       .hero h1 { font-size: 32px; }
+      header { flex-direction: column; gap: 15px; }
     }
   </style>
 </head>
@@ -140,6 +142,7 @@
           <li><a href="repair.html">Repair Services</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="Invoice.html">Invoice</a></li>
+          <li><a href="writers.html" style="color: var(--berkeley-gold)">Writers Market Place</a></li>
         </ul>
     </nav>
   </header>
@@ -158,9 +161,9 @@
         <h3><i class="fas fa-file-invoice"></i> Reports & Slots</h3>
         <ul>
           <li><i class="fas fa-check"></i> Instant Turnitin Reports</li>
-          <li><i class="fas fa-check"></i> AI & Plagiarism Reports</li>
-          <li><i class="fas fa-check"></i> Copyleaks Bot & Reports</li>
-          <li><i class="fas fa-check"></i> Turnitin Website Slots</li>
+          <li><i class="fas fa-check"></i> Copyleaks AI & Plag Reports</li>
+          <li><i class="fas fa-check"></i> Plagiarism/AI Reports @40/-</li>
+          <li><i class="fas fa-check"></i> Website Turnitin Slots</li>
         </ul>
         <button class="btn-pay card-btn" onclick="openPayment('Turnitin & Reports')">Pay for Service</button>
       </div>
@@ -169,58 +172,58 @@
         <h3><i class="fas fa-magic"></i> AI Humanizers</h3>
         <ul>
           <li><i class="fas fa-check"></i> GPTinf (Best AI Remover)</li>
-          <li><i class="fas fa-check"></i> StealthWriter Basic/Premium</li>
+          <li><i class="fas fa-check"></i> StealthWriter Premium/Basic</li>
           <li><i class="fas fa-check"></i> Ryne.ai Ruby Plan</li>
-          <li><i class="fas fa-check"></i> Writehuman & AI Removal</li>
+          <li><i class="fas fa-check"></i> Writehuman Humanizer</li>
         </ul>
         <button class="btn-pay card-btn" onclick="openPayment('AI Humanizers')">Pay for Service</button>
       </div>
 
       <div class="card">
-        <h3><i class="fas fa-unlock"></i> Academic Unlocks</h3>
+        <h3><i class="fas fa-unlock"></i> Platform Unlocks</h3>
         <ul>
           <li><i class="fas fa-check"></i> CourseHero & Chegg Unlocks</li>
           <li><i class="fas fa-check"></i> Studocu, Scribd & Slideshare</li>
           <li><i class="fas fa-check"></i> Cliffnotes & Studypool</li>
-          <li><i class="fas fa-check"></i> E-Books & Journal Access</li>
+          <li><i class="fas fa-check"></i> E-Books & Journal Unlocks</li>
         </ul>
         <button class="btn-pay card-btn" onclick="openPayment('Platform Unlocks')">Pay for Service</button>
       </div>
     </div>
 
-    <h2 class="section-header">Premium Subscriptions</h2>
+    <h2 class="section-header">Premium Subscriptions & Connectivity</h2>
     <div class="grid">
       <div class="card">
-        <h3><i class="fas fa-robot"></i> Advanced AI Access</h3>
+        <h3><i class="fas fa-robot"></i> Premium AI Access</h3>
         <ul>
           <li><i class="fas fa-check"></i> ChatGPT 5.2 Teams Plan</li>
           <li><i class="fas fa-check"></i> Claude 4.6 Opus Access</li>
-          <li><i class="fas fa-check"></i> SuperGrok 4 Premium</li>
-          <li><i class="fas fa-check"></i> Personal ChatGPT Plus</li>
+          <li><i class="fas fa-check"></i> SuperGrok Premium</li>
+          <li><i class="fas fa-check"></i> GPTINF Unlimited Plan</li>
         </ul>
         <button class="btn-pay card-btn" onclick="openPayment('Premium AI Access')">Pay for Service</button>
       </div>
 
       <div class="card">
-        <h3><i class="fas fa-shield-alt"></i> VPN & Proxies</h3>
+        <h3><i class="fas fa-shield-alt"></i> VPN & Privacy</h3>
         <ul>
-          <li><i class="fas fa-check"></i> Express, Nord & Windscribe</li>
+          <li><i class="fas fa-check"></i> Nord, Express & Windscribe</li>
           <li><i class="fas fa-check"></i> Static Residential Proxies</li>
-          <li><i class="fas fa-check"></i> Surfshark & Windscribe Pro</li>
-          <li><i class="fas fa-check"></i> Private Browser Proxies</li>
+          <li><i class="fas fa-check"></i> Surfshark & Strong Proxies</li>
+          <li><i class="fas fa-check"></i> Stable Browser Proxies</li>
         </ul>
         <button class="btn-pay card-btn" onclick="openPayment('VPN & Proxies')">Pay for Service</button>
       </div>
 
       <div class="card">
-        <h3><i class="fas fa-gem"></i> Creative & Productivity</h3>
+        <h3><i class="fas fa-gem"></i> Creative & Entertainment</h3>
         <ul>
-          <li><i class="fas fa-check"></i> Grammarly Pro/Premium</li>
-          <li><i class="fas fa-check"></i> Quillbot Premium Access</li>
+          <li><i class="fas fa-check"></i> Grammarly & Quillbot Pro</li>
           <li><i class="fas fa-check"></i> Canva Pro & Netflix UHD</li>
           <li><i class="fas fa-check"></i> All DStv Packages</li>
+          <li><i class="fas fa-check"></i> Spotify & Apple Music</li>
         </ul>
-        <button class="btn-pay card-btn" onclick="openPayment('Premium Subscriptions')">Pay for Service</button>
+        <button class="btn-pay card-btn" onclick="openPayment('Creative Subscriptions')">Pay for Service</button>
       </div>
     </div>
 
@@ -229,7 +232,7 @@
       <p>
         In the rapidly changing world of digital research, the <strong>Writers Market Place</strong> by Prime Tech Solutions stands as the ultimate sanctuary for academic excellence. We understand that modern writers require more than just talent; they need the most sophisticated tools to maintain integrity and bypass the hurdles of AI detection. 
         <br><br>
-        From providing <strong>Instant Turnitin Reports</strong> to elite humanizers like <strong>GPTinf</strong> and <strong>StealthWriter</strong>, we ensure your work remains authentic and high-quality. We provide the accounts academic experts want: ChatGPT 5.2, SuperGrok, and Claude AI, alongside essential unlocks for CourseHero and Chegg. At Prime Tech Solutions, we don't just sell services; we empower the engine of academic success.
+        Whether you are seeking <strong>Instant Turnitin Reports</strong> or elite humanizers like <strong>GPTinf</strong> and <strong>StealthWriter</strong>, we ensure your work remains authentic and high-quality. We provide the accounts academic experts want: ChatGPT 5.2, SuperGrok, and Claude AI, alongside essential unlocks for CourseHero and Chegg. At Prime Tech Solutions, we don't just sell services; we empower the engine of academic success.
       </p>
     </div>
   </div>
@@ -282,7 +285,7 @@
       </div>
     </div>
     <div style="text-align:center; margin-top:30px; opacity:0.5;">
-      <p>© 2026 Prime Tech Solutions. Fast. Reliable. Genuine.</p>
+      <p>© 2026 Prime Tech Solutions. Fast. Reliable.</p>
     </div>
   </footer>
 </div>
