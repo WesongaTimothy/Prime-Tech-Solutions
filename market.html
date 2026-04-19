@@ -3,154 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Writers Market Place | Prime Tech Solutions</title>
-  
+  <title>Prime Tech Solutions | Writers Market Place</title>
   <link rel="icon" href="Logo1.jpg" type="image/jpg">
-  <meta name="description" content="Prime Tech Solutions: Your premier destination for Academic Integrity tools and Digital Subscriptions.">
-
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* --- ROOT VARIABLES --- */
     :root {
       --berkeley-blue: #003262;
       --berkeley-gold: #FDB515;
-      --silver-overlay: rgba(244, 247, 250, 0.94);
+      --silver-bg: #e5e7e9; 
       --white: #ffffff;
       --text-main: #333;
     }
 
-    /* --- GLOBAL RESET & MOBILE FIT --- */
+    /* --- MOBILE-FIRST RESET --- */
     * { box-sizing: border-box; }
-    
+
     body { 
       font-family: 'Open Sans', sans-serif; 
       margin: 0; 
-      padding: 0;
       color: var(--text-main); 
       line-height: 1.6; 
       background: linear-gradient(rgba(229, 231, 233, 0.92), rgba(229, 231, 233, 0.92)), 
-                  url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1470') no-repeat center center fixed;
+                  url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1470') no-repeat center center fixed; 
       background-size: cover;
-      background-attachment: fixed;
-      overflow-x: hidden; /* Prevents side-scrolling */
+      overflow-x: hidden; 
       width: 100%;
     }
 
-    .main-overlay {
-      background: var(--silver-overlay);
-      min-height: 100vh;
-      width: 100%;
-    }
-
-    /* --- RESPONSIVE NAVIGATION --- */
-    .utility-nav { 
-      background: var(--berkeley-blue); 
-      padding: 10px 5%; 
-      display: flex; 
-      justify-content: center; 
-      flex-wrap: wrap;
-      gap: 15px; 
-      font-size: 11px; 
-      border-bottom: 2px solid var(--berkeley-gold);
-    }
+    /* --- UTILITY & HEADER --- */
+    .utility-nav { background: var(--berkeley-blue); padding: 10px 5%; display: flex; justify-content: flex-end; gap: 15px; font-size: 11px; }
     .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
 
-    header { background: var(--white); text-align: center; padding: 20px 0 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; width: 100%; }
-    .brand { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 10px; padding: 0 10px; }
+    header { background: var(--white); text-align: center; padding-top: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; width: 100%; }
+    .brand { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 10px; }
     .brand span { color: var(--berkeley-gold); }
     
-    .nav-container { border-top: 1px solid #eee; padding: 10px 0; background: var(--white); overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
-    .main-nav { display: inline-flex; justify-content: center; gap: 20px; list-style: none; margin: 0; padding: 0 20px; }
+    .nav-container { border-bottom: 4px solid var(--berkeley-gold); padding-bottom: 10px; background: var(--white); overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+    .main-nav { display: inline-flex; justify-content: center; gap: 20px; list-style: none; margin: 0; padding: 0 15px; }
     .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 12px; text-transform: uppercase; }
 
-    /* --- HERO MOBILE OPTIMIZATION --- */
+    /* --- HERO --- */
     .hero {
-      background: linear-gradient(rgba(0,50,98,0.8), rgba(0,50,98,0.8)), 
+      background: linear-gradient(rgba(0,50,98,0.75), rgba(0,50,98,0.75)), 
                   url('https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=1470');
-      min-height: 300px;
-      padding: 40px 20px;
-      background-size: cover; 
-      background-position: center;
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      color: white; 
-      text-align: center;
-      width: 100%;
+      min-height: 250px; background-size: cover; background-position: center;
+      display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 20px; width: 100%;
     }
     .hero h1 { font-family: 'Poppins', sans-serif; font-size: 28px; margin: 0; text-transform: uppercase; }
-    .hero p { font-size: 16px; margin: 10px 0; font-weight: 300; }
-    .cta-btn-hero { margin-top: 15px; display: inline-block; padding: 12px 25px; background: var(--berkeley-gold); color: var(--berkeley-blue); text-decoration: none; font-weight: 800; border-radius: 5px; font-size: 13px; }
 
-    /* --- IMPACT STATS GRID --- */
+    /* --- STATS GRID --- */
     .impact-stats { display: grid; grid-template-columns: repeat(2, 1fr); background: var(--berkeley-blue); color: #fff; text-align: center; padding: 20px 5%; width: 100%; }
-    .stat { padding: 15px 5px; }
-    .stat h2 { font-family: 'Poppins', sans-serif; font-size: 24px; color: var(--berkeley-gold); margin: 0; }
-    .stat p { font-size: 11px; text-transform: uppercase; font-weight: 600; margin-top: 5px; }
+    .stat h2 { font-family: 'Poppins', sans-serif; font-size: 22px; color: var(--berkeley-gold); margin: 0; }
+    .stat p { font-size: 10px; text-transform: uppercase; margin-top: 5px; }
 
     /* --- SERVICE GRID --- */
-    .section { padding: 40px 5%; width: 100%; max-width: 1200px; margin: auto; }
-    .category-title { font-family: 'Poppins', sans-serif; font-size: 20px; color: var(--berkeley-blue); border-left: 5px solid var(--berkeley-gold); padding-left: 15px; margin: 30px 0 20px; text-transform: uppercase; }
+    .section { padding: 30px 5%; width: 100%; max-width: 1400px; margin: auto; }
+    .category-title { font-family: 'Poppins', sans-serif; font-size: 18px; color: var(--berkeley-blue); border-left: 5px solid var(--berkeley-gold); padding-left: 15px; margin: 30px 0 20px; font-weight: 800; text-transform: uppercase; }
+    
     .grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 40px; }
     
-    .card-item { background: var(--white); border-radius: 12px; border: 1px solid #ddd; display: flex; flex-direction: column; overflow: hidden; width: 100%; }
-    .card-header { background: #fcfdfe; padding: 20px; border-bottom: 1px solid #eee; }
-    .card-header h3 { font-family: 'Poppins', sans-serif; color: var(--berkeley-blue); margin: 0; font-size: 17px; display: flex; align-items: center; gap: 10px; }
-    .card-body { padding: 20px; flex-grow: 1; }
+    .card-item { background: #fff; border-radius: 12px; border: 1px solid #ddd; display: flex; flex-direction: column; width: 100%; overflow: hidden; }
+    .card-header { background: #fcfcfc; padding: 15px; border-bottom: 1px solid #eee; }
+    .card-header h3 { color: var(--berkeley-blue); margin: 0; font-size: 16px; display: flex; align-items: center; gap: 10px; }
+
+    .card-body { padding: 15px; flex-grow: 1; }
     .card-body ul { list-style: none; padding: 0; margin: 0; }
-    .card-body li { padding: 10px 0; font-size: 13px; border-bottom: 1px solid #f9f9f9; display: flex; align-items: flex-start; }
+    .card-body li { padding: 8px 0; font-size: 13px; border-bottom: 1px solid #f1f1f1; display: flex; align-items: flex-start; }
     .card-body li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; color: var(--berkeley-gold); margin-right: 10px; font-size: 14px; }
 
-    .btn-pay { background: var(--berkeley-blue); color: white; padding: 15px; border: none; width: 100%; cursor: pointer; text-transform: uppercase; font-weight: 800; font-size: 12px; }
+    .btn-pay { background: var(--berkeley-blue); color: white; padding: 15px; border: none; width: 100%; cursor: pointer; text-transform: uppercase; font-weight: bold; font-size: 12px; }
 
     /* --- STORY BOX --- */
-    .story-box { background: var(--white); margin: 40px 0; padding: 30px 20px; display: flex; flex-direction: column; gap: 30px; border-radius: 15px; border-top: 5px solid var(--berkeley-gold); }
-    .story-content h2 { font-family: 'Poppins', sans-serif; font-size: 24px; color: var(--berkeley-blue); margin-bottom: 15px; }
-    .story-content p { font-size: 14px; margin-bottom: 20px; }
-    .cta-btn { display: block; text-align: center; padding: 15px; background: var(--berkeley-blue); color: #fff; text-decoration: none; font-weight: 700; border-radius: 50px; }
-    
-    .story-graphics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .graphics-card { background: #f8fafc; padding: 20px 10px; text-align: center; border-radius: 10px; border: 1px solid #edf2f7; }
-    .graphics-card img { width: 35px; margin-bottom: 10px; }
-    .graphics-card h4 { font-size: 12px; color: var(--berkeley-blue); margin: 0; }
+    .story-box { background: #fff; margin: 40px 0; padding: 25px; display: flex; flex-direction: column; gap: 25px; border-radius: 15px; width: 100%; }
+    .story-content h2 { font-family: 'Poppins', sans-serif; font-size: 22px; color: var(--berkeley-blue); margin-bottom: 10px; }
+    .story-content p { font-size: 14px; }
+    .cta-btn { display: block; text-align: center; padding: 15px; background: var(--berkeley-blue); color: #fff; text-decoration: none; font-weight: bold; border-radius: 50px; }
 
-    /* --- MODAL MOBILE FIT --- */
+    .story-graphics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .graphics-card { background: #f4f6f7; padding: 15px; text-align: center; border-radius: 10px; }
+    .graphics-card h4 { font-size: 11px; margin-top: 5px; color: var(--berkeley-blue); }
+
+    /* --- MODAL --- */
     .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,50,98,0.95); padding: 20px; }
-    .modal-content { background: var(--white); margin: auto; width: 100%; max-width: 400px; border-radius: 20px; overflow: hidden; position: relative; top: 50%; transform: translateY(-50%); }
-    .modal-header { background: var(--berkeley-blue); color: #fff; padding: 20px; text-align: center; }
-    .modal-body { padding: 30px 20px; text-align: center; }
-    .pay-details { background: #fdf8e6; border: 2px dashed var(--berkeley-gold); padding: 20px; border-radius: 12px; margin-bottom: 20px; }
-    .pay-details p { margin: 5px 0; font-size: 16px; color: var(--berkeley-blue); font-weight: 700; }
-    .wa-link { background: #25D366; color: white; text-decoration: none; padding: 15px; display: block; border-radius: 10px; font-weight: 800; }
+    .modal-content { background: #fff; margin: auto; width: 100%; max-width: 400px; border-radius: 20px; position: relative; top: 50%; transform: translateY(-50%); text-align: center; overflow: hidden; }
+    .modal-header { background: var(--berkeley-blue); color: #fff; padding: 20px; }
+    .modal-body { padding: 25px; }
+    .pay-details { background: #fdf8e6; border: 2px dashed var(--berkeley-gold); padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+    .wa-link { background: #25D366; color: white; text-decoration: none; padding: 15px; display: block; border-radius: 10px; font-weight: bold; }
 
     /* --- FOOTER --- */
-    footer { background: #0b131b; color: #aebbc4; padding: 50px 5% 30px; width: 100%; }
-    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 30px; border-bottom: 1px solid #1e2a35; padding-bottom: 30px; }
-    .footer-grid h4 { font-family: 'Poppins', sans-serif; color: #fff; text-transform: uppercase; border-bottom: 2px solid var(--berkeley-gold); padding-bottom: 5px; font-size: 12px; margin-bottom: 15px; display: inline-block; }
-    .footer-grid ul { list-style: none; padding: 0; margin: 0; }
-    .footer-grid li { margin-bottom: 10px; font-size: 13px; }
-    .footer-grid a { color: #aebbc4; text-decoration: none; }
+    footer { background: #111; color: #999; padding: 40px 5% 20px; width: 100%; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 25px; border-bottom: 1px solid #222; padding-bottom: 25px; }
+    .footer-grid h4 { color: #fff; font-size: 12px; text-transform: uppercase; border-bottom: 2px solid var(--berkeley-gold); padding-bottom: 5px; margin-bottom: 15px; display: inline-block; }
+    .footer-grid p, .footer-grid a { font-size: 13px; color: #999; text-decoration: none; }
 
-    /* --- DESKTOP ADJUSTMENTS --- */
+    /* --- DESKTOP QUERIES --- */
     @media (min-width: 768px) {
-      .brand { font-size: 34px; }
-      .utility-nav { justify-content: flex-end; padding: 12px 10%; }
-      .main-nav { gap: 35px; }
-      .hero h1 { font-size: 44px; }
+      .brand { font-size: 32px; }
+      .utility-nav { padding: 10px 10%; font-size: 12px; }
+      .main-nav { gap: 40px; padding: 0; }
+      .main-nav a { font-size: 14px; }
+      .hero h1 { font-size: 42px; }
       .impact-stats { grid-template-columns: repeat(4, 1fr); padding: 40px 10%; }
-      .grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-      .story-box { flex-direction: row; padding: 70px 8%; gap: 60px; }
-      .story-graphics { gap: 20px; }
+      .stat h2 { font-size: 32px; }
+      .grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+      .story-box { flex-direction: row; padding: 60px 8%; align-items: center; }
       .footer-grid { grid-template-columns: repeat(4, 1fr); }
-      .category-title { font-size: 26px; }
+      .category-title { font-size: 24px; }
     }
   </style>
 </head>
 <body>
 
-<div class="main-overlay">
   <div class="utility-nav">
     <a href="#">Corporate Sales</a>
     <a href="#">Technical Support</a>
@@ -173,11 +140,7 @@
   </header>
 
   <section class="hero">
-    <div class="hero-content">
-      <h1>Writers Market Place</h1>
-      <p>Kenya's Hub for Academic Integrity</p>
-      <a href="javascript:void(0)" class="cta-btn-hero" onclick="openPayment('Marketplace Access')">Pay for Services Now</a>
-    </div>
+    <h1>Writers Market Place</h1>
   </section>
 
   <div class="impact-stats">
@@ -188,10 +151,52 @@
   </div>
 
   <div class="section">
-    <h2 class="category-title">Academic Integrity & AI Tools</h2>
+    <h2 class="category-title">Professional Writing & Editing</h2>
     <div class="grid">
       <div class="card-item">
-        <div class="card-header"><h3><i class="fas fa-file-signature"></i> Reports & Slots</h3></div>
+        <div class="card-header"><h3><i class="fas fa-pen-nib"></i> Academic Writing</h3></div>
+        <div class="card-body">
+          <ul>
+            <li>Assignment & Essay Writing</li>
+            <li>Research Papers & Proposals</li>
+            <li>Thesis & Dissertation Help</li>
+            <li>Case Study Analysis</li>
+          </ul>
+        </div>
+        <button class="btn-pay" onclick="openPayment('Academic Writing')">Order Assignment</button>
+      </div>
+
+      <div class="card-item">
+        <div class="card-header"><h3><i class="fas fa-file-user"></i> Career Branding</h3></div>
+        <div class="card-body">
+          <ul>
+            <li>Professional CV Writing</li>
+            <li>ATS-Friendly Resume Design</li>
+            <li>Cover Letter Customization</li>
+            <li>LinkedIn Profile Optimization</li>
+          </ul>
+        </div>
+        <button class="btn-pay" onclick="openPayment('CV Writing Services')">Write My CV</button>
+      </div>
+
+      <div class="card-item">
+        <div class="card-header"><h3><i class="fas fa-spell-check"></i> Quality Control</h3></div>
+        <div class="card-body">
+          <ul>
+            <li>Grammarly Premium Checks</li>
+            <li>Professional Proofreading</li>
+            <li>Structural Editing & Rewriting</li>
+            <li>Formatting (APA, MLA, Harvard)</li>
+          </ul>
+        </div>
+        <button class="btn-pay" onclick="openPayment('Proofreading & Grammar')">Check My Work</button>
+      </div>
+    </div>
+
+    <h2 class="category-title">Academic Integrity Tools</h2>
+    <div class="grid">
+      <div class="card-item">
+        <div class="card-header"><h3><i class="fas fa-file-signature"></i> Plagiarism Reports</h3></div>
         <div class="card-body">
           <ul>
             <li>Instant Turnitin Reports</li>
@@ -200,7 +205,7 @@
             <li>Website Turnitin Slots</li>
           </ul>
         </div>
-        <button class="btn-pay" onclick="openPayment('Turnitin & Reports')">Pay for Service</button>
+        <button class="btn-pay" onclick="openPayment('Turnitin & Reports')">Get Report</button>
       </div>
 
       <div class="card-item">
@@ -208,12 +213,12 @@
         <div class="card-body">
           <ul>
             <li>GPTinf (Best AI Remover)</li>
-            <li>StealthWriter Premium/Basic</li>
+            <li>StealthWriter Premium</li>
             <li>Ryne.ai Ruby Plan</li>
             <li>Writehuman Humanizer</li>
           </ul>
         </div>
-        <button class="btn-pay" onclick="openPayment('AI Humanizers')">Pay for Service</button>
+        <button class="btn-pay" onclick="openPayment('AI Humanizers')">Humanize Content</button>
       </div>
 
       <div class="card-item">
@@ -221,25 +226,26 @@
         <div class="card-body">
           <ul>
             <li>CourseHero & Chegg Unlocks</li>
-            <li>Studocu, Scribd & Slideshare</li>
-            <li>E-Books & Journal Unlocks</li>
+            <li>Studocu & Scribd Unlocks</li>
+            <li>Cliffnotes & Studypool</li>
+            <li>E-Books & Journal Access</li>
           </ul>
         </div>
-        <button class="btn-pay" onclick="openPayment('Platform Unlocks')">Pay for Service</button>
+        <button class="btn-pay" onclick="openPayment('Platform Unlocks')">Unlock Now</button>
       </div>
     </div>
 
     <div class="story-box">
       <div class="story-content">
         <h2>The Writers Market Place Story</h2>
-        <p>In a world where quality defines success, <strong>Writers Market Place</strong> by <strong>Prime Tech Solutions</strong> gives you the edge. We provide fast, reliable tools and expert support to help you produce clean, original work.</p>
+        <p>In a world where quality defines success, <strong>Writers Market Place</strong> by <strong>Prime Tech Solutions</strong> gives you the edge. We provide fast, reliable tools and expert writing support to help you produce clean, original, and professionally polished work.</p>
         <a href="https://wa.me/254708902232" class="cta-btn">Get Started Now</a>
       </div>
       <div class="story-graphics">
-        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/3503/3503827.png" alt=""><h4>Originality</h4></div>
-        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png" alt=""><h4>Editing</h4></div>
-        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/2593/2593549.png" alt=""><h4>Support</h4></div>
-        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/709/709790.png" alt=""><h4>Fast Delivery</h4></div>
+        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/3503/3503827.png" alt="" style="width:30px;"><h4>Quality</h4></div>
+        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png" alt="" style="width:30px;"><h4>Editing</h4></div>
+        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/2593/2593549.png" alt="" style="width:30px;"><h4>Support</h4></div>
+        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/709/709790.png" alt="" style="width:30px;"><h4>Fast</h4></div>
       </div>
     </div>
   </div>
@@ -253,19 +259,19 @@
           <p>Account Number: <strong>902232</strong></p>
         </div>
         <a href="#" id="waLink" class="wa-link"><i class="fab fa-whatsapp"></i> I HAVE PAID - START ORDER</a>
-        <p onclick="closePayment()" style="margin-top:20px; cursor:pointer; color:#999; font-size:12px; text-transform:uppercase; font-weight:bold;">Go Back</p>
+        <p onclick="closePayment()" style="margin-top:15px; cursor:pointer; color:#999; font-size:11px; text-transform:uppercase;">Go Back</p>
       </div>
     </div>
   </div>
 
   <footer>
     <div class="footer-grid">
-      <div><h4>Corporate</h4><ul><li><a href="#">Technical Support</a></li><li><a href="repair.html">Repair Services</a></li></ul></div>
-      <div><h4>Services</h4><ul><li><a href="market.html">Academic Integrity</a></li><li><a href="#">Premium Software</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="#">CV Writing</a></li><li><a href="#">Academic Tools</a></li></ul></div>
+      <div><h4>Support</h4><ul><li><a href="#">Technical Support</a></li><li><a href="repair.html">Laptop Repairs</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="about.html">About Us</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
       <div>
         <h4>Contact Us</h4>
-        <p style="font-size:13px; color:#fff;">Nairobi, Kenya<br>Tel: +254 708 902 232<br>Email: wesongatimoth@gmail.com</p>
+        <p>Nairobi, Kenya<br>Tel: +254 708 902 232<br>Email: wesongatimoth@gmail.com</p>
       </div>
     </div>
     <p style="text-align: center; font-size: 10px; opacity: 0.3; margin-top: 30px;">© 2026 Prime Tech Solutions.</p>
@@ -281,6 +287,5 @@
     function closePayment() { document.getElementById('payModal').style.display = 'none'; }
     window.onclick = function(e) { if(e.target == document.getElementById('payModal')) closePayment(); }
   </script>
-</div>
 </body>
 </html>
