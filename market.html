@@ -16,24 +16,26 @@
     :root {
       --berkeley-blue: #003262;
       --berkeley-gold: #FDB515;
-      --silver-overlay: rgba(244, 247, 250, 0.90);
+      --silver-overlay: rgba(244, 247, 250, 0.94);
       --white: #ffffff;
       --text-main: #333;
     }
 
-    /* --- BODY & BACKGROUND RESOLUTION --- */
+    /* --- GLOBAL RESET & MOBILE FIT --- */
+    * { box-sizing: border-box; }
+    
     body { 
       font-family: 'Open Sans', sans-serif; 
       margin: 0; 
       padding: 0;
       color: var(--text-main); 
       line-height: 1.6; 
-      /* Resolved Background Integration */
       background: linear-gradient(rgba(229, 231, 233, 0.92), rgba(229, 231, 233, 0.92)), 
                   url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1470') no-repeat center center fixed;
       background-size: cover;
       background-attachment: fixed;
-      overflow-x: hidden; 
+      overflow-x: hidden; /* Prevents side-scrolling */
+      width: 100%;
     }
 
     .main-overlay {
@@ -42,32 +44,33 @@
       width: 100%;
     }
 
-    /* --- NAVIGATION --- */
+    /* --- RESPONSIVE NAVIGATION --- */
     .utility-nav { 
       background: var(--berkeley-blue); 
-      padding: 12px 10%; 
+      padding: 10px 5%; 
       display: flex; 
-      justify-content: flex-end; 
-      gap: 25px; 
-      font-size: 12px; 
+      justify-content: center; 
+      flex-wrap: wrap;
+      gap: 15px; 
+      font-size: 11px; 
       border-bottom: 2px solid var(--berkeley-gold);
     }
     .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
 
-    header { background: var(--white); text-align: center; padding-top: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
-    .brand { font-family: 'Poppins', sans-serif; font-size: 34px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 15px; }
+    header { background: var(--white); text-align: center; padding: 20px 0 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; width: 100%; }
+    .brand { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 10px; padding: 0 10px; }
     .brand span { color: var(--berkeley-gold); }
     
-    .nav-container { border-top: 1px solid #eee; padding: 15px 0; background: var(--white); }
-    .main-nav { display: flex; justify-content: center; gap: 35px; list-style: none; margin: 0; padding: 0; }
-    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
-    .main-nav a:hover { color: var(--berkeley-gold); }
+    .nav-container { border-top: 1px solid #eee; padding: 10px 0; background: var(--white); overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+    .main-nav { display: inline-flex; justify-content: center; gap: 20px; list-style: none; margin: 0; padding: 0 20px; }
+    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 12px; text-transform: uppercase; }
 
-    /* --- HERO --- */
+    /* --- HERO MOBILE OPTIMIZATION --- */
     .hero {
       background: linear-gradient(rgba(0,50,98,0.8), rgba(0,50,98,0.8)), 
                   url('https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=1470');
-      height: 350px; 
+      min-height: 300px;
+      padding: 40px 20px;
       background-size: cover; 
       background-position: center;
       display: flex; 
@@ -75,73 +78,74 @@
       justify-content: center; 
       color: white; 
       text-align: center;
+      width: 100%;
     }
-    .hero-content { padding: 40px; }
-    .hero h1 { font-family: 'Poppins', sans-serif; font-size: 44px; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
-    .hero p { font-size: 18px; margin-top: 10px; font-weight: 300; }
-    .hero .cta-btn-hero { 
-        margin-top: 20px; 
-        display: inline-block; 
-        padding: 12px 30px; 
-        background: var(--berkeley-gold); 
-        color: var(--berkeley-blue); 
-        text-decoration: none; 
-        font-weight: 800; 
-        border-radius: 5px;
-        text-transform: uppercase;
-        font-size: 14px;
-    }
+    .hero h1 { font-family: 'Poppins', sans-serif; font-size: 28px; margin: 0; text-transform: uppercase; }
+    .hero p { font-size: 16px; margin: 10px 0; font-weight: 300; }
+    .cta-btn-hero { margin-top: 15px; display: inline-block; padding: 12px 25px; background: var(--berkeley-gold); color: var(--berkeley-blue); text-decoration: none; font-weight: 800; border-radius: 5px; font-size: 13px; }
 
-    /* --- IMPACT STATS --- */
-    .impact-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--berkeley-blue); color: #fff; text-align: center; padding: 40px 10%; }
-    .stat h2 { font-family: 'Poppins', sans-serif; font-size: 36px; color: var(--berkeley-gold); margin: 0; }
-    .stat p { font-size: 13px; text-transform: uppercase; font-weight: 600; margin: 5px 0 0; }
+    /* --- IMPACT STATS GRID --- */
+    .impact-stats { display: grid; grid-template-columns: repeat(2, 1fr); background: var(--berkeley-blue); color: #fff; text-align: center; padding: 20px 5%; width: 100%; }
+    .stat { padding: 15px 5px; }
+    .stat h2 { font-family: 'Poppins', sans-serif; font-size: 24px; color: var(--berkeley-gold); margin: 0; }
+    .stat p { font-size: 11px; text-transform: uppercase; font-weight: 600; margin-top: 5px; }
 
     /* --- SERVICE GRID --- */
-    .section { padding: 60px 10%; max-width: 1400px; margin: auto; }
-    .category-title { font-family: 'Poppins', sans-serif; font-size: 26px; color: var(--berkeley-blue); border-left: 6px solid var(--berkeley-gold); padding-left: 20px; margin-bottom: 40px; text-transform: uppercase; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 60px; }
+    .section { padding: 40px 5%; width: 100%; max-width: 1200px; margin: auto; }
+    .category-title { font-family: 'Poppins', sans-serif; font-size: 20px; color: var(--berkeley-blue); border-left: 5px solid var(--berkeley-gold); padding-left: 15px; margin: 30px 0 20px; text-transform: uppercase; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 40px; }
     
-    .card-item { background: var(--white); border-radius: 15px; border: 1px solid #ddd; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow: hidden; }
-    .card-item:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,50,98,0.15); border-color: var(--berkeley-gold); }
-    .card-header { background: #fcfdfe; padding: 25px; border-bottom: 1px solid #eee; }
-    .card-header h3 { font-family: 'Poppins', sans-serif; color: var(--berkeley-blue); margin: 0; font-size: 19px; display: flex; align-items: center; gap: 12px; }
-    .card-body { padding: 25px; flex-grow: 1; }
+    .card-item { background: var(--white); border-radius: 12px; border: 1px solid #ddd; display: flex; flex-direction: column; overflow: hidden; width: 100%; }
+    .card-header { background: #fcfdfe; padding: 20px; border-bottom: 1px solid #eee; }
+    .card-header h3 { font-family: 'Poppins', sans-serif; color: var(--berkeley-blue); margin: 0; font-size: 17px; display: flex; align-items: center; gap: 10px; }
+    .card-body { padding: 20px; flex-grow: 1; }
     .card-body ul { list-style: none; padding: 0; margin: 0; }
-    .card-body li { padding: 12px 0; font-size: 14px; border-bottom: 1px solid #f9f9f9; }
-    .card-body li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; color: var(--berkeley-gold); margin-right: 12px; }
+    .card-body li { padding: 10px 0; font-size: 13px; border-bottom: 1px solid #f9f9f9; display: flex; align-items: flex-start; }
+    .card-body li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; color: var(--berkeley-gold); margin-right: 10px; font-size: 14px; }
 
-    .btn-pay { background: var(--berkeley-blue); color: white; padding: 18px; border: none; width: 100%; cursor: pointer; text-transform: uppercase; font-weight: 800; font-size: 13px; transition: 0.3s; }
-    .btn-pay:hover { background: var(--berkeley-gold); color: var(--berkeley-blue); }
+    .btn-pay { background: var(--berkeley-blue); color: white; padding: 15px; border: none; width: 100%; cursor: pointer; text-transform: uppercase; font-weight: 800; font-size: 12px; }
 
     /* --- STORY BOX --- */
-    .story-box { background: var(--white); margin: 80px 0; padding: 70px 8%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border-top: 6px solid var(--berkeley-gold); }
-    .story-content h2 { font-family: 'Poppins', sans-serif; font-size: 34px; color: var(--berkeley-blue); margin-bottom: 25px; }
-    .cta-btn { display: inline-block; padding: 18px 45px; background: var(--berkeley-blue); color: #fff; text-decoration: none; font-weight: 700; border-radius: 50px; }
-    .story-graphics { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .graphics-card { background: #f8fafc; padding: 30px 15px; text-align: center; border-radius: 15px; border: 1px solid #edf2f7; }
-    .graphics-card img { width: 45px; margin-bottom: 15px; }
+    .story-box { background: var(--white); margin: 40px 0; padding: 30px 20px; display: flex; flex-direction: column; gap: 30px; border-radius: 15px; border-top: 5px solid var(--berkeley-gold); }
+    .story-content h2 { font-family: 'Poppins', sans-serif; font-size: 24px; color: var(--berkeley-blue); margin-bottom: 15px; }
+    .story-content p { font-size: 14px; margin-bottom: 20px; }
+    .cta-btn { display: block; text-align: center; padding: 15px; background: var(--berkeley-blue); color: #fff; text-decoration: none; font-weight: 700; border-radius: 50px; }
+    
+    .story-graphics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .graphics-card { background: #f8fafc; padding: 20px 10px; text-align: center; border-radius: 10px; border: 1px solid #edf2f7; }
+    .graphics-card img { width: 35px; margin-bottom: 10px; }
+    .graphics-card h4 { font-size: 12px; color: var(--berkeley-blue); margin: 0; }
 
-    /* --- MODAL --- */
-    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,50,98,0.92); backdrop-filter: blur(8px); }
-    .modal-content { background: var(--white); margin: 8% auto; width: 90%; max-width: 450px; border-radius: 25px; overflow: hidden; text-align: center; animation: slideIn 0.3s ease-out; }
-    @keyframes slideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    .modal-header { background: var(--berkeley-blue); color: #fff; padding: 30px; }
-    .modal-body { padding: 40px; }
-    .pay-details { background: #fdf8e6; border: 2px dashed var(--berkeley-gold); padding: 25px; border-radius: 15px; margin-bottom: 30px; }
-    .pay-details p { margin: 8px 0; font-size: 18px; color: var(--berkeley-blue); font-weight: 700; }
-    .wa-link { background: #25D366; color: white; text-decoration: none; padding: 20px; display: block; border-radius: 12px; font-weight: 800; }
+    /* --- MODAL MOBILE FIT --- */
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,50,98,0.95); padding: 20px; }
+    .modal-content { background: var(--white); margin: auto; width: 100%; max-width: 400px; border-radius: 20px; overflow: hidden; position: relative; top: 50%; transform: translateY(-50%); }
+    .modal-header { background: var(--berkeley-blue); color: #fff; padding: 20px; text-align: center; }
+    .modal-body { padding: 30px 20px; text-align: center; }
+    .pay-details { background: #fdf8e6; border: 2px dashed var(--berkeley-gold); padding: 20px; border-radius: 12px; margin-bottom: 20px; }
+    .pay-details p { margin: 5px 0; font-size: 16px; color: var(--berkeley-blue); font-weight: 700; }
+    .wa-link { background: #25D366; color: white; text-decoration: none; padding: 15px; display: block; border-radius: 10px; font-weight: 800; }
 
     /* --- FOOTER --- */
-    footer { background: #0b131b; color: #aebbc4; padding: 90px 10% 40px; margin-top: 100px; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 50px; border-bottom: 1px solid #1e2a35; padding-bottom: 60px; }
-    .footer-grid h4 { font-family: 'Poppins', sans-serif; color: #fff; text-transform: uppercase; border-bottom: 2px solid var(--berkeley-gold); padding-bottom: 8px; display: inline-block; font-size: 13px; margin-bottom: 25px; }
-    .footer-grid ul { list-style: none; padding: 0; }
-    .footer-grid li { margin-bottom: 15px; }
-    .footer-grid a { color: #aebbc4; text-decoration: none; font-size: 14px; transition: 0.3s; }
-    .footer-grid a:hover { color: var(--berkeley-gold); padding-left: 8px; }
+    footer { background: #0b131b; color: #aebbc4; padding: 50px 5% 30px; width: 100%; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 30px; border-bottom: 1px solid #1e2a35; padding-bottom: 30px; }
+    .footer-grid h4 { font-family: 'Poppins', sans-serif; color: #fff; text-transform: uppercase; border-bottom: 2px solid var(--berkeley-gold); padding-bottom: 5px; font-size: 12px; margin-bottom: 15px; display: inline-block; }
+    .footer-grid ul { list-style: none; padding: 0; margin: 0; }
+    .footer-grid li { margin-bottom: 10px; font-size: 13px; }
+    .footer-grid a { color: #aebbc4; text-decoration: none; }
 
-    @media (max-width: 992px) { .story-box { grid-template-columns: 1fr; text-align: center; } .impact-stats { grid-template-columns: repeat(2, 1fr); } }
+    /* --- DESKTOP ADJUSTMENTS --- */
+    @media (min-width: 768px) {
+      .brand { font-size: 34px; }
+      .utility-nav { justify-content: flex-end; padding: 12px 10%; }
+      .main-nav { gap: 35px; }
+      .hero h1 { font-size: 44px; }
+      .impact-stats { grid-template-columns: repeat(4, 1fr); padding: 40px 10%; }
+      .grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+      .story-box { flex-direction: row; padding: 70px 8%; gap: 60px; }
+      .story-graphics { gap: 20px; }
+      .footer-grid { grid-template-columns: repeat(4, 1fr); }
+      .category-title { font-size: 26px; }
+    }
   </style>
 </head>
 <body>
@@ -171,7 +175,7 @@
   <section class="hero">
     <div class="hero-content">
       <h1>Writers Market Place</h1>
-      <p>Kenya's Hub for Academic Integrity & Digital Tools</p>
+      <p>Kenya's Hub for Academic Integrity</p>
       <a href="javascript:void(0)" class="cta-btn-hero" onclick="openPayment('Marketplace Access')">Pay for Services Now</a>
     </div>
   </section>
@@ -218,53 +222,10 @@
           <ul>
             <li>CourseHero & Chegg Unlocks</li>
             <li>Studocu, Scribd & Slideshare</li>
-            <li>Cliffnotes & Studypool</li>
             <li>E-Books & Journal Unlocks</li>
           </ul>
         </div>
         <button class="btn-pay" onclick="openPayment('Platform Unlocks')">Pay for Service</button>
-      </div>
-    </div>
-
-    <h2 class="category-title">Subscriptions & Connectivity</h2>
-    <div class="grid">
-      <div class="card-item">
-        <div class="card-header"><h3><i class="fas fa-microchip"></i> Premium AI Access</h3></div>
-        <div class="card-body">
-          <ul>
-            <li>ChatGPT 5.2 Teams Plan</li>
-            <li>Claude 4.6 Opus Access</li>
-            <li>SuperGrok Premium</li>
-            <li>GPTINF Unlimited Plan</li>
-          </ul>
-        </div>
-        <button class="btn-pay" onclick="openPayment('Premium AI Access')">Pay for Service</button>
-      </div>
-
-      <div class="card-item">
-        <div class="card-header"><h3><i class="fas fa-user-shield"></i> VPN & Privacy</h3></div>
-        <div class="card-body">
-          <ul>
-            <li>Nord, Express & Windscribe</li>
-            <li>Static Residential Proxies</li>
-            <li>Surfshark & Strong Proxies</li>
-            <li>Stable Browser Proxies</li>
-          </ul>
-        </div>
-        <button class="btn-pay" onclick="openPayment('VPN & Proxies')">Pay for Service</button>
-      </div>
-
-      <div class="card-item">
-        <div class="card-header"><h3><i class="fas fa-paint-brush"></i> Creative & Ent.</h3></div>
-        <div class="card-body">
-          <ul>
-            <li>Grammarly Pro</li>
-            <li>Canva Pro & Netflix UHD</li>
-            <li>All DStv Packages</li>
-            <li>Spotify & Apple Music</li>
-          </ul>
-        </div>
-        <button class="btn-pay" onclick="openPayment('Creative Subscriptions')">Pay for Service</button>
       </div>
     </div>
 
@@ -299,16 +260,15 @@
 
   <footer>
     <div class="footer-grid">
-      <div><h4>Corporate</h4><ul><li><a href="#">Technical Support</a></li><li><a href="repair.html">Repair Services</a></li><li><a href="#">Warranty Policy</a></li></ul></div>
-      <div><h4>Services</h4><ul><li><a href="market.html">Academic Integrity</a></li><li><a href="#">Data Science</a></li><li><a href="#">Premium Software</a></li></ul></div>
+      <div><h4>Corporate</h4><ul><li><a href="#">Technical Support</a></li><li><a href="repair.html">Repair Services</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="market.html">Academic Integrity</a></li><li><a href="#">Premium Software</a></li></ul></div>
       <div><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
       <div>
         <h4>Contact Us</h4>
-        <p style="font-size:14px; color:#fff;">Nairobi, Kenya<br>Tel: +254 708 902 232<br>Email: wesongatimoth@gmail.com</p>
-        <a href="https://wa.me/254708902232" style="color:var(--berkeley-gold); font-weight:bold; text-decoration:none; font-size:13px; text-transform:uppercase;">LIVE HELP <i class="fas fa-headset"></i></a>
+        <p style="font-size:13px; color:#fff;">Nairobi, Kenya<br>Tel: +254 708 902 232<br>Email: wesongatimoth@gmail.com</p>
       </div>
     </div>
-    <p style="text-align: center; font-size: 11px; opacity: 0.3; margin-top: 50px;">© 2026 Prime Tech Solutions. Fast. Reliable. Genuine.</p>
+    <p style="text-align: center; font-size: 10px; opacity: 0.3; margin-top: 30px;">© 2026 Prime Tech Solutions.</p>
   </footer>
 
   <script>
