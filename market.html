@@ -1,33 +1,20 @@
+I have updated the **Writers Market Place** grid to include all your specific service categories: **Academic Integrity**, **Premium Subscriptions**, **VPN & Privacy**, and **Creative/Entertainment**. 
+
+I've organized these into two main sections with clean, responsive cards to ensure your customers can easily find what they need.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prime Tech Solutions | Kenya's Premier IT Partner</title>
+  <title>Prime Tech Solutions | Writers Market Place</title>
   <link rel="icon" href="Logo1.jpg" type="image/jpg">
   <link rel="apple-touch-icon" href="Logo1.jpg">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Prime Tech Solutions",
-    "url": "https://www.primetechsolutions.co.ke/",
-    "logo": "https://www.primetechsolutions.co.ke/Logo.jpg",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.primetechsolutions.co.ke/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
-  <meta name="google-site-verification" content="PYrPNpDG1KkS7aDpoSkr-8q0ZV7kH_efosgQuHAAL4I"/>
-  <meta name="keywords" content="Prime Tech Solutions, Writers Market Place, Turnitin Kenya, AI Humanizer, GPTinf, StealthWriter, Academic Unlocks">
-  <meta name="description" content="Prime Tech Solutions is Kenya's leading IT partner and home to the Writers Market Place, offering academic integrity tools, AI humanizers, and premium research unlocks.">
+  <meta name="keywords" content="Turnitin Reports Kenya, GPTinf, StealthWriter, ChatGPT Plus Kenya, VPN Proxies Nairobi, CourseHero Unlocks">
+  <meta name="description" content="Access premium academic tools, AI humanizers, and professional subscriptions at Prime Tech Solutions Writers Market Place.">
   <meta name="author" content="Timothy Wesonga">
-  <meta name="robots" content="index, follow">
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
@@ -41,20 +28,12 @@
 
     body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; color: var(--text-main); line-height: 1.6; background-color: var(--silver-bg); overflow-x: hidden; }
 
-    /* --- TOP UTILITY BAR --- */
-    .utility-nav {
-      background: var(--berkeley-blue);
-      padding: 10px 10%;
-      display: flex;
-      justify-content: flex-end;
-      gap: 20px;
-      font-size: 12px;
-    }
-    .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
+    /* --- NAVIGATION --- */
+    .utility-nav { background: var(--berkeley-blue); padding: 10px 10%; display: flex; justify-content: flex-end; gap: 20px; font-size: 12px; }
+    .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; }
 
-    /* --- MAIN HEADER --- */
     header { background: var(--white); text-align: center; padding-top: 27px; }
-    .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); letter-spacing: -1px; display: block; margin-bottom: 15px; }
+    .brand { font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); display: block; margin-bottom: 15px; }
     .brand span { color: var(--berkeley-gold); }
     
     .nav-container { border-bottom: 4px solid var(--berkeley-gold); padding-bottom: 15px; background: var(--white); }
@@ -63,105 +42,66 @@
     .main-nav a:hover { color: var(--berkeley-gold); }
 
     /* --- IMPACT STATS --- */
-    .impact-stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      background: var(--berkeley-blue);
-      color: #fff;
-      text-align: center;
-      padding: 40px 10%;
-    }
+    .impact-stats { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--berkeley-blue); color: #fff; text-align: center; padding: 40px 10%; }
     .stat h2 { font-size: 36px; color: var(--berkeley-gold); margin: 0; }
-    .stat p { font-size: 14px; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
+    .stat p { font-size: 14px; text-transform: uppercase; }
 
-    /* --- HERO SECTION --- */
+    /* --- HERO --- */
     .hero {
-      background: linear-gradient(rgba(0,50,98,0.6), rgba(0,50,98,0.6)), 
-                  url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1470');
-      height: 450px; 
-      background-size: cover; 
-      background-position: center;
-      background-attachment: fixed;
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      color: white; 
-      text-align: center; 
-      padding: 0 10%;
+      background: linear-gradient(rgba(0,50,98,0.7), rgba(0,50,98,0.7)), 
+                  url('https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=1470');
+      height: 350px; background-size: cover; background-position: center;
+      display: flex; align-items: center; justify-content: center; color: white; text-align: center;
     }
-    .hero-content {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    }
-    .hero h1 { font-size: 48px; margin: 0; letter-spacing: 2px; text-transform: uppercase; }
-    .hero p { font-size: 20px; margin: 20px 0 30px; font-weight: 300; }
+    .hero-content { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); }
+    .hero h1 { font-size: 38px; margin: 0; text-transform: uppercase; }
 
-    /* --- MARKET GRID --- */
-    .section { padding: 60px 10%; max-width: 1400px; margin: auto; }
-    .tier-label { font-size: 26px; color: var(--berkeley-blue); border-left: 5px solid var(--berkeley-gold); padding-left: 15px; margin: 40px 0 20px; font-weight: bold; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    /* --- GRID SYSTEM --- */
+    .section { padding: 40px 10%; max-width: 1400px; margin: auto; }
+    .category-title { font-size: 28px; color: var(--berkeley-blue); border-bottom: 3px solid var(--berkeley-gold); display: inline-block; margin-bottom: 30px; font-weight: 800; text-transform: uppercase; }
     
-    .card-item { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid #ddd; transition: 0.3s; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 60px; }
+    
+    .card-item { background: #fff; border-radius: 8px; border: 1px solid #ddd; transition: 0.3s; display: flex; flex-direction: column; }
     .card-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: var(--berkeley-gold); }
-    .card-item h3 { color: var(--berkeley-blue); margin-top: 0; }
-    .card-item ul { list-style: none; padding: 0; margin: 20px 0; }
-    .card-item li { padding: 8px 0; border-bottom: 1px solid #eee; font-size: 14px; }
     
-    .btn-pay { background: var(--berkeley-blue); color: white; padding: 12px; display: block; text-align: center; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; cursor: pointer; border: none; width: 100%; }
+    .card-header { background: #f9f9f9; padding: 20px; border-bottom: 1px solid #eee; border-radius: 8px 8px 0 0; }
+    .card-header h3 { color: var(--berkeley-blue); margin: 0; font-size: 18px; display: flex; align-items: center; gap: 10px; }
+    .card-header i { color: var(--berkeley-gold); }
+
+    .card-body { padding: 20px; flex-grow: 1; }
+    .card-body ul { list-style: none; padding: 0; margin: 0; }
+    .card-body li { padding: 8px 0; font-size: 14px; border-bottom: 1px dotted #eee; color: #555; }
+    .card-body li:last-child { border: none; }
+    .card-body li::before { content: "✓"; color: var(--berkeley-gold); margin-right: 8px; font-weight: bold; }
+
+    .btn-pay { background: var(--berkeley-blue); color: white; padding: 14px; display: block; text-align: center; font-weight: bold; border: none; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; border-radius: 0 0 8px 8px; }
     .btn-pay:hover { background: var(--berkeley-gold); color: var(--berkeley-blue); }
 
-    /* --- INTEGRATED STORY BOX SECTION --- */
-    .story-box {
-      background: #fff;
-      margin: 60px 0;
-      padding: 60px 10%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-      border-top: 5px solid var(--berkeley-gold);
-    }
-    .story-content h2 { font-size: 32px; color: var(--berkeley-blue); margin-bottom: 25px; }
-    .story-content p { font-size: 16px; color: #555; text-align: justify; }
-    
-    .cta-btn { 
-        display: inline-block; margin-top: 25px; padding: 15px 35px; 
-        background: var(--berkeley-blue); color: #fff; text-decoration: none; 
-        font-weight: bold; border-radius: 50px; transition: 0.3s; 
-    }
-    .cta-btn:hover { background: var(--berkeley-gold); color: var(--berkeley-blue); }
+    /* --- STORY BOX --- */
+    .story-box { background: #fff; margin: 60px 0; padding: 60px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; border-top: 5px solid var(--berkeley-gold); }
+    .cta-btn { display: inline-block; margin-top: 25px; padding: 15px 35px; background: var(--berkeley-blue); color: #fff; text-decoration: none; font-weight: bold; border-radius: 50px; }
+    .story-graphics { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .graphics-card { background: var(--silver-bg); padding: 20px; text-align: center; border-radius: 10px; }
+    .graphics-card img { width: 40px; margin-bottom: 10px; }
 
-    .story-graphics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .story-graphics .card {
-      background: var(--silver-bg);
-      padding: 20px;
-      text-align: center;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-    .story-graphics .card:hover { background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-    .story-graphics img { width: 50px; height: 50px; margin-bottom: 10px; object-fit: contain; }
-    .story-graphics h4 { margin: 10px 0 5px; color: var(--berkeley-blue); font-size: 14px; }
-    .story-graphics p { font-size: 12px; color: #777; margin: 0; }
+    /* --- MODAL --- */
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
+    .modal-content { background: #fff; margin: 10% auto; width: 90%; max-width: 400px; border-radius: 15px; overflow: hidden; text-align: center; }
+    .modal-header { background: var(--berkeley-blue); color: #fff; padding: 20px; }
+    .modal-body { padding: 30px; }
+    .pay-details { background: #f8f9fa; border: 2px dashed var(--berkeley-gold); padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+    .wa-link { background: #25D366; color: white; text-decoration: none; padding: 15px; display: block; border-radius: 8px; font-weight: bold; }
 
     /* --- FOOTER --- */
     footer { background: #191919; color: #ccc; padding: 60px 10% 20px; margin-top: 50px; }
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-bottom: 1px solid #333; padding-bottom: 40px; }
-    .footer-grid h4 { color: #fff; text-transform: uppercase; margin-bottom: 20px; font-size: 12px; border-bottom: 1px solid var(--berkeley-gold); display: inline-block; padding-bottom: 3px; }
-    .footer-grid a { color: #ccc; text-decoration: none; }
-    
-    @media (max-width: 992px) {
-      .story-box { grid-template-columns: 1fr; }
-      .impact-stats { grid-template-columns: repeat(2, 1fr); }
-    }
+    .footer-grid h4 { color: #fff; text-transform: uppercase; border-bottom: 1px solid var(--berkeley-gold); padding-bottom: 3px; display: inline-block; font-size: 12px; }
+    .footer-grid ul { list-style: none; padding: 0; }
+    .footer-grid a { color: #ccc; text-decoration: none; font-size: 14px; }
+    .footer-grid a:hover { color: var(--berkeley-gold); }
+
+    @media (max-width: 992px) { .story-box { grid-template-columns: 1fr; } .impact-stats { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
@@ -187,120 +127,151 @@
     </div>
   </header>
 
-  <div class="impact-stats">
-    <div class="stat"><h2>#1</h2><p>Tech Partner</p></div>
-    <div class="stat"><h2>100%</h2><p>Originality</p></div>
-    <div class="stat"><h2>24/7</h2><p>Expert Support</p></div>
-    <div class="stat"><h2>Instant</h2><p>Delivery</p></div>
-  </div>
-
   <section class="hero">
     <div class="hero-content">
       <h1>Writers Market Place</h1>
-      <p>Elevating Academic & Creative Standards with Elite Digital Tools.</p>
+      <p>Your Premier Hub for Academic Integrity & Digital Tools</p>
     </div>
   </section>
 
   <div class="section">
-    <div class="tier-label">Essential Integrity Tools</div>
+    <h2 class="category-title">Academic Integrity & AI Tools</h2>
     <div class="grid">
-        <div class="card-item">
-            <h3>Turnitin & Reports</h3>
-            <ul>
-                <li>• Instant Turnitin Originality Report</li>
-                <li>• AI Detection Percentage Scan</li>
-                <li>• Copyleaks Premium Reports</li>
-                <li>• Personal Turnitin Account Slots</li>
-            </ul>
-            <button class="btn-pay" onclick="alert('Proceeding to Secure Payment for Turnitin')">Pay for Service</button>
+      <div class="card-item">
+        <div class="card-header"><h3><i class="fas fa-file-alt"></i> Reports & Slots</h3></div>
+        <div class="card-body">
+          <ul>
+            <li>Instant Turnitin Reports</li>
+            <li>Copyleaks AI & Plag Reports</li>
+            <li>Plagiarism/AI Reports @40/-</li>
+            <li>Website Turnitin Slots</li>
+          </ul>
         </div>
-        <div class="card-item">
-            <h3>AI Humanizers</h3>
-            <ul>
-                <li>• GPTinf (Best AI Remover)</li>
-                <li>• StealthWriter Premium</li>
-                <li>• Ryne.ai Ruby Access</li>
-                <li>• AI Content Proofreading</li>
-            </ul>
-            <button class="btn-pay" onclick="alert('Proceeding to Secure Payment for Humanizers')">Pay for Service</button>
+        <button class="btn-pay" onclick="openPayment('Turnitin & Reports')">Pay for Service</button>
+      </div>
+
+      <div class="card-item">
+        <div class="card-header"><h3><i class="fas fa-robot"></i> AI Humanizers</h3></div>
+        <div class="card-body">
+          <ul>
+            <li>GPTinf (Best AI Remover)</li>
+            <li>StealthWriter Premium/Basic</li>
+            <li>Ryne.ai Ruby Plan</li>
+            <li>Writehuman Humanizer</li>
+          </ul>
         </div>
-        <div class="card-item">
-            <h3>Academic Unlocks</h3>
-            <ul>
-                <li>• CourseHero Unlock (Instant)</li>
-                <li>• Chegg Question Solutions</li>
-                <li>• Studocu & Scribd Full Access</li>
-                <li>• Research Journal Downloads</li>
-            </ul>
-            <button class="btn-pay" onclick="alert('Proceeding to Secure Payment for Unlocks')">Pay for Service</button>
+        <button class="btn-pay" onclick="openPayment('AI Humanizers')">Pay for Service</button>
+      </div>
+
+      <div class="card-item">
+        <div class="card-header"><h3><i class="fas fa-unlock-alt"></i> Platform Unlocks</h3></div>
+        <div class="card-body">
+          <ul>
+            <li>CourseHero & Chegg Unlocks</li>
+            <li>Studocu, Scribd & Slideshare</li>
+            <li>Cliffnotes & Studypool</li>
+            <li>E-Books & Journal Unlocks</li>
+          </ul>
         </div>
+        <button class="btn-pay" onclick="openPayment('Platform Unlocks')">Pay for Service</button>
+      </div>
+    </div>
+
+    <h2 class="category-title">Premium Subscriptions & Connectivity</h2>
+    <div class="grid">
+      <div class="card-item">
+        <div class="card-header"><h3><i class="fas fa-brain"></i> Premium AI Access</h3></div>
+        <div class="card-body">
+          <ul>
+            <li>ChatGPT 5.2 Teams Plan</li>
+            <li>Claude 4.6 Opus Access</li>
+            <li>SuperGrok Premium</li>
+            <li>GPTINF Unlimited Plan</li>
+          </ul>
+        </div>
+        <button class="btn-pay" onclick="openPayment('Premium AI Access')">Pay for Service</button>
+      </div>
+
+      <div class="card-item">
+        <div class="card-header"><h3><i class="fas fa-shield-alt"></i> VPN & Privacy</h3></div>
+        <div class="card-body">
+          <ul>
+            <li>Nord, Express & Windscribe</li>
+            <li>Static Residential Proxies</li>
+            <li>Surfshark & Strong Proxies</li>
+            <li>Stable Browser Proxies</li>
+          </ul>
+        </div>
+        <button class="btn-pay" onclick="openPayment('VPN & Proxies')">Pay for Service</button>
+      </div>
+
+      <div class="card-item">
+        <div class="card-header"><h3><i class="fas fa-clapperboard"></i> Creative & Ent.</h3></div>
+        <div class="card-body">
+          <ul>
+            <li>Grammarly & Quillbot Pro</li>
+            <li>Canva Pro & Netflix UHD</li>
+            <li>All DStv Packages</li>
+            <li>Spotify & Apple Music</li>
+          </ul>
+        </div>
+        <button class="btn-pay" onclick="openPayment('Creative & Entertainment')">Pay for Service</button>
+      </div>
     </div>
 
     <div class="story-box">
       <div class="story-content">
         <h2>The Writers Market Place Story</h2>
-        <p>
-          In a world where quality defines success, <strong>Writers Market Place</strong> by <strong>Prime Tech Solutions</strong> gives you the edge. We provide fast, reliable tools and expert support to help you produce clean, original, and professionally polished work.
-          <br><br>
-          From <strong>plagiarism checks</strong> and <strong>editing support</strong> to <strong>content refinement</strong> and <strong>academic assistance</strong>, everything you need is in one place—simple, secure, and efficient.
-          <br><br>
-          <strong>Stop stressing. Start submitting with confidence.</strong>
-        </p>
+        <p>In a world where quality defines success, <strong>Writers Market Place</strong> by <strong>Prime Tech Solutions</strong> gives you the edge. We provide fast, reliable tools and expert support to help you produce clean, original, and professionally polished work.</p>
         <a href="https://wa.me/254708902232" class="cta-btn">Get Started Now</a>
       </div>
-
       <div class="story-graphics">
-        <div class="card">
-          <img src="https://cdn-icons-png.flaticon.com/512/3503/3503827.png" alt="Plagiarism Check">
-          <h4>Plagiarism Reports</h4>
-          <p>Ensure originality instantly</p>
-        </div>
-
-        <div class="card">
-          <img src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png" alt="Editing Services">
-          <h4>Editing & Proofreading</h4>
-          <p>Polished, professional work</p>
-        </div>
-
-        <div class="card">
-          <img src="https://cdn-icons-png.flaticon.com/512/2593/2593549.png" alt="Content Writing">
-          <h4>Content Support</h4>
-          <p>Clear, structured writing</p>
-        </div>
-
-        <div class="card">
-          <img src="https://cdn-icons-png.flaticon.com/512/709/709790.png" alt="Fast Delivery">
-          <h4>Fast Delivery</h4>
-          <p>Quick turnaround time</p>
-        </div>
+        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/3503/3503827.png" alt=""><h4>Originality</h4></div>
+        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png" alt=""><h4>Editing</h4></div>
+        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/2593/2593549.png" alt=""><h4>Content</h4></div>
+        <div class="graphics-card"><img src="https://cdn-icons-png.flaticon.com/512/709/709790.png" alt=""><h4>Fast Delivery</h4></div>
       </div>
     </div>
+  </div>
+
+  <div id="payModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header"><h3 id="modalTitle" style="margin:0;">Payment Details</h3></div>
+      <div class="modal-body">
+        <div class="pay-details">
+          <p>M-Pesa Paybill: <strong>880100</strong></p>
+          <p>Account Number: <strong>902232</strong></p>
+        </div>
+        <a href="#" id="waLink" class="wa-link"><i class="fab fa-whatsapp"></i> I HAVE PAID - START ORDER</a>
+        <p onclick="closePayment()" style="margin-top:15px; cursor:pointer; color:#999; font-size:12px;">Cancel</p>
+      </div>
     </div>
+  </div>
 
   <footer>
     <div class="footer-grid">
+      <div><h4>Corporate</h4><ul><li><a href="#">Technical Support</a></li><li><a href="#">Repair Services</a></li><li><a href="#">Warranty Policy</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="#">Academic Integrity</a></li><li><a href="#">Data Science</a></li><li><a href="#">Premium Software</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">News & Events</a></li></ul></div>
       <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="market.html">Writers Market</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Support</h4>
-        <ul>
-          <li><a href="#">Warranty</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 style="color: var(--berkeley-gold);">Prime Tech Solutions</h4>
-        <p>Nairobi, Kenya<br>Tel: +254 708 902 232<br>Email: wesongatimoth@gmail.com</p>
+        <h4>Contact Us</h4>
+        <p style="font-size:14px;">Nairobi, Kenya<br>Tel: +254 708 902 232<br>Email: wesongatimoth@gmail.com</p>
+        <a href="https://wa.me/254708902232" style="color:var(--berkeley-gold); font-weight:bold; text-decoration:none;">LIVE HELP <i class="fas fa-headset"></i></a>
       </div>
     </div>
-    <p style="text-align: center; font-size: 11px; opacity: 0.6; margin-top: 30px;">© 2026 Prime Tech Solutions. Fast. Reliable. Genuine.</p>
+    <p style="text-align: center; font-size: 11px; opacity: 0.5; margin-top: 40px;">© 2026 Prime Tech Solutions. Fast. Reliable. Genuine.</p>
   </footer>
 
+  <script>
+    function openPayment(service) {
+        document.getElementById('modalTitle').innerText = service;
+        const msg = encodeURIComponent("Hello Prime Tech Solutions, I have paid for " + service + " at Writers Market Place. Please confirm.");
+        document.getElementById('waLink').href = "https://wa.me/254708902232?text=" + msg;
+        document.getElementById('payModal').style.display = 'block';
+    }
+    function closePayment() { document.getElementById('payModal').style.display = 'none'; }
+    window.onclick = function(e) { if(e.target == document.getElementById('payModal')) closePayment(); }
+  </script>
 </body>
 </html>
+```
