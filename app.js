@@ -1,7 +1,7 @@
 // 1. Configuration - Use your deployed function name
 const SUPABASE_URL = 'https://lckgoavlepajidxheuhs.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_oxu8JU6KHI8ZSNi2kG_ciA_Kf2JYDmD'; 
-const BUSINESS_SHORTCODE = '174379'; // Set your Paybill/Till number here
+const BUSINESS_SHORTCODE = '5579946'; // Set your Paybill/Till number here
 const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.getElementById('stkForm').addEventListener('submit', async (e) => {
