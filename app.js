@@ -1,6 +1,7 @@
-// Configuration
+// 1. Configuration - Use your deployed function name
 const SUPABASE_URL = 'https://lckgoavlepajidxheuhs.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_oxu8JU6KHI8ZSNi2kG_ciA_Kf2JYDmD';
+const SUPABASE_KEY = 'sb_publishable_oxu8JU6KHI8ZSNi2kG_ciA_Kf2JYDmD'; 
+const BUSINESS_SHORTCODE = '174379'; // Set your Paybill/Till number here
 const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.getElementById('stkForm').addEventListener('submit', async (e) => {
@@ -11,7 +12,8 @@ document.getElementById('stkForm').addEventListener('submit', async (e) => {
     const btn = document.getElementById('payBtn');
     const msg = document.getElementById('msg');
     const overlay = document.getElementById('successOverlay');
-    const manualPaybill = document.getElementById('manualPaybill'); // Add this ID to your manual paybill div
+    const manualPaybill = document.getElementById('manualPaybill');
+    const shortcodeDisplay = document.getElementById('displayShortcode');
 
     // Format phone: 07... to 2547...
     const formattedPhone = phoneInput.replace(/^0/, '254').replace(/^\+/, '');
@@ -20,21 +22,25 @@ document.getElementById('stkForm').addEventListener('submit', async (e) => {
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
     msg.style.color = "blue";
-    msg.innerText = "Initializing M-Pesa prompt...";
+    msg.innerText = "Requesting M-Pesa prompt...";
 
     try {
-        // 1. Invoke the Edge Function
-        const { data, error } = await _supabase.functions.invoke('mpesa-stk-push', {
-            body: { phone: formattedPhone, amount: amount }
+        // 2. Invoke 'hyper-service' to start the STK Push
+        const { data, error } = await _supabase.functions.invoke('hyper-service', {
+            body: { 
+                phone: formattedPhone, 
+                amount: amount 
+            }
         });
 
         if (error) throw error;
 
+        // Check if Safaricom accepted the request
         if (data?.ResponseCode === "0") {
             const checkoutId = data.CheckoutRequestID;
-            msg.innerText = "Prompt sent! Please enter your M-Pesa PIN.";
+            msg.innerText = "Prompt sent! Enter your M-Pesa PIN on your phone.";
             
-            // 2. Start Real-time Listener
+            // 3. Start Real-time Listener for the 'payments' table
             const paymentSubscription = _supabase
                 .channel('payment-updates')
                 .on(
@@ -46,7 +52,8 @@ document.getElementById('stkForm').addEventListener('submit', async (e) => {
                         filter: `checkout_id=eq.${checkoutId}` 
                     },
                     (payload) => {
-                        if (payload.new.status === 'Completed' || payload.new.status === 'success') {
+                        // 'smooth-api' updates status to 'success' on payment
+                        if (payload.new.status === 'success' || payload.new.status === 'Completed') {
                             overlay.style.display = 'flex';
                             _supabase.removeChannel(paymentSubscription);
                         }
@@ -54,14 +61,15 @@ document.getElementById('stkForm').addEventListener('submit', async (e) => {
                 )
                 .subscribe();
 
-            // 3. Timeout Logic: If no update after 60 seconds, show manual option
+            // 4. Timeout Logic: If no update after 60 seconds, show manual option
             setTimeout(() => {
                 if (overlay.style.display !== 'flex') {
                     msg.style.color = "orange";
-                    msg.innerText = "Still waiting? If you didn't get a prompt, try the manual Paybill below.";
+                    msg.innerText = "Prompt not appearing? Use the manual details below.";
+                    if(shortcodeDisplay) shortcodeDisplay.innerText = BUSINESS_SHORTCODE;
                     manualPaybill.style.display = "block";
                     btn.disabled = false;
-                    btn.innerText = "Try STK Push Again";
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Retry STK Push';
                 }
             }, 60000);
 
@@ -70,12 +78,13 @@ document.getElementById('stkForm').addEventListener('submit', async (e) => {
         }
 
     } catch (err) {
-        // 4. On Failure: Show Manual Paybill Options
+        // 5. On Failure: Show Manual Paybill Options immediately
         msg.style.color = "red";
-        msg.innerText = "STK Push failed to start.";
-        manualPaybill.style.display = "block"; // Shows the Paybill details
+        msg.innerText = "Could not start STK Push. Please pay manually.";
+        if(shortcodeDisplay) shortcodeDisplay.innerText = BUSINESS_SHORTCODE;
+        manualPaybill.style.display = "block"; 
         btn.disabled = false;
-        btn.innerText = "Retry M-Pesa Prompt";
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Retry Prompt';
         console.error("Payment Error:", err);
     }
 });
