@@ -1,0 +1,11 @@
+# Supabase temporary files
+supabase/.temp/
+supabase/functions/.env
+
+# Local environment variables
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
