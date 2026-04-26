@@ -1,48 +1,53 @@
-// Initialize Supabase Connection
-const PROJECT_URL = 'https://lckgoavlepajidxheuhs.supabase.co';
-const PUBLISHABLE_KEY = 'sb_publishable_oxu8JU6KHI8ZSNi2kG_ciA_Kf2JYDmD';
+document.getElementById('stkPushForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const phone = document.getElementById('phone').value;
+    const amount = document.getElementById('amount').value;
+    const btn = document.getElementById('payBtn');
+    const msg = document.getElementById('responseMessage');
 
-const _supabase = supabase.createClient(PROJECT_URL, PUBLISHABLE_KEY);
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
 
-/**
- * This function listens for real-time updates in your 'payments' table.
- * When a row is updated to status = 'success', the UI changes.
- */
-function listenForPayment() {
-    console.log("Connected! Prime Tech system is listening for payments...");
+    // This payload structure follows the Safaricom API requirements
+    const payload = {
+        "BusinessShortCode": "174379", // Default Sandbox Shortcode
+        "Password": "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjUwOTI1MTI0NTE5",
+        "Timestamp": "20250925124519",
+        "TransactionType": "CustomerPayBillOnline",
+        "Amount": amount,
+        "PartyA": phone,
+        "PartyB": "174379",
+        "PhoneNumber": phone,
+        "CallBackURL": "https://yourdomain.com/mpesa-callback",
+        "AccountReference": "PrimeTechOrder",
+        "TransactionDesc": "Payment for Laptop"
+    };
 
-    _supabase
-        .channel('payment-channel')
-        .on(
-            'postgres_changes',
-            {
-                event: 'UPDATE', 
-                schema: 'public',
-                table: 'payments'
+    try {
+        const response = await fetch('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer YOUR_ACCESS_TOKEN_HERE',
+                'Content-Type': 'application/json'
             },
-            (payload) => {
-                console.log('Change detected in database:', payload);
-                
-                // Check if the newly updated status is 'success'
-                if (payload.new.status === 'success') {
-                    displaySuccess();
-                }
-            }
-        )
-        .subscribe();
-}
+            body: JSON.stringify(payload)
+        });
 
-// Function to update the HTML on the screen
-function displaySuccess() {
-    const statusBox = document.getElementById('payment-status');
-    statusBox.innerHTML = `
-        <div class="status-success">
-            <h2>✅ Success!</h2>
-            <p>Your payment has been verified.</p>
-            <p><strong>Order ID:</strong> #${Math.floor(Math.random() * 10000)}</p>
-        </div>
-    `;
-}
+        const data = await response.json();
 
-// Start the listener
-listenForPayment();
+        if (data.ResponseCode === "0") {
+            msg.style.color = "green";
+            msg.innerHTML = "STK Push sent! Please enter your PIN on your phone.";
+        } else {
+            msg.style.color = "red";
+            msg.innerText = "Error: " + data.CustomerMessage;
+        }
+    } catch (error) {
+        msg.style.color = "red";
+        msg.innerText = "Failed to connect to Safaricom. Check your connection.";
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = 'Pay Now via M-Pesa';
+    }
+});
