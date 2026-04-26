@@ -3,181 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prime Tech Solutions | Kenya's Premier IT Partner</title>
-  <link rel="icon" href="Logo1.jpg" type="image/jpg">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Secure Payment | Prime Tech Solutions</title>
   
+  <meta name="description" content="Secure payment portal for Prime Tech Solutions. Pay your invoice via M-Pesa Express or Bank Transfer. Fast, reliable IT services in Nairobi.">
+  <meta name="keywords" content="Prime Tech Solutions, M-Pesa Paybill 880100, Laptop Repair Nairobi, IT Services Kenya">
+  <meta property="og:title" content="Secure Payment - Prime Tech Solutions">
+  <meta property="og:description" content="Pay your invoice securely online.">
+  <meta property="og:image" content="https://www.primetechsolutions.co.ke/Logo1.jpg">
+  <meta name="robots" content="index, follow">
+  
+  <link rel="icon" href="Logo1.jpg" type="image/jpg">
+  <link rel="apple-touch-icon" href="Logo1.jpg">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Prime Tech Solutions",
+    "url": "https://www.primetechsolutions.co.ke/",
+    "logo": "https://www.primetechsolutions.co.ke/Logo1.jpg"
+  }
+  </script>
+
   <style>
     :root {
       --berkeley-blue: #003262;
       --berkeley-gold: #FDB515;
-      --silver-bg: #e5e7e9; 
+      --silver-bg: #f4f7f9; 
       --white: #ffffff;
-      --success-green: #27ae60;
+      --mpesa-green: #10b981;
     }
 
-    body { font-family: 'Open Sans', Arial, sans-serif; margin: 0; background-color: var(--silver-bg); overflow-x: hidden; }
+    body { font-family: 'Open Sans', sans-serif; margin: 0; background-color: var(--silver-bg); color: #333; }
+    
+    /* Header & Nav */
+    header { background: var(--white); text-align: center; padding: 20px 0; border-bottom: 4px solid var(--berkeley-gold); }
+    .brand { font-size: 28px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue); text-transform: uppercase; }
+    .brand span { color: var(--berkeley-gold); }
+    
+    .main-nav { display: flex; justify-content: center; gap: 20px; list-style: none; padding: 15px 0; margin: 0; background: #fff; }
+    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; }
 
-    /* --- PAYMENT MODAL & SUCCESS STYLES --- */
-    .payment-container {
-      max-width: 400px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      text-align: center;
+    /* Payment Portal Hero */
+    .hero-area { 
+      background: linear-gradient(rgba(0,50,98,0.85), rgba(0,50,98,0.85)), url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260');
+      background-size: cover; background-position: center;
+      padding: 60px 20px; display: flex; justify-content: center;
     }
 
-    .mpesa-logo { width: 150px; margin-bottom: 20px; }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-sizing: border-box;
+    .payment-card {
+      background: var(--white); width: 100%; max-width: 900px;
+      border-radius: 15px; display: grid; grid-template-columns: 1fr 1fr;
+      overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
     }
 
-    .pay-now-btn {
-      background: #49c561;
-      color: white;
-      border: none;
-      padding: 15px;
-      width: 100%;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 4px;
-      font-size: 16px;
-    }
+    .stk-side { padding: 40px; border-right: 1px solid #eee; }
+    .manual-side { padding: 40px; background: #fdfdfd; }
+
+    h3 { color: var(--berkeley-blue); margin-top: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    
+    input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+    
+    .btn-pay { background: var(--mpesa-green); color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; }
+    .btn-pay:hover { background: #059669; }
+
+    .info-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+    .val { font-weight: 700; color: var(--berkeley-blue); }
+    
+    .copy-btn { font-size: 10px; padding: 4px 8px; background: #eee; border: none; cursor: pointer; border-radius: 4px; }
 
     /* Success Overlay */
-    #success-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
+    #successOverlay {
+        display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(255, 255, 255, 0.98); z-index: 9999;
+        flex-direction: column; justify-content: center; align-items: center; text-align: center;
     }
 
-    .checkmark-circle {
-      width: 100px;
-      height: 100px;
-      background: var(--success-green);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 20px;
-      animation: scaleIn 0.5s ease;
-    }
-
-    .checkmark-circle i { color: white; font-size: 50px; }
-
-    @keyframes scaleIn {
-      from { transform: scale(0); }
-      to { transform: scale(1); }
-    }
-
-    /* --- EXISTING SHOP STYLES --- */
-    .utility-nav { background: var(--berkeley-blue); padding: 10px 10%; display: flex; justify-content: flex-end; gap: 20px; font-size: 12px; }
-    .utility-nav a { color: #fff; text-decoration: none; font-weight: bold; }
-    header { background: var(--white); text-align: center; padding-top: 27px; border-bottom: 4px solid var(--berkeley-gold); }
-    .main-nav { display: flex; justify-content: center; gap: 40px; list-style: none; padding: 15px 0; margin: 0; }
-    .main-nav a { color: var(--berkeley-blue); text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 14px; }
-    .hero { background: linear-gradient(rgba(0,50,98,0.6), rgba(0,50,98,0.6)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1470'); height: 300px; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+    @media (max-width: 768px) { .payment-card { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
-  <div id="success-overlay">
-    <div class="checkmark-circle">
-      <i class="fas fa-check"></i>
-    </div>
-    <h1 style="color: var(--berkeley-blue);">Payment Successful!</h1>
-    <p>Your transaction has been processed. A receipt has been sent to your phone.</p>
-    <button onclick="closeSuccess()" style="margin-top:20px; padding: 10px 30px; cursor:pointer;">Back to Shop</button>
-  </div>
-
-  <div class="utility-nav">
-    <a href="#">Technical Support</a>
-    <a href="https://wa.me/254708902232" style="color: var(--berkeley-gold)">Get a Quote</a>
+  <div id="successOverlay">
+    <i class="fas fa-check-circle" style="font-size: 80px; color: var(--mpesa-green);"></i>
+    <h1 style="color: var(--berkeley-blue)">Payment Successful!</h1>
+    <p>We have received your payment. A receipt has been sent to your phone.</p>
+    <button onclick="location.reload()" style="padding: 10px 25px; cursor:pointer;">Close</button>
   </div>
 
   <header>
-    <a href="index.html" style="font-size: 32px; font-weight: 800; text-decoration: none; color: var(--berkeley-blue);">PRIME TECH <span style="color: var(--berkeley-gold);">SOLUTIONS</span></a>
-    <ul class="main-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="Invoice.html">Invoice</a></li>
-    </ul>
+    <a href="index.html" class="brand">Prime Tech <span>Solutions</span></a>
   </header>
 
-  <section class="hero">
-    <h1>Secure M-Pesa Checkout</h1>
-  </section>
+  <ul class="main-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
 
-  <div class="payment-container">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg" class="mpesa-logo" alt="M-Pesa">
-    <h3>Enter Details to Pay</h3>
-    <form id="mpesaForm">
-      <input type="text" id="phone" placeholder="Phone (e.g., 254708902232)" required>
-      <input type="number" id="amount" placeholder="Amount (KSh)" required>
-      <button type="submit" class="pay-now-btn" id="payBtn">Initiate STK Push</button>
-    </form>
-    <div id="status-msg" style="margin-top: 15px; font-size: 13px; color: #666;"></div>
-  </div>
+  <main class="hero-area">
+    <div class="payment-card">
+      
+      <div class="stk-side">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg" width="100" alt="M-Pesa">
+        <h3>M-Pesa Express</h3>
+        <p style="font-size: 13px; color: #666;">Enter your details to receive a payment prompt on your phone.</p>
+        
+        <form id="stkForm">
+          <input type="text" id="phone" placeholder="Phone (e.g. 254708902232)" required>
+          <input type="number" id="amount" placeholder="Amount (KSh)" required>
+          <button type="submit" id="payBtn" class="btn-pay">Pay with M-Pesa</button>
+        </form>
+        <div id="msg" style="margin-top: 15px; font-size: 14px; font-weight: bold;"></div>
+      </div>
 
+      <div class="manual-side">
+        <h3>Alternative Methods</h3>
+        <p style="font-size: 13px; color: #666;">If the prompt doesn't appear, use these details:</p>
+        
+        <div style="background: #f0fdf4; border: 1px dashed var(--mpesa-green); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+            <div class="info-row">
+                <span>Paybill</span>
+                <span class="val">880100 <button class="copy-btn" onclick="copy('880100')">COPY</button></span>
+            </div>
+            <div class="info-row">
+                <span>Account</span>
+                <span class="val">902232 <button class="copy-btn" onclick="copy('902232')">COPY</button></span>
+            </div>
+        </div>
+
+        <div style="font-size: 13px; color: #444;">
+            <i class="fas fa-university"></i> <strong>Bank: Stanbic Bank</strong><br>
+            Name: Timothy Wesonga<br>
+            Acc: 0100012147346 <button class="copy-btn" onclick="copy('0100012147346')">COPY</button>
+        </div>
+
+        <a href="https://wa.me/254708902232" style="display: block; text-align: center; margin-top: 20px; color: #25D366; text-decoration: none; font-weight: bold;">
+            <i class="fab fa-whatsapp"></i> Confirm via WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
   <script>
-    const mpesaForm = document.getElementById('mpesaForm');
-    const payBtn = document.getElementById('payBtn');
-    const statusMsg = document.getElementById('status-msg');
-    const successOverlay = document.getElementById('success-overlay');
-
-    mpesaForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const phone = document.getElementById('phone').value;
-      const amount = document.getElementById('amount').value;
-
-      // 1. UI Loading State
-      payBtn.disabled = true;
-      payBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Request...';
-      statusMsg.innerText = "Check your phone for the M-Pesa PIN prompt.";
-
-      /* NOTE: In a real environment, you call your backend (Node.js/Python/PHP) 
-         which holds your Safaricom Consumer Keys.
-      */
-      
-      // Simulate API Call Delay
-      setTimeout(() => {
-        // Mocking a successful STK Push trigger
-        statusMsg.style.color = "green";
-        statusMsg.innerText = "Request Sent! Please enter PIN on your phone.";
-
-        // Simulate waiting for Safaricom Callback (usually takes 5-10 seconds)
-        setTimeout(() => {
-          showSuccess();
-        }, 5000);
-
-      }, 2000);
-    });
-
-    function showSuccess() {
-      successOverlay.style.display = 'flex';
-      // Optional: Play a success sound
-    }
-
-    function closeSuccess() {
-      successOverlay.style.display = 'none';
-      window.location.reload();
+    function copy(text) {
+      navigator.clipboard.writeText(text);
+      alert("Copied: " + text);
     }
   </script>
-
 </body>
 </html>
