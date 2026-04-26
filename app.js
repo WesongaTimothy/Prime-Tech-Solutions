@@ -1,19 +1,31 @@
-// 1. Configuration - Use your deployed function name
+/**
+ * Prime Tech Solutions - Production Payment Logic
+ * Handles M-Pesa STK Push and Real-time Status Updates
+ */
+
+// 1. Configuration
 const SUPABASE_URL = 'https://lckgoavlepajidxheuhs.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_oxu8JU6KHI8ZSNi2kG_ciA_Kf2JYDmD'; 
-const BUSINESS_SHORTCODE = '5579946'; // Set your Paybill/Till number here
+
+// Production Payment Details
+const BUSINESS_TILL = '5579946';       // Your Till Number
+const FALLBACK_PAYBILL = '880100';    // Manual Paybill fallback
+const FALLBACK_ACCOUNT = '902232';    // Manual Account fallback
+
 const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.getElementById('stkForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
+    // UI Elements
     const phoneInput = document.getElementById('phone').value;
     const amount = document.getElementById('amount').value;
     const btn = document.getElementById('payBtn');
     const msg = document.getElementById('msg');
     const overlay = document.getElementById('successOverlay');
-    const manualPaybill = document.getElementById('manualPaybill');
-    const shortcodeDisplay = document.getElementById('displayShortcode');
+    const manualDiv = document.getElementById('manualPaybill');
+    const displayPaybill = document.getElementById('displayPaybill');
+    const displayAccount = document.getElementById('displayAccount');
 
     // Format phone: 07... to 2547...
     const formattedPhone = phoneInput.replace(/^0/, '254').replace(/^\+/, '');
@@ -21,7 +33,7 @@ document.getElementById('stkForm').addEventListener('submit', async (e) => {
     // UI Loading State
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-    msg.style.color = "blue";
+    msg.style.color = "#003262"; // Berkeley Blue
     msg.innerText = "Requesting M-Pesa prompt...";
 
     try {
@@ -38,6 +50,7 @@ document.getElementById('stkForm').addEventListener('submit', async (e) => {
         // Check if Safaricom accepted the request
         if (data?.ResponseCode === "0") {
             const checkoutId = data.CheckoutRequestID;
+            msg.style.color = "green";
             msg.innerText = "Prompt sent! Enter your M-Pesa PIN on your phone.";
             
             // 3. Start Real-time Listener for the 'payments' table
@@ -52,7 +65,7 @@ document.getElementById('stkForm').addEventListener('submit', async (e) => {
                         filter: `checkout_id=eq.${checkoutId}` 
                     },
                     (payload) => {
-                        // 'smooth-api' updates status to 'success' on payment
+                        // If status is updated to success, show the success overlay
                         if (payload.new.status === 'success' || payload.new.status === 'Completed') {
                             overlay.style.display = 'flex';
                             _supabase.removeChannel(paymentSubscription);
@@ -61,15 +74,10 @@ document.getElementById('stkForm').addEventListener('submit', async (e) => {
                 )
                 .subscribe();
 
-            // 4. Timeout Logic: If no update after 60 seconds, show manual option
+            // 4. Timeout Logic: Show manual option after 60 seconds
             setTimeout(() => {
                 if (overlay.style.display !== 'flex') {
-                    msg.style.color = "orange";
-                    msg.innerText = "Prompt not appearing? Use the manual details below.";
-                    if(shortcodeDisplay) shortcodeDisplay.innerText = BUSINESS_SHORTCODE;
-                    manualPaybill.style.display = "block";
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Retry STK Push';
+                    showManualFallback("Prompt taking too long? You can pay manually below.");
                 }
             }, 60000);
 
@@ -78,13 +86,24 @@ document.getElementById('stkForm').addEventListener('submit', async (e) => {
         }
 
     } catch (err) {
-        // 5. On Failure: Show Manual Paybill Options immediately
+        // 5. On Failure: Show the specific Manual Paybill 880100 immediately
+        showManualFallback("Could not start automatic prompt. Please pay manually.");
+        console.error("Payment Error:", err);
+    }
+
+    /**
+     * Helper function to display manual payment details
+     */
+    function showManualFallback(warningText) {
         msg.style.color = "red";
-        msg.innerText = "Could not start STK Push. Please pay manually.";
-        if(shortcodeDisplay) shortcodeDisplay.innerText = BUSINESS_SHORTCODE;
-        manualPaybill.style.display = "block"; 
+        msg.innerText = warningText;
+        
+        // Populate the specific numbers requested
+        if(displayPaybill) displayPaybill.innerText = FALLBACK_PAYBILL;
+        if(displayAccount) displayAccount.innerText = FALLBACK_ACCOUNT;
+        
+        manualDiv.style.display = "block";
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-paper-plane"></i> Retry Prompt';
-        console.error("Payment Error:", err);
     }
 });
