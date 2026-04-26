@@ -1,80 +1,81 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+// Configuration
+const SUPABASE_URL = 'https://lckgoavlepajidxheuhs.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_oxu8JU6KHI8ZSNi2kG_ciA_Kf2JYDmD';
+const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-}
-
-serve(async (req) => {
-  if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
-
-  try {
-    const { phone, amount } = await req.json()
+document.getElementById('stkForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
     
-    // Initialize Supabase Client
-    const supabase = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
-    )
+    const phoneInput = document.getElementById('phone').value;
+    const amount = document.getElementById('amount').value;
+    const btn = document.getElementById('payBtn');
+    const msg = document.getElementById('msg');
+    const overlay = document.getElementById('successOverlay');
+    const manualPaybill = document.getElementById('manualPaybill'); // Add this ID to your manual paybill div
 
-    const key = Deno.env.get('MPESA_CONSUMER_KEY')
-    const secret = Deno.env.get('MPESA_CONSUMER_SECRET')
-    const shortCode = Deno.env.get('MPESA_SHORTCODE')
-    const passkey = Deno.env.get('MPESA_PASSKEY')
+    // Format phone: 07... to 2547...
+    const formattedPhone = phoneInput.replace(/^0/, '254').replace(/^\+/, '');
 
-    // 1. Get Access Token
-    const auth = btoa(`${key}:${secret}`)
-    const tokenRes = await fetch("https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials", {
-      headers: { Authorization: `Basic ${auth}` }
-    })
-    const { access_token } = await tokenRes.json()
+    // UI Loading State
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+    msg.style.color = "blue";
+    msg.innerText = "Initializing M-Pesa prompt...";
 
-    // 2. Prepare STK Push
-    const timestamp = new Date().toISOString().replace(/[-:TZ.]/g, "").slice(0, 14)
-    const password = btoa(shortCode + passkey + timestamp)
+    try {
+        // 1. Invoke the Edge Function
+        const { data, error } = await _supabase.functions.invoke('mpesa-stk-push', {
+            body: { phone: formattedPhone, amount: amount }
+        });
 
-    const stkRes = await fetch("https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        BusinessShortCode: shortCode,
-        Password: password,
-        Timestamp: timestamp,
-        TransactionType: "CustomerPayBillOnline",
-        Amount: amount,
-        PartyA: phone,
-        PartyB: shortCode,
-        PhoneNumber: phone,
-        CallBackURL: `https://${Deno.env.get('PROJECT_REF')}.functions.supabase.co/v1/mpesa-callback`,
-        AccountReference: "PrimeTech",
-        TransactionDesc: "Payment"
-      })
-    })
+        if (error) throw error;
 
-    const data = await stkRes.json()
+        if (data?.ResponseCode === "0") {
+            const checkoutId = data.CheckoutRequestID;
+            msg.innerText = "Prompt sent! Please enter your M-Pesa PIN.";
+            
+            // 2. Start Real-time Listener
+            const paymentSubscription = _supabase
+                .channel('payment-updates')
+                .on(
+                    'postgres_changes',
+                    { 
+                        event: 'UPDATE', 
+                        schema: 'public', 
+                        table: 'payments', 
+                        filter: `checkout_id=eq.${checkoutId}` 
+                    },
+                    (payload) => {
+                        if (payload.new.status === 'Completed' || payload.new.status === 'success') {
+                            overlay.style.display = 'flex';
+                            _supabase.removeChannel(paymentSubscription);
+                        }
+                    }
+                )
+                .subscribe();
 
-    // 3. Create the pending record in your SQL table
-    if (data.ResponseCode === "0") {
-      await supabase.from('payments').insert([{
-        checkout_id: data.CheckoutRequestID,
-        phone: phone,
-        amount: amount,
-        status: 'pending'
-      }])
+            // 3. Timeout Logic: If no update after 60 seconds, show manual option
+            setTimeout(() => {
+                if (overlay.style.display !== 'flex') {
+                    msg.style.color = "orange";
+                    msg.innerText = "Still waiting? If you didn't get a prompt, try the manual Paybill below.";
+                    manualPaybill.style.display = "block";
+                    btn.disabled = false;
+                    btn.innerText = "Try STK Push Again";
+                }
+            }, 60000);
+
+        } else {
+            throw new Error(data?.CustomerMessage || "STK Push failed");
+        }
+
+    } catch (err) {
+        // 4. On Failure: Show Manual Paybill Options
+        msg.style.color = "red";
+        msg.innerText = "STK Push failed to start.";
+        manualPaybill.style.display = "block"; // Shows the Paybill details
+        btn.disabled = false;
+        btn.innerText = "Retry M-Pesa Prompt";
+        console.error("Payment Error:", err);
     }
-
-    return new Response(JSON.stringify(data), { 
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-    })
-
-  } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), { 
-      status: 500, 
-      headers: corsHeaders 
-    })
-  }
-})
+});
