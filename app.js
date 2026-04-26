@@ -1,81 +1,80 @@
-// REPLACE with your actual Supabase credentials from your Dashboard
-const SUPABASE_URL = 'https://lckgoavlepajidxheuhs.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_oxu8JU6KHI8ZSNi2kG_ciA_Kf2JYDmD';
-const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
-document.getElementById('stkForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+
+serve(async (req) => {
+  if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
+
+  try {
+    const { phone, amount } = await req.json()
     
-    const phoneInput = document.getElementById('phone').value;
-    const amount = document.getElementById('amount').value;
-    const btn = document.getElementById('payBtn');
-    const msg = document.getElementById('msg');
-    const overlay = document.getElementById('successOverlay');
+    // Initialize Supabase Client
+    const supabase = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+    )
 
-    // 1. Rectify Phone Number Format (Ensures 07... becomes 2547...)
-    const formattedPhone = phoneInput.replace(/^0/, '254').replace(/^\+/, '');
+    const key = Deno.env.get('MPESA_CONSUMER_KEY')
+    const secret = Deno.env.get('MPESA_CONSUMER_SECRET')
+    const shortCode = Deno.env.get('MPESA_SHORTCODE')
+    const passkey = Deno.env.get('MPESA_PASSKEY')
 
-    // UI Loading State
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Initializing...';
-    msg.style.color = "blue";
-    msg.innerText = "Please check your phone for the M-Pesa prompt.";
+    // 1. Get Access Token
+    const auth = btoa(`${key}:${secret}`)
+    const tokenRes = await fetch("https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials", {
+      headers: { Authorization: `Basic ${auth}` }
+    })
+    const { access_token } = await tokenRes.json()
 
-    try {
-        // 2. Invoke the Supabase Edge Function
-        // We use the rectified body format you requested
-        const { data, error } = await _supabase.functions.invoke('mpesa-stk-push', {
-            body: { 
-                phone: formattedPhone, 
-                amount: amount 
-            }
-        });
+    // 2. Prepare STK Push
+    const timestamp = new Date().toISOString().replace(/[-:TZ.]/g, "").slice(0, 14)
+    const password = btoa(shortCode + passkey + timestamp)
 
-        if (error) throw error;
+    const stkRes = await fetch("https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        BusinessShortCode: shortCode,
+        Password: password,
+        Timestamp: timestamp,
+        TransactionType: "CustomerPayBillOnline",
+        Amount: amount,
+        PartyA: phone,
+        PartyB: shortCode,
+        PhoneNumber: phone,
+        CallBackURL: `https://${Deno.env.get('PROJECT_REF')}.functions.supabase.co/v1/mpesa-callback`,
+        AccountReference: "PrimeTech",
+        TransactionDesc: "Payment"
+      })
+    })
 
-        // 3. Handle the Response
-        if (data?.ResponseCode === "0") {
-            const checkoutId = data.CheckoutRequestID;
-            console.log("Prompt sent! CheckoutID:", checkoutId);
-            msg.innerText = "Prompt sent! Enter your PIN on your phone to complete payment.";
+    const data = await stkRes.json()
 
-            // 4. REAL-TIME: Listen for the payment confirmation in the 'payments' table
-            // This assumes your Edge Function or Callback creates/updates a record here
-            const paymentSubscription = _supabase
-                .channel('payment-updates')
-                .on(
-                    'postgres_changes',
-                    { 
-                        event: 'UPDATE', 
-                        schema: 'public', 
-                        table: 'payments', 
-                        filter: `checkout_id=eq.${checkoutId}` 
-                    },
-                    (payload) => {
-                        // Check if the status has changed to 'Completed'
-                        if (payload.new.status === 'Completed' || payload.new.result_code === 0) {
-                            overlay.style.display = 'flex';
-                            msg.innerText = "Payment Successful!";
-                            _supabase.removeChannel(paymentSubscription);
-                        }
-                    }
-                )
-                .subscribe();
-
-        } else {
-            // Handle Safaricom-specific errors (e.g., invalid phone number)
-            msg.style.color = "red";
-            msg.innerText = data?.CustomerMessage || "Request failed. Please try again.";
-            btn.disabled = false;
-            btn.innerText = "Try Again";
-        }
-
-    } catch (err) {
-        // Handle connection or system errors
-        msg.style.color = "red";
-        msg.innerText = "Connection failed. Please check your internet or try manual Paybill.";
-        btn.disabled = false;
-        btn.innerText = "Pay Now";
-        console.error("M-Pesa Error:", err);
+    // 3. Create the pending record in your SQL table
+    if (data.ResponseCode === "0") {
+      await supabase.from('payments').insert([{
+        checkout_id: data.CheckoutRequestID,
+        phone: phone,
+        amount: amount,
+        status: 'pending'
+      }])
     }
-});
+
+    return new Response(JSON.stringify(data), { 
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+    })
+
+  } catch (err) {
+    return new Response(JSON.stringify({ error: err.message }), { 
+      status: 500, 
+      headers: corsHeaders 
+    })
+  }
+})
