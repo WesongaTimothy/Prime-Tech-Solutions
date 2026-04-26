@@ -12,7 +12,7 @@ const SUPABASE_URL = 'https://lckgoavlepajidxheuhs.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_oxu8JU6KHI8ZSNi2kG_ciA_Kf2JYDmD'; 
 
 // Production Merchant Details
-const BUSINESS_TILL = '5579946';       // Your Buy Goods Till
+const TILL_NUMBER = '5579946';       // Your Buy Goods Till
 const FALLBACK_PAYBILL = '880100';    // Manual Paybill Number
 const FALLBACK_ACCOUNT = '902232';    // Manual Account Number
 
