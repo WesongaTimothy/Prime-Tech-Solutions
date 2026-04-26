@@ -14,8 +14,8 @@
 
     <style>
         :root {
-            --berkeley-blue: #003262; /* */
-            --berkeley-gold: #FDB515; /* */
+            --berkeley-blue: #003262;
+            --berkeley-gold: #FDB515;
             --silver-bg: #e5e7e9; 
             --white: #ffffff;
             --mpesa-green: #10b981;
@@ -30,7 +30,7 @@
             min-height: 100vh;
         }
 
-        /* --- HEADER & UTILITY --- */
+        /* --- HEADER & NAVIGATION --- */
         .utility-nav {
             background: var(--berkeley-blue);
             padding: 10px 10%;
@@ -123,6 +123,7 @@
             border-radius: 8px;
             box-sizing: border-box;
             font-size: 16px;
+            outline-color: var(--berkeley-blue);
         }
 
         #payBtn {
@@ -141,13 +142,14 @@
             align-items: center;
             gap: 10px;
         }
-        #payBtn:disabled { background: #94a3b8; }
+        #payBtn:hover { filter: brightness(1.1); }
+        #payBtn:disabled { background: #94a3b8; cursor: not-allowed; }
 
         #msg { text-align: center; font-size: 13px; margin-top: 15px; font-weight: 600; min-height: 20px; }
 
         /* --- FAILSAFE OPTIONS --- */
         #manualPaybill {
-            display: none; /* Triggered by app.js on fail/timeout */
+            display: none; 
             margin-top: 25px;
             padding-top: 20px;
             border-top: 2px dashed #eee;
@@ -156,9 +158,9 @@
         .data-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
         .data-row span:last-child { font-weight: 700; color: var(--berkeley-blue); }
 
-        /* --- SUCCESS STATE --- */
+        /* --- SUCCESS OVERLAY --- */
         #successOverlay {
-            display: none; /* Triggered by Realtime update */
+            display: none; 
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(255,255,255,0.98);
@@ -201,7 +203,7 @@
                 <i class="fas fa-check-circle" style="color: var(--mpesa-green); font-size: 60px; margin-bottom: 15px;"></i>
                 <h2 style="color: var(--berkeley-blue); margin: 0;">Payment Received</h2>
                 <p>Transaction processed successfully.</p>
-                <button onclick="window.location.reload()" style="background: var(--berkeley-blue); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Done</button>
+                <button onclick="window.location.reload()" style="background: var(--berkeley-blue); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: 700;">DONE</button>
             </div>
 
             <div class="card-header">
@@ -212,7 +214,7 @@
                 <form id="stkForm">
                     <div class="form-group">
                         <label>M-Pesa Number</label>
-                        <input type="text" id="phone" placeholder="07XXXXXXXX" required>
+                        <input type="text" id="phone" inputmode="tel" placeholder="07XXXXXXXX" required>
                     </div>
                     <div class="form-group">
                         <label>Amount (KES)</label>
@@ -229,8 +231,14 @@
                         Prompt not appearing? Use Manual Paybill:
                     </p>
                     <div class="paybill-box">
-                        <div class="data-row"><span>Business No:</span> <span>880100</span></div>
-                        <div class="data-row"><span>Account No:</span> <span>902232</span></div>
+                        <div class="data-row">
+                            <span>Business No:</span> 
+                            <span id="displayPaybill">880100</span>
+                        </div>
+                        <div class="data-row">
+                            <span>Account No:</span> 
+                            <span id="displayAccount">902232</span>
+                        </div>
                     </div>
                 </div>
 
@@ -245,8 +253,8 @@
         <p>© 2026 Prime Tech Solutions Limited. Nairobi, Kenya.</p>
     </footer>
 
-   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
 
 </body>
 </html>
