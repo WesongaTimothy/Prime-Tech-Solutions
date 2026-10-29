@@ -283,62 +283,7 @@
     <div id="qrcode"></div>
     <p>SCAN TO DONATE</p>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
-
-<script>
-const qrCode = new QRCodeStyling({
-    width: 300,
-    height: 300,
-    type: "canvas",
-    data: "https://hopeksai.org/donation",
-    image: "https://www.hopeksai.org/templates/jl_fix/custom/images/Hope+for+Kenya+Slum+Initiative+no+background.webp",
-    dotsOptions: {
-        color: "#800000",
-        type: "rounded"
-    },
-    backgroundOptions: {
-        color: "#ffffff"
-    },
-    cornersSquareOptions: {
-        color: "#800000",
-        type: "extra-rounded"
-    },
-    cornersDotOptions: {
-        color: "#D4AF37",
-        type: "dot"
-    },
-    imageOptions: {
-        crossOrigin: "anonymous",
-        margin: 8,
-        imageSize: 0.35
-    }
-});
-
-qrCode.append(document.getElementById("qrcode"));
-</script>
-
-<style>
-.qr-code{
-    text-align:center;
-    padding:20px;
-}
-
-#qrcode{
-    display:flex;
-    justify-content:center;
-}
-
-.qr-code p{
-    margin-top:15px;
-    font-weight:bold;
-    color:#800000;
-    font-size:14px;
-    letter-spacing:1px;
-}
-</style>
-        
-        
+      
         <div class="signature-container">
             <div class="stamp-container">
                 <img src="Logo1.jpg" alt="Stamp" class="stamp-image">
