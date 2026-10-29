@@ -143,6 +143,47 @@
         .btn-print { background: #222; color: #fff; }
         .btn-home { background: #eee; color: #222; }
 
+        #3 QR Code 
+        .auth-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:25px;
+    margin-top:20px;
+}
+
+.qr-code{
+    text-align:center;
+    width:120px;
+}
+
+.qr-code p{
+    margin-top:8px;
+    font-size:10px;
+    font-weight:700;
+    color:#800000;
+    letter-spacing:1px;
+}
+
+.verify-qr{
+    width:100px !important;
+    height:100px !important;
+    border:2px solid #003262;
+    border-radius:8px;
+    padding:5px;
+}
+
+#donationQR{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#donationQR canvas{
+    border:2px solid #D4AF37;
+    border-radius:8px;
+    background:#fff;
+}
         footer { 
             background: #191919; 
             color: #ccc; 
@@ -274,15 +315,51 @@
         <div class="total-amount">TOTAL: KES 18,001.00</div>
     </div>
 
+      <script>
+const donationQR = new QRCodeStyling({
+    width: 100,
+    height: 100,
+    type: "canvas",
+
+    data: "https://hopeksai.org/donation",
+
+    image: "https://www.hopeksai.org/templates/jl_fix/custom/images/Hope+for+Kenya+Slum+Initiative+no+background.webp",
+
+    dotsOptions: {
+        color: "#800000",
+        type: "rounded"
+    },
+
+    cornersSquareOptions: {
+        color: "#800000",
+        type: "extra-rounded"
+    },
+
+    cornersDotOptions: {
+        color: "#D4AF37",
+        type: "dot"
+    },
+
+    backgroundOptions: {
+        color: "#ffffff"
+    },
+
+    imageOptions: {
+        crossOrigin: "anonymous",
+        margin: 4,
+        imageSize: 0.4
+    }
+});
+
+donationQR.append(document.getElementById("donationQR"));
+</script>
+      
     <div class="auth-row">
         <div class="qr-code">
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=VERIFIED-PTS-280312-0" alt="QR">
             <p>SCAN TO VERIFY</p>
         </div>
-<div class="qr-code">
-    <div id="qrcode"></div>
-    <p>SCAN TO DONATE</p>
-</div>
+
       
         <div class="signature-container">
             <div class="stamp-container">
